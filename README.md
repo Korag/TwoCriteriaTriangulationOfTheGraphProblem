@@ -1,1 +1,1 @@
-# TwoCriteriaTriangulationOfTheGraphProblem-
+# TwoCriteriaTriangulationOfTheGraphProblem
