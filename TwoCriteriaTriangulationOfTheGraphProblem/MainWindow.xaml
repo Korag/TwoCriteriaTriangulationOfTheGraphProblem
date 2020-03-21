@@ -148,7 +148,7 @@
                         <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Values of multicriteria problem for each of group" HorizontalAlignment="Left" Style="{DynamicResource Label}" Margin="0,-24,0,0"/>
+                <Label Content="Values of multicriteria problem for each of group" HorizontalAlignment="Left" Style="{DynamicResource Label}" Margin="0,-24,0,137"/>
                 <UserControls:MainChartUserControl x:Name="TriangulationFluctuationChart" HorizontalAlignment="Left" Height="142" VerticalAlignment="Top" Width="915" RenderTransformOrigin="0.508,1.283" Margin="-2,0,0,0"/>
             </Grid>
 
@@ -161,7 +161,7 @@
                         <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Values of multicriteria problem across iterations" HorizontalAlignment="Left" Width="349" Style="{DynamicResource Label}" Margin="2,-21,0,0"/>
+                <Label Content="Values of multicriteria problem across iterations" HorizontalAlignment="Left" Width="349" Style="{DynamicResource Label}" Margin="0,-22,0,91"/>
                 <UserControls:MainChartUserControl x:Name="OverallFluctuationChart" HorizontalAlignment="Left" Height="99" VerticalAlignment="Top" Width="914" Margin="1,0,0,-1"/>
             </Grid>
 
@@ -173,7 +173,7 @@
                         <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Triangulation of the graph" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="163" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
+                <Label Content="Triangulation of the graph" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="190" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
                 <Viewbox Name="TriangulationGraphView" StretchDirection="Both" Stretch="Uniform"/>
             </Grid>
 
@@ -185,7 +185,7 @@
                         <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Generated graph" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="111" Style="{DynamicResource Label}" Margin="0,-25,0,0" Foreground="#FF972960"/>
+                <Label Content="Generated graph" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="128" Style="{DynamicResource Label}" Margin="0,-26,0,0" Foreground="#FF972960"/>
                 <Viewbox Name="BasicGeneratedGraphView" StretchDirection="Both" Stretch="Uniform">
                     <vm:GraphLayout x:Name="basicGraphLayout" Margin="100"
 						Graph="{Binding Path=Graph}"
@@ -197,7 +197,7 @@
 
             <!--Macierz incydencji-->
             <Grid Grid.Column="1" HorizontalAlignment="Left" Height="125" Grid.Row="2" VerticalAlignment="Bottom" Width="293">
-                <Label Content="Incidence Matrix" HorizontalAlignment="Left" Height="25" FontSize="12" VerticalAlignment="Top" Width="108"  Style="{DynamicResource Label}" Margin="0,-4,0,0"/>
+                <Label Content="Incidence Matrix" HorizontalAlignment="Left" Height="25" FontSize="12" VerticalAlignment="Top" Width="108"  Style="{DynamicResource Label}"/>
                 <DataGrid ItemsSource="{Binding Path=DataView}" AutoGenerateColumns="True" Margin="0,21,10,0"/>
             </Grid>
 
@@ -215,7 +215,7 @@
                         <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Pareto Front" HorizontalAlignment="Left" Height="28" Margin="-2,-24,0,0" VerticalAlignment="Top" Width="89"  Style="{DynamicResource Label}"/>
+                <Label Content="Pareto Front" HorizontalAlignment="Left" Height="28" Margin="-2,-22,0,0" VerticalAlignment="Top" Width="98"  Style="{DynamicResource Label}"/>
                 <UserControls:ParetoChartUserControl x:Name="ParetoChart" HorizontalAlignment="Left" Height="229" VerticalAlignment="Bottom" Width="545"/>
             </Grid>
 
