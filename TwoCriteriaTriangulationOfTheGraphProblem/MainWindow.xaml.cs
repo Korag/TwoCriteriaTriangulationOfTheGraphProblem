@@ -24,5 +24,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         {
             InitializeComponent();
         }
+
+        private void Generuj_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

@@ -115,8 +115,8 @@
         <Grid Width="1280" Height="687">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFF2FB98" Offset="0.11"/>
-                    <GradientStop Color="#FF83B3F9" Offset="0.996"/>
+                    <GradientStop Color="#FFE8F5F4"/>
+                    <GradientStop Color="#FF8BA6DE" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.Background>
             <Grid.RowDefinitions>
@@ -144,13 +144,12 @@
             <Grid Grid.Column="3" HorizontalAlignment="Left" Height="142" Grid.Row="4" VerticalAlignment="Top" Width="915" Grid.ColumnSpan="3" Margin="0,28,0,0">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF3F3EC"/>
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="White"/>
+                        <GradientStop Color="White" Offset="0.003"/>
+                        <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Values of functions in iteration:" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="349" Style="{DynamicResource Label}" Margin="0,-24,0,0"/>
-                <UserControls:MainChartUserControl x:Name="TriangulationFluctuationChart" HorizontalAlignment="Left" Height="142" VerticalAlignment="Top" Width="915" RenderTransformOrigin="0.508,1.283"/>
+                <Label Content="Values of multicriteria problem for each of group" HorizontalAlignment="Left" Style="{DynamicResource Label}" Margin="0,-24,0,0"/>
+                <UserControls:MainChartUserControl x:Name="TriangulationFluctuationChart" HorizontalAlignment="Left" Height="142" VerticalAlignment="Top" Width="915" RenderTransformOrigin="0.508,1.283" Margin="-2,0,0,0"/>
             </Grid>
 
 
@@ -158,12 +157,11 @@
             <Grid Grid.Column="3" HorizontalAlignment="Left" Height="98" Grid.Row="5" VerticalAlignment="Top" Width="915" Grid.ColumnSpan="3" Margin="0,16,0,0">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF3F3EC"/>
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="White"/>
+                        <GradientStop Color="White" Offset="0.003"/>
+                        <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Values of functions in iteration:" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="349" Style="{DynamicResource Label}" Margin="2,-21,0,0"/>
+                <Label Content="Values of multicriteria problem across iterations" HorizontalAlignment="Left" Width="349" Style="{DynamicResource Label}" Margin="2,-21,0,0"/>
                 <UserControls:MainChartUserControl x:Name="OverallFluctuationChart" HorizontalAlignment="Left" Height="99" VerticalAlignment="Top" Width="914" Margin="1,0,0,-1"/>
             </Grid>
 
@@ -171,12 +169,11 @@
             <Grid Grid.Column="2" HorizontalAlignment="Left" Height="230" Grid.Row="2" VerticalAlignment="Top" Width="421" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="0,20,0,0">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF3F3EC"/>
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="White"/>
+                        <GradientStop Color="White" Offset="0.003"/>
+                        <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Triangulation of the graph:" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="163" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
+                <Label Content="Triangulation of the graph" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="163" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
                 <Viewbox Name="TriangulationGraphView" StretchDirection="Both" Stretch="Uniform"/>
             </Grid>
 
@@ -184,12 +181,11 @@
             <Grid Grid.Column="1" HorizontalAlignment="Left" Height="256" Grid.Row="4" VerticalAlignment="Top" Width="344" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="1,28,0,0">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF3F3EC"/>
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="White"/>
+                        <GradientStop Color="White" Offset="0.003"/>
+                        <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Generated graph:" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="163" Style="{DynamicResource Label}" Margin="0,-27,0,0"/>
+                <Label Content="Generated graph" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="111" Style="{DynamicResource Label}" Margin="0,-25,0,0" Foreground="#FF972960"/>
                 <Viewbox Name="BasicGeneratedGraphView" StretchDirection="Both" Stretch="Uniform">
                     <vm:GraphLayout x:Name="basicGraphLayout" Margin="100"
 						Graph="{Binding Path=Graph}"
@@ -201,37 +197,131 @@
 
             <!--Macierz incydencji-->
             <Grid Grid.Column="1" HorizontalAlignment="Left" Height="125" Grid.Row="2" VerticalAlignment="Bottom" Width="293">
-                <Label Content="Incidence Matrix" HorizontalAlignment="Left" Height="29" FontSize="12" Margin="0,4,0,0" VerticalAlignment="Top" Width="108"  Style="{DynamicResource Label}"/>
-                <DataGrid ItemsSource="{Binding Path=DataView}" AutoGenerateColumns="True" Margin="0,29,10,0"/>
+                <Label Content="Incidence Matrix" HorizontalAlignment="Left" Height="25" FontSize="12" VerticalAlignment="Top" Width="108"  Style="{DynamicResource Label}" Margin="0,-4,0,0"/>
+                <DataGrid ItemsSource="{Binding Path=DataView}" AutoGenerateColumns="True" Margin="0,21,10,0"/>
             </Grid>
 
             <!--Macierz wag-->
             <Grid Grid.Column="1" HorizontalAlignment="Left" Height="125" Grid.Row="3" VerticalAlignment="Bottom" Width="293">
-                <Label Content="Weight Matrix" HorizontalAlignment="Left" Height="29" FontSize="12" Margin="0,4,0,0" VerticalAlignment="Top" Width="150"  Style="{DynamicResource Label}"/>
-                <DataGrid ItemsSource="{Binding Path=DataView}" AutoGenerateColumns="True" Margin="0,29,10,0"/>
+                <Label Content="Weight Matrix" HorizontalAlignment="Left" Height="29" FontSize="12" VerticalAlignment="Top" Width="150"  Style="{DynamicResource Label}"/>
+                <DataGrid ItemsSource="{Binding Path=DataView}" AutoGenerateColumns="True" Margin="0,21,10,0"/>
             </Grid>
 
             <!--Pareto Front-->
             <Grid Grid.Column="5" HorizontalAlignment="Left" Height="230" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Top" Width="545" Margin="10,20,0,0">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF3F3EC"/>
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="White"/>
+                        <GradientStop Color="White" Offset="0.003"/>
+                        <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Label Content="Pareto Front" HorizontalAlignment="Left" Height="28" Margin="-2,-24,0,0" VerticalAlignment="Top" Width="89"  Style="{DynamicResource Label}"/>
                 <UserControls:ParetoChartUserControl x:Name="ParetoChart" HorizontalAlignment="Left" Height="229" VerticalAlignment="Bottom" Width="545"/>
             </Grid>
 
-
-
-
             <!--Stopka-->
-            <!--Label organizacji-->
-            <Label Content="© Wihajster 2020" Height="37" Margin="0,120,5,0" Grid.Row="5" VerticalAlignment="Top" Foreground="#FFF2EDF7" Grid.Column="5" FontWeight="Bold" FontFamily="Bernard MT Condensed" HorizontalAlignment="Right" Width="178" FontSize="24" Grid.RowSpan="3"/>
-            <!--Label autorów-->
-            <Label Content="© Łukasz Czepielik, Konrad Boroń, Dominik Pezda, TEAM LEADER: Wojciech WojRog Rogowski" HorizontalAlignment="Left" Height="32" Margin="2,2,0,0" Grid.Row="6" VerticalAlignment="Top" Width="712" Foreground="White" Grid.Column="1" FontFamily="Sitka Text" FontStyle="Italic" FontSize="16" Grid.ColumnSpan="4" Grid.RowSpan="2"/>
+            <Grid Grid.Column="1" Height="30" Grid.Row="6" VerticalAlignment="Top" Grid.ColumnSpan="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1081*"/>
+                    <ColumnDefinition Width="189*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF1E71AA" Offset="0.613"/>
+                        <GradientStop Color="#FF081111" Offset="0.993"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+                <Label Content="© Wihajster 2020" Height="30" VerticalAlignment="Top" Foreground="#FFF2EDF7" FontWeight="Bold" FontFamily="Bernard MT Condensed" HorizontalAlignment="Right" Width="178" FontSize="20" Grid.Column="1" Padding="0,5,5,0" HorizontalContentAlignment="Right" UseLayoutRounding="True"/>
+                <Label Content="© Łukasz Czepielik, Konrad Boroń, Dominik Pezda, TEAM LEADER: Wojciech WojRog Rogowski" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="712" Foreground="White" FontFamily="Sitka Text" FontStyle="Italic" FontSize="16"/>
+            </Grid>
+
+            <!--Panel sterujący-->
+            <Grid Grid.Column="1" HorizontalAlignment="Left" Height="103" Grid.Row="1" VerticalAlignment="Top" Width="1269" Margin="1,0,0,0" Grid.ColumnSpan="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="103*"/>
+                    <RowDefinition Height="125*"/>
+                    <RowDefinition Height="125*"/>
+                    <RowDefinition Height="170*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="380*"/>
+                    <ColumnDefinition Width="503*"/>
+                    <ColumnDefinition Width="380*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF5E73A0" Offset="0.57"/>
+                        <GradientStop Color="#FF9FB3DE" Offset="1"/>
+                    </RadialGradientBrush>
+                </Grid.Background>
+
+                <!--Lewy moduł panelu sterującego-->
+                <Label Content="Number of Vertices"  Margin="0,3,217,11" Style="{DynamicResource LabelSideMenu}" Grid.RowSpan="2" />
+                <TextBox HorizontalAlignment="Left"  Margin="300,3,0,12"  Text="{Binding Path=NumberOfVertices}" Style="{DynamicResource TextBox}" Grid.RowSpan="2"/>
+                <Slider x:Name="liczbaWierzcholkow"  Value="{Binding Path=NumberOfVertices}" Height="25" Margin="170,9,92,11"  Width="120" Foreground="#FF811B1B" Maximum="50" Minimum="0" Grid.RowSpan="2"/>
+
+                <Label Content="Probability of Edges"  Margin="0,13,217,3" Style="{DynamicResource LabelSideMenu}" Grid.Row="1" Grid.RowSpan="2"/>
+                <TextBox HorizontalAlignment="Left"  Height="30" Margin="300,15,0,5"  Text="1" Style="{DynamicResource TextBox}" Grid.Row="1" Grid.RowSpan="2"/>
+                <Slider x:Name="prawdopodobienstwo" HorizontalAlignment="Left" Value="{Binding Path=ProbabilityValue}" Margin="170,20,0,0" Width="120" Maximum="1" Minimum="0" Grid.Row="1" Grid.RowSpan="2"/>
+
+                <Label Content="Range of Weights"  Margin="0,20,217,4" Style="{DynamicResource LabelSideMenu}" Grid.Row="2" Grid.RowSpan="2"/>
+                <TextBox Margin="300,23,22,5" Style="{DynamicResource TextBox}" Grid.Row="2" Grid.RowSpan="2" Text="1" />
+                <Slider x:Name="wagi_Copy" HorizontalAlignment="Left" Value="{Binding ProbabilityValue}" Margin="253,3,0,-3" Width="37"  Maximum="1" Minimum="0" Grid.Row="3"/>
+                <TextBox HorizontalAlignment="Left" Margin="207,23,0,5" Style="{DynamicResource TextBox}" Grid.Row="2" Width="41" Grid.RowSpan="2" />
+                <Slider x:Name="wagi" HorizontalAlignment="Left" Value="{Binding Path=ProbabilityValue}" Margin="170,3,0,-3" Width="37"  Maximum="1" Minimum="0" Grid.Row="3"/>
+
+                <!--Centarlny moduł panelu sterującego-->
+                <Label Content="Iterations" Margin="207,-6,200,0" Style="{DynamicResource LabelCentralMenu}" Grid.Column="1"/>
+                <Label Content="{Binding IterationNumber}"  Margin="199,7,195,15" Style="{DynamicResource Label}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2" Background="White" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="1"/>
+
+                <Label Content="Limit"  Margin="398,-6,48,16" Style="{DynamicResource LabelCentralMenu}" Grid.Column="1" Grid.RowSpan="2"/>
+                <TextBox HorizontalAlignment="Left" Margin="351,0,0,13" Text="112" Width="150" Style="{DynamicResource TextBox}" Grid.Column="1" Grid.RowSpan="2" Grid.Row="1" Height="30" VerticalAlignment="Bottom"/>
+
+                <Label Content="Algorithms" Style="{DynamicResource LabelCentralMenu}" Margin="32,-6,368,16" Grid.RowSpan="2" Grid.Column="1" />
+                <ComboBox ItemsSource="{Binding LayoutAlgorithmTypes}"
+                          SelectedItem="{Binding LayoutAlgorithmType, Mode=TwoWay}"
+                          Width="150" Margin="6,7,349,15" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
+
+                <!--Przyciski-->
+                <Button x:Name="Start" Content="Start" Margin="158,18,254,5" Style="{DynamicResource GreenButton}" Click="Generuj_Click" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Background="#FF37F937" />
+                <Button x:Name="Generate" Content="Generate graph" Margin="33,18,379,5" Style="{DynamicResource BlueButton}" Click="Generuj_Click" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" />
+                <Button x:Name="Reset" Content="Reset" Margin="256,18,156,5" Style="{DynamicResource RedButton}" Click="Generuj_Click" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Background="#FF9B1111"  />
+                <Button x:Name="Save" Content="Save to file" Margin="379,18,33,5" Style="{DynamicResource BlueButton}" Click="Generuj_Click" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2"/>
+
+                <!--Prawy moduł panelu sterującego-->
+                <Label Content="Plausibility of mutation"  Margin="10,3,176,8" Style="{DynamicResource LabelSideMenu}" Grid.RowSpan="2" Grid.Column="2"/>
+                <TextBox Margin="319,3,3,12"  Text="{Binding Path=ProbabilityValue}"  Style="{DynamicResource TextBox}" Grid.Column="2" Grid.RowSpan="2"/>
+                <Slider x:Name="mutation" HorizontalAlignment="Left" Value="{Binding Path=ProbabilityValue}" Width="120" Margin="199,9,0,24" Maximum="1" Minimum="0" Grid.Column="2" Grid.RowSpan="3"/>
+
+                <Label Content="Plausibility of crossover"  Margin="10,13,176,2" Style="{DynamicResource LabelSideMenu}" Grid.RowSpan="2" Grid.Column="2" Grid.Row="1"/>
+                <TextBox Margin="319,15,3,5"  Text="{Binding Path=ProbabilityValue}" Style="{DynamicResource TextBox}" Grid.Column="2" Grid.RowSpan="2" Grid.Row="1"/>
+                <Slider x:Name="crossover" Value="{Binding Path=ProbabilityValue}" Margin="199,20,63,32" Width="120" Maximum="1" Minimum="0" Grid.Column="2" Grid.Row="1" Grid.RowSpan="3"/>
+
+                <Label Content="Popsize"  Margin="10,20,298,3" Style="{DynamicResource LabelSideMenu}" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2"/>
+                <TextBox Margin="174,23,148,5"  Text="{Binding Path=ProbabilityValue}" Style="{DynamicResource TextBox}" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" RenderTransformOrigin="0.164,0.518"/>
+                <Slider x:Name="popsize" Value="{Binding Path=ProbabilityValue}" Margin="76,2,206,3" Width="100" Maximum="1" Minimum="0" Grid.Column="2" Grid.Row="3"/>
+
+                <Label Content="Sleep"  Margin="241,20,83,3" Style="{DynamicResource LabelSideMenu}" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2"/>
+                <TextBox Margin="338,23,3,5"  Text="{Binding Path=ProbabilityValue}" Style="{DynamicResource TextBox}" Width="41" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2"/>
+                <Slider x:Name="sleep" Value="{Binding Path=ProbabilityValue}" Margin="293,2,45,3" Maximum="1" Minimum="0" Grid.Column="2" Grid.Row="3"/>
+
+            </Grid>
+
+            <Grid Grid.Column="5" Height="28" Grid.Row="4" VerticalAlignment="Top" Margin="10,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1081*"/>
+                    <ColumnDefinition Width="189*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF1E71AA" Offset="0.613"/>
+                        <GradientStop Color="#FF081111" Offset="0.993"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <TextBox Margin="268,0,111,0"  Text="2313" Style="{DynamicResource TextBox}" Height="Auto" Width="Auto" Padding="0,0,0,2"/>
+                <Label Content="Minimum:"  Margin="179,0,189,-7" Style="{DynamicResource LabelSideMenu}" Height="Auto" Padding="5,5,5,2"/>
+            </Grid>
 
 
         </Grid>

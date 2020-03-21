@@ -168,7 +168,7 @@
                             <GradientStop Color="White"/>
                         </LinearGradientBrush>
                     </Grid.Background>
-                    <DataGrid ItemsSource="{Binding Path=DataView}" AutoGenerateColumns="True" SelectionChanged="DataGrid_SelectionChanged"/>
+                    <DataGrid ItemsSource="{Binding Path=DataView}" AutoGenerateColumns="True"/>
                 </Grid>
                 <StackPanel Orientation="Vertical"  Margin="0,400,0,0" >
                     <Label Content="Algorytm generowania grafu" HorizontalAlignment="Center" Style="{DynamicResource Label}" Margin="6,0,25,10" FontSize="17"/>
