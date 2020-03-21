@@ -274,7 +274,5 @@ namespace euler_graph_generator
                 }
             }
         }
-
-
     }
 }

@@ -3,10 +3,237 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem"
+        xmlns:local="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.GraphElements"
         mc:Ignorable="d"
-        Title="MainWindow" Height="2160" Width="3840">
-    <Grid>
         
-    </Grid>
+        xmlns:graphsharp="clr-namespace:GraphSharp.Controls;assembly=GraphSharp.Controls"
+        xmlns:vm="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.ViewModels"
+        xmlns:converter="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.ValueConverters"
+        xmlns:UserControls="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.UserControls"
+       
+        Icon="Images\iconPNG.png"
+        Title="Two Criteria Triangulation Of The Graph Problem ULTRA 420! Blaze IT! MORONS" Width="1280" Height="720" MaxWidth="3840" MaxHeight="2160" MinWidth="640" MinHeight="360">
+
+    <Window.Resources>
+        <converter:EdgeColorConverter x:Key="EdgeColorConverter"/>
+        <converter:ConvertPath x:Key="ConvertPath"/>
+        <DataTemplate x:Key="demoTemplate" DataType="{x:Type local:Vertex}">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="{Binding Path=VertexValue, Mode=OneWay}" Foreground="White" />
+            </StackPanel>
+        </DataTemplate>
+
+        <Style TargetType="{x:Type graphsharp:VertexControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type graphsharp:VertexControl}">
+                        <Border 
+                               Background="LightBlue"
+							   CornerRadius="10,10,10,10"
+							   Padding="{TemplateBinding Padding}">
+
+                            <StackPanel Orientation="Vertical">
+                                <ContentPresenter Content="{TemplateBinding Vertex}" 
+                                            ContentTemplate="{StaticResource demoTemplate}"/>
+                            </StackPanel>
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="2" Color="LightGray" 
+                                    Opacity="0.3" Direction="315"/>
+                            </Border.Effect>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style TargetType="{x:Type graphsharp:EdgeControl}">
+            <Style.Resources>
+                <ToolTip x:Key="ToolTipContent">
+                    <StackPanel>
+                        <TextBlock FontWeight="Bold" Text="Edge Information"/>
+                        <TextBlock Text="{Binding ID}"/>
+                    </StackPanel>
+                </ToolTip>
+            </Style.Resources>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Blue"/>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="ToolTip" Value="{StaticResource ToolTipContent}"/>
+            <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Edge.EdgeColor, Converter={StaticResource EdgeColorConverter}}"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type graphsharp:EdgeControl}">
+                        <Path Stroke="{TemplateBinding Foreground}"
+                          StrokeThickness="2"
+                          MinWidth="1"
+                          MinHeight="1"
+                          x:Name="edgePath">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathGeometry.Figures>
+                                        <MultiBinding Converter="{StaticResource ConvertPath}">
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Path="Source.(graphsharp:GraphCanvas.X)" />
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Path="Source.(graphsharp:GraphCanvas.Y)" />
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Path="Source.ActualWidth" />
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Path="Source.ActualHeight" />
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Path="Target.(graphsharp:GraphCanvas.X)" />
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Path="Target.(graphsharp:GraphCanvas.Y)" />
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Path="Target.ActualWidth" />
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Path="Target.ActualHeight" />
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Path="RoutePoints" />
+                                        </MultiBinding>
+                                    </PathGeometry.Figures>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="White"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Viewbox StretchDirection="Both" Stretch="Uniform">
+        <Grid Width="1280" Height="687">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF2FB98" Offset="0.11"/>
+                    <GradientStop Color="#FF83B3F9" Offset="0.996"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="103*"/>
+                <RowDefinition Height="125*"/>
+                <RowDefinition Height="125*"/>
+                <RowDefinition Height="170*"/>
+                <RowDefinition Height="124*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="293*"/>
+                <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="144*"/>
+                <ColumnDefinition Width="216*"/>
+                <ColumnDefinition Width="555*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <!--Wykres kształtowania wartości funkcji celu (sumy wag oraz liczby krawędzi) dla każdej z części trójpodziału grafu na przestrzeni iteracji-->
+            <Grid Grid.Column="3" HorizontalAlignment="Left" Height="142" Grid.Row="4" VerticalAlignment="Top" Width="915" Grid.ColumnSpan="3" Margin="0,28,0,0">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF3F3EC"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="White"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Label Content="Values of functions in iteration:" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="349" Style="{DynamicResource Label}" Margin="0,-24,0,0"/>
+                <UserControls:MainChartUserControl x:Name="TriangulationFluctuationChart" HorizontalAlignment="Left" Height="142" VerticalAlignment="Top" Width="915" RenderTransformOrigin="0.508,1.283"/>
+            </Grid>
+
+
+            <!--Wykres kształtowania wartości funkcji celu (sumy wag oraz liczby krawędzi) sumarycznie na przestrzeni iteracji-->
+            <Grid Grid.Column="3" HorizontalAlignment="Left" Height="98" Grid.Row="5" VerticalAlignment="Top" Width="915" Grid.ColumnSpan="3" Margin="0,16,0,0">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF3F3EC"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="White"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Label Content="Values of functions in iteration:" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="349" Style="{DynamicResource Label}" Margin="2,-21,0,0"/>
+                <UserControls:MainChartUserControl x:Name="OverallFluctuationChart" HorizontalAlignment="Left" Height="99" VerticalAlignment="Top" Width="914" Margin="1,0,0,-1"/>
+            </Grid>
+
+            <!--Wizualizacja trójpodziału grafu zmieniająca się co każdą iterację-->
+            <Grid Grid.Column="2" HorizontalAlignment="Left" Height="230" Grid.Row="2" VerticalAlignment="Top" Width="421" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="0,20,0,0">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF3F3EC"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="White"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Label Content="Triangulation of the graph:" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="163" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
+                <Viewbox Name="TriangulationGraphView" StretchDirection="Both" Stretch="Uniform"/>
+            </Grid>
+
+            <!--Wizualizacja bazowo wygenerowanego grafu-->
+            <Grid Grid.Column="1" HorizontalAlignment="Left" Height="256" Grid.Row="4" VerticalAlignment="Top" Width="344" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="1,28,0,0">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF3F3EC"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="White"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Label Content="Generated graph:" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="163" Style="{DynamicResource Label}" Margin="0,-27,0,0"/>
+                <Viewbox Name="BasicGeneratedGraphView" StretchDirection="Both" Stretch="Uniform">
+                    <vm:GraphLayout x:Name="basicGraphLayout" Margin="100"
+						Graph="{Binding Path=Graph}"
+						LayoutAlgorithmType="{Binding Path=LayoutAlgorithmType, Mode=OneWay}"
+						OverlapRemovalAlgorithmType="FSA"
+						HighlightAlgorithmType="Simple" />
+                </Viewbox>
+            </Grid>
+
+            <!--Macierz incydencji-->
+            <Grid Grid.Column="1" HorizontalAlignment="Left" Height="125" Grid.Row="2" VerticalAlignment="Bottom" Width="293">
+                <Label Content="Incidence Matrix" HorizontalAlignment="Left" Height="29" FontSize="12" Margin="0,4,0,0" VerticalAlignment="Top" Width="108"  Style="{DynamicResource Label}"/>
+                <DataGrid ItemsSource="{Binding Path=DataView}" AutoGenerateColumns="True" Margin="0,29,10,0"/>
+            </Grid>
+
+            <!--Macierz wag-->
+            <Grid Grid.Column="1" HorizontalAlignment="Left" Height="125" Grid.Row="3" VerticalAlignment="Bottom" Width="293">
+                <Label Content="Weight Matrix" HorizontalAlignment="Left" Height="29" FontSize="12" Margin="0,4,0,0" VerticalAlignment="Top" Width="150"  Style="{DynamicResource Label}"/>
+                <DataGrid ItemsSource="{Binding Path=DataView}" AutoGenerateColumns="True" Margin="0,29,10,0"/>
+            </Grid>
+
+            <!--Pareto Front-->
+            <Grid Grid.Column="5" HorizontalAlignment="Left" Height="230" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Top" Width="545" Margin="10,20,0,0">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF3F3EC"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="White"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Label Content="Pareto Front" HorizontalAlignment="Left" Height="28" Margin="-2,-24,0,0" VerticalAlignment="Top" Width="89"  Style="{DynamicResource Label}"/>
+                <UserControls:ParetoChartUserControl x:Name="ParetoChart" HorizontalAlignment="Left" Height="229" VerticalAlignment="Bottom" Width="545"/>
+            </Grid>
+
+
+
+
+            <!--Stopka-->
+            <!--Label organizacji-->
+            <Label Content="© Wihajster 2020" Height="37" Margin="0,120,5,0" Grid.Row="5" VerticalAlignment="Top" Foreground="#FFF2EDF7" Grid.Column="5" FontWeight="Bold" FontFamily="Bernard MT Condensed" HorizontalAlignment="Right" Width="178" FontSize="24" Grid.RowSpan="3"/>
+            <!--Label autorów-->
+            <Label Content="© Łukasz Czepielik, Konrad Boroń, Dominik Pezda, TEAM LEADER: Wojciech WojRog Rogowski" HorizontalAlignment="Left" Height="32" Margin="2,2,0,0" Grid.Row="6" VerticalAlignment="Top" Width="712" Foreground="White" Grid.Column="1" FontFamily="Sitka Text" FontStyle="Italic" FontSize="16" Grid.ColumnSpan="4" Grid.RowSpan="2"/>
+
+
+        </Grid>
+    </Viewbox>
 </Window>
