@@ -12,34 +12,35 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         public string Name { get; set; }
         public ChartValues<ObservablePoint> ListOfPoints { get; set; } = new ChartValues<ObservablePoint>();
 
+        public int NumberOfVertices { get; set; }
+        public double ProbabilityOfEdgeGeneration { get; set; }
+       
+        public double WeightsLowerLimit { get; set; }
+        public double WeightsHigherLimit { get; set; }
 
-        public string F1Formula { get; set; } = "Evol";
-        public string F2Formula { get; set; }
-        public double F1LeftConstraint { get; set; }
-        public double F1RightConstraint { get; set; }
-        public double F2LeftConstraint { get; set; }
-        public double F2RightConstraint { get; set; }
-        public int Popsize { get; set; }
-        public double PlausOfMutation { get; set; }
-        public double PlausOfCrossing { get; set; }
-        public string Minimum { get; set; }
-        public int SleepTime{ get; set; }
-        public int IterationLimit{ get; set; }
         public int IterationNumber { get; set; }
+        public int IterationsLimit { get; set; }
+
+        public double MutationProbabilityValue { get; set; }
+        public double CrossoverProbabilityValue { get; set; }
+
+        public int Popsize { get; set; }
+        public int SleepTime{ get; set; }
+        public string CountedExtremum { get; set; }
 
         //  iteracje, X, Y
         public double[][] Population; // [popsize][2]
         public double[][] PopulationAfterSelection;
         public double[][] PopulationAfterMutation;
-        public double[][] PopulationAfterCrossing;
+        public double[][] PopulationAfterCrossover;
 
         public double[][] PopulationFunctionValue;
         public double[][] PopulationFunctionValueAfterSelection;
-        public double[][] PopulationFunctionValueAfterCrossing;
+        public double[][] PopulationFunctionValueAfterCrossover;
 
-        //minimum dla f1 oraz f2
-        public double MinF1 { get; set; }
-        public double MinF2 { get; set; }
+        //minimum dla liczby krawędzi i dla sumy wag
+        public double MinAmountOfEdges { get; set; }
+        public double MinSumOfEdgesWeights { get; set; }
 
         public void RewriteThePoints(double[][] tempTab)
         {

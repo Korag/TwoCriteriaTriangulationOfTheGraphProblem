@@ -59,10 +59,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
         private void ReinitializeVariables()
         {
             //przez to ze strona jest zbindowana do parameters musimy reinicjowac, bo dane z gui sa przesylane tylko do parameters
-            F1LeftConstraint = _parameters.F1LeftConstraint;
-            F1RightConstraint = _parameters.F1RightConstraint;
-            F2LeftConstraint = _parameters.F2LeftConstraint;
-            F2RightConstraint = _parameters.F2RightConstraint;
+            //F1LeftConstraint = _parameters.F1LeftConstraint;
+            //F1RightConstraint = _parameters.F1RightConstraint;
+            //F2LeftConstraint = _parameters.F2LeftConstraint;
+            //F2RightConstraint = _parameters.F2RightConstraint;
 
         }
 

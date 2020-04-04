@@ -20,8 +20,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Parameters _parameters { get; set; }
+
         public MainWindow()
         {
+            this.DataContext = _parameters;
             InitializeComponent();
         }
 
@@ -30,5 +33,24 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
         }
 
+        private void StartGeneticAlgorithm(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ResetCurrentState(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GenerateGraph(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaveResults(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
