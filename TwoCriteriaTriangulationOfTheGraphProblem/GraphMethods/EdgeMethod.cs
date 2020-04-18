@@ -6,14 +6,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 {
     public static class EdgeMethod
     {
-        //public static void RemoveAllGraphEdges(Graph graph)
-        //{
-        //    foreach (var edge in graph.Edges)
-        //    {
-        //        graph.RemoveEdge(edge);
-        //    }
-        //}
-
         //generowanie krawędzi na podstawie macierzy(matrix)
         public static Graph GenerateEdges(double[][] matrix, List<Vertex> existingVertices, Graph graph)
         {
@@ -34,6 +26,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                     j++;
                 }
             }
+
             return graph;
         }
 
@@ -50,7 +43,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             {
                 graph.RemoveEdge(edge);
             }
-
         }
 
         //utworzenie obiektu krawędzi i dodanie go do grafu 
@@ -65,6 +57,5 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 graph.AddEdge(newEdge);
             }
         }
-
     }
 }

@@ -66,6 +66,5 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 existingVertices[i].VertexDegree = (int)sum;
             }
         }
-
     }
 }
