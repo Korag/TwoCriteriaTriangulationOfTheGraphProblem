@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         
         xmlns:graphsharp="clr-namespace:GraphSharp.Controls;assembly=GraphSharp.Controls"
-        xmlns:vm="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.ViewModels"
+        xmlns:vm="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods"
         xmlns:converter="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.ValueConverters"
         xmlns:UserControls="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.UserControls"
        
@@ -174,7 +174,7 @@
                 <Label Content="Triangulation of the graph" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="190" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
                 <Viewbox Name="TriangulationGraphView" StretchDirection="Both" Stretch="Uniform">
                     <vm:GraphLayout x:Name="TriangulationGraphChart" Margin="100"
-						Graph="{Binding Path=Graph}"
+						Graph="{Binding Path=TriangulationOfGraph}"
 						LayoutAlgorithmType="{Binding Path=LayoutAlgorithmType, Mode=OneWay}"
 						OverlapRemovalAlgorithmType="FSA"
 						HighlightAlgorithmType="Simple" />
@@ -192,7 +192,7 @@
                 <Label Content="Generated graph" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="128" Style="{DynamicResource Label}" Margin="0,-26,0,0" Foreground="#FF972960"/>
                 <Viewbox Name="BasicGeneratedGraphView" StretchDirection="Both" Stretch="Uniform">
                     <vm:GraphLayout x:Name="BasicGeneratedGraphChart" Margin="100"
-						Graph="{Binding Path=Graph}"
+						Graph="{Binding Path=GeneratedBasicGraph}"
 						LayoutAlgorithmType="{Binding Path=LayoutAlgorithmType, Mode=OneWay}"
 						OverlapRemovalAlgorithmType="FSA"
 						HighlightAlgorithmType="Simple" />
@@ -202,13 +202,13 @@
             <!--Macierz incydencji-->
             <Grid Grid.Column="1" HorizontalAlignment="Left" Height="125" Grid.Row="2" VerticalAlignment="Bottom" Width="293">
                 <Label Content="Incidence Matrix" HorizontalAlignment="Left" Height="25" FontSize="12" VerticalAlignment="Top" Width="108"  Style="{DynamicResource Label}"/>
-                <DataGrid ItemsSource="{Binding Path=DataView}" AutoGenerateColumns="True" Margin="0,21,10,0"/>
+                <DataGrid ItemsSource="{Binding Path=DataViewIncidenceMatrix}" AutoGenerateColumns="True" Margin="0,21,10,0"/>
             </Grid>
 
             <!--Macierz wag-->
             <Grid Grid.Column="1" HorizontalAlignment="Left" Height="125" Grid.Row="3" VerticalAlignment="Bottom" Width="293">
                 <Label Content="Weight Matrix" HorizontalAlignment="Left" Height="29" FontSize="12" VerticalAlignment="Top" Width="150"  Style="{DynamicResource Label}"/>
-                <DataGrid ItemsSource="{Binding Path=DataView}" AutoGenerateColumns="True" Margin="0,21,10,0"/>
+                <DataGrid ItemsSource="{Binding Path=DataViewWeightsMatrix}" AutoGenerateColumns="True" Margin="0,21,10,0"/>
             </Grid>
 
             <!--Pareto Front-->
@@ -273,10 +273,10 @@
 
                 <!--Input przedziału generowanych wag-->
                 <Label Content="Range of Weights"  Margin="0,20,217,4" Style="{DynamicResource LabelSideMenu}" Grid.Row="2" Grid.RowSpan="2"/>
-                <TextBox Margin="300,23,22,5" Style="{DynamicResource TextBox}" Text="{Binding Path=WeightsLowerLimit}" Grid.Row="2" Grid.RowSpan="2"/>
                 <Slider x:Name="WeigthsLowerLimitSlider" HorizontalAlignment="Left" Value="{Binding Path=WeightsLowerLimit}" Margin="170,3,0,-3" Width="37"  Maximum="100" Minimum="0" Grid.Row="3"/>
-                <TextBox HorizontalAlignment="Left" Margin="207,23,0,5" Style="{DynamicResource TextBox}" Text="{Binding Path=WeightsHigherLimit}" Grid.Row="2" Width="41" Grid.RowSpan="2" />
+                <TextBox HorizontalAlignment="Left" Margin="207,23,0,5" Style="{DynamicResource TextBox}" Text="{Binding Path=WeightsLowerLimit}" Grid.Row="2" Width="41" Grid.RowSpan="2" />
                 <Slider x:Name="WeightsHigherLimit" HorizontalAlignment="Left" Value="{Binding Path=WeightsHigherLimit}" Margin="253,3,0,-3" Width="37"  Maximum="100" Minimum="0" Grid.Row="3"/>
+                <TextBox Margin="300,23,22,5" Style="{DynamicResource TextBox}" Text="{Binding Path=WeightsHigherLimit}" Grid.Row="2" Grid.RowSpan="2"/>
 
                 <!--Centralny moduł panelu sterującego-->
                 <!--Licznik iteracji-->
@@ -300,7 +300,7 @@
                 <Label Content="Algorithms" Style="{DynamicResource LabelCentralMenu}" Margin="32,-6,368,16" Grid.RowSpan="2" Grid.Column="1" />
                 <ComboBox ItemsSource="{Binding LayoutAlgorithmTypes}"
                           SelectedItem="{Binding LayoutAlgorithmType, Mode=TwoWay}"
-                          Width="150" Margin="6,7,349,15" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
+                          Width="150" Margin="6,0,349,15" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Height="28" VerticalAlignment="Bottom" />
 
                 <!--Przyciski sterujące-->
                 <Button x:Name="Start" Content="Start" Margin="158,18,254,5" Style="{DynamicResource GreenButton}" Click="StartGeneticAlgorithm" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Background="#FF37F937" />
@@ -320,14 +320,14 @@
                 <Slider x:Name="CrossoverProbabilitySlider" Value="{Binding Path=CrossoverProbabilityValue}" Margin="199,20,63,32" Width="120" Maximum="1" Minimum="0" Grid.Column="2" Grid.Row="1" Grid.RowSpan="3"/>
 
                 <!--Input wielkość populacji-->
-                <Label Content="Popsize"  Margin="10,20,298,3" Style="{DynamicResource LabelSideMenu}" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2"/>
-                <TextBox Margin="174,23,148,5"  Text="{Binding Path=Popsize}" Style="{DynamicResource TextBox}" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" RenderTransformOrigin="0.164,0.518"/>
-                <Slider x:Name="PopsizeSlider" Value="{Binding Path=Popsize}" Margin="76,2,206,3" Width="100" Maximum="10000" Minimum="0" Grid.Column="2" Grid.Row="3"/>
+                <Label Content="Popsize"  Margin="10,22,298,1" Style="{DynamicResource LabelSideMenu}" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2"/>
+                <TextBox Margin="176,23,146,5"  Text="{Binding Path=Popsize}" Style="{DynamicResource TextBox}" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" RenderTransformOrigin="0.164,0.518"/>
+                <Slider x:Name="PopsizeSlider" Value="{Binding Path=Popsize}" Margin="76,4,206,1" Width="100" Maximum="10000" Minimum="0" Grid.Column="2" Grid.Row="3"/>
 
                 <!--Input czas iddle pomiędzy kolejnymi iteracjami-->
-                <Label Content="Sleep"  Margin="241,20,83,3" Style="{DynamicResource LabelSideMenu}" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2"/>
+                <Label Content="Sleep"  Margin="241,21,83,2" Style="{DynamicResource LabelSideMenu}" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2"/>
                 <TextBox Margin="338,23,3,5"  Text="{Binding Path=SleepTime}" Style="{DynamicResource TextBox}" Width="41" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2"/>
-                <Slider x:Name="SleepTimeSlider" Value="{Binding Path=SleepTime}" Margin="293,2,45,3" Maximum="10" Minimum="0" Grid.Column="2" Grid.Row="3"/>
+                <Slider x:Name="SleepTimeSlider" Value="{Binding Path=SleepTime}" Margin="293,3,45,2" Maximum="10" Minimum="0" Grid.Column="2" Grid.Row="3"/>
 
             </Grid>
 

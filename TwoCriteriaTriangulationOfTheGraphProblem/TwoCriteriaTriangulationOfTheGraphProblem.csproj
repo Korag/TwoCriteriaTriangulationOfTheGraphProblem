@@ -95,7 +95,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BackgroundWorker.cs" />
     <Compile Include="ConnectionHelper.cs" />
+    <Compile Include="GeneticAlgorithmMethods.cs" />
+    <Compile Include="GraphMethods\GraphGenerationMethods.cs" />
+    <Compile Include="GraphMethods\GraphLayout.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="UserControls\CartesianChartUserCtrl.xaml.cs">
       <DependentUpon>CartesianChartUserCtrl.xaml</DependentUpon>
@@ -108,7 +112,6 @@
     </Compile>
     <Compile Include="ValueConverters\ConvertPath.cs" />
     <Compile Include="ValueConverters\EdgeColorConverter.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -190,6 +193,7 @@
   <ItemGroup>
     <Resource Include="Images\color_palette.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.1.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.1.1\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
