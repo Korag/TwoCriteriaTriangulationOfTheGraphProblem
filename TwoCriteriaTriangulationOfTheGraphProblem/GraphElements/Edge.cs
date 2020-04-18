@@ -28,6 +28,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphElements
             ID = id;
         }
 
+        #region INotifyPropertyChanged Implementation
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged(string info)
@@ -38,6 +40,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphElements
             }
         }
 
-
+        #endregion
     }
 }
