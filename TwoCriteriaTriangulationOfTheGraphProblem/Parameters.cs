@@ -207,7 +207,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         #region GraphChart
 
         public double[][] incidenceMatrix;//macierz incydencji do obliczeń
-        public double[][] weightMatrix;//macierz wag do obliczeń
+        public double[][] weightsMatrix;//macierz wag do obliczeń
         public List<Vertex> verticesBasicGeneratedGraph;//lista przechowująca wierzchołki bazowo wygenerowanego grafu
         public List<Vertex> verticesTriangulationOfGraph;//lista przechowująca wierzchołki trójpodziału
 

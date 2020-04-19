@@ -17,25 +17,46 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         // Funkcja pozwala odświeżyć macierz incydencji i wag dla najlepszego trójpodziału obecnej iteracji
         public void RefreshMatrixUi(Graph graph)
         {
-            _parameters.incidenceMatrix = GenerateUIMatrix(_parameters.incidenceMatrix, graph);
+            #region IncidenceMatrix
+
+            _parameters.incidenceMatrix = GenerateIncidenceMatrixFromGraph(_parameters.incidenceMatrix, graph);
             _parameters.DataTableIncidenceMatrix = new DataTable();
 
-            SetMatrixColumns(_parameters.DataTableIncidenceMatrix);
-            FillDataTable(_parameters.incidenceMatrix, _parameters.DataTableIncidenceMatrix);
+            SetIncidenceMatrixColumns(_parameters.DataTableIncidenceMatrix);
+            FillIncidenceDataTable(_parameters.incidenceMatrix, _parameters.DataTableIncidenceMatrix);
 
             _parameters.DataViewIncidenceMatrix = _parameters.DataTableIncidenceMatrix.DefaultView;
 
-            // TODO: ponowne wyliczanie macierzy wag
+            #endregion
+
+            #region WeightsMatrix
+
+            //TODO:
+            //Należy dodać do struktury grafu informację o wadze dotyczącej konkretnej krawędzi
+            //oraz metodę, która z obiektu struktury grafu wygeneruje macierz wag
+
+            //_parameters.weightsMatrix = GenerateWeightsMatrixFromGraph(_parameters.weightsMatrix, graph);
+            _parameters.DataTableWeightsMatrix = new DataTable();
+
+            SetWeightsMatrixColumns(_parameters.DataTableWeightsMatrix);
+            FillWeightsDataTable(_parameters.weightsMatrix, _parameters.DataTableWeightsMatrix);
+
+            _parameters.DataViewWeightsMatrix = _parameters.DataTableWeightsMatrix.DefaultView;
+
+            #endregion
 
             NotifyPropertyChanged("DataViewIncidenceMatrix");
-            //NotifyPropertyChanged("DataViewWeightsMatrix");
+            NotifyPropertyChanged("DataViewWeightsMatrix");
+
+            NotifyPropertyChanged("GeneratedBasicGraph");
+            NotifyPropertyChanged("UndirectedBasicGraph");
 
             NotifyPropertyChanged("TriangulationOfGraph");
             NotifyPropertyChanged("UndirectedTriangulationOfGraph");
         }
 
-        //utworzenie nagłówków w macierzy(UI)
-        public void SetMatrixColumns(DataTable dataTable)
+        //utworzenie nagłówków w macierzy incydencji(UI)
+        public void SetIncidenceMatrixColumns(DataTable dataTable)
         {
             for (int i = -1; i <= _parameters.NumberOfVertices; i++)
             {
@@ -54,8 +75,24 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             }
         }
 
-        //wiersze z danymi w macierzy(UI)
-        public void FillDataTable(double[][] matrix, DataTable dataTable)
+        //utworzenie nagłówków w macierzy wag(UI)
+        public void SetWeightsMatrixColumns(DataTable dataTable)
+        {
+            for (int i = -1; i < _parameters.NumberOfVertices; i++)
+            {
+                if (i == -1)
+                {
+                    dataTable.Columns.Add(new DataColumn("Wagi"));
+                }
+                else
+                {
+                    dataTable.Columns.Add(new DataColumn((i + 1).ToString()));
+                }
+            }
+        }
+
+        //wiersze z danymi w macierzy incydencji(UI)
+        public void FillIncidenceDataTable(double[][] matrix, DataTable dataTable)
         {
             dataTable.Rows.Clear();
             for (int i = 0; i < _parameters.NumberOfVertices; i++)
@@ -71,8 +108,25 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             }
         }
 
-        //wygenerowanie początkowych danych w macierzy na podstawie prawdopodobieństwa
-        public double[][] FillTheMatrix()
+        ////wiersze z danymi w macierzy wag(UI)
+        public void FillWeightsDataTable(double[][] matrix, DataTable dataTable)
+        {
+            dataTable.Rows.Clear();
+            for (int i = 0; i < _parameters.NumberOfVertices; i++)
+            {
+                var newRow = dataTable.NewRow();
+
+                for (int j = 0; j < _parameters.NumberOfVertices; j++)
+                {
+                    newRow[j + 1] = matrix[i][j];
+                }
+                newRow[0] = i + 1;
+                dataTable.Rows.Add(newRow);
+            }
+        }
+
+        //wygenerowanie początkowych danych w macierzy incydencji na podstawie prawdopodobieństwa
+        public double[][] FillIncidenceMatrix()
         {
             //utworzenie macierzy
             double[][] tempMatrix = new double[_parameters.NumberOfVertices][];
@@ -117,8 +171,35 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             return tempMatrix;
         }
 
+        //wygenerowanie początkowych danych w macierzy wag na podstawie prawdopodobieństwa
+        public double[][] FillWeightsMatrix()
+        {
+            //utworzenie macierzy
+            double[][] tempMatrix = new double[_parameters.NumberOfVertices][];
+            tempMatrix = new double[_parameters.NumberOfVertices][];
+            for (int i = 0; i < _parameters.NumberOfVertices; i++)
+            {
+                tempMatrix[i] = new double[_parameters.NumberOfVertices + 1];
+            }
+
+            int j = 0;
+            Random random = new Random();
+            for (int i = 0; i < _parameters.NumberOfVertices; i++)
+            {
+                j = i;
+                while (j < _parameters.NumberOfVertices)
+                {
+                    tempMatrix[i][j] = Math.Round(random.NextDouble() * (_parameters.WeightsHigherLimit - _parameters.WeightsLowerLimit) + _parameters.WeightsLowerLimit, 2);
+                    j++;
+                }
+            }
+            //przekopiowanie jednej połowy macierzy na drugą połowę
+            tempMatrix = FillTheSecondHalfOfTheMatrix(tempMatrix);
+            return tempMatrix;
+        }
+
         //wygenerowanie macierzy(UI) na podstawie krawędzi w grafie
-        public double[][] GenerateUIMatrix(double[][] matrixUI, Graph graph)
+        public double[][] GenerateIncidenceMatrixFromGraph(double[][] matrixUI, Graph graph)
         {
             matrixUI = new double[_parameters.NumberOfVertices][];
             for (int i = 0; i < _parameters.NumberOfVertices; i++)
@@ -130,12 +211,12 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 matrixUI[Edge.Source.Index][Edge.Target.Index] = 1;
                 matrixUI[Edge.Target.Index][Edge.Source.Index] = 1;
             }
-            CalculateMatrixSum(matrixUI);
+            CalculateIncidenceMatrixSum(matrixUI);
             return matrixUI;
         }
 
         //obliczenie sumy(stopnia) wierzchołków i zapisanie ich w ostatniej kolumnie
-        public void CalculateMatrixSum(double[][] matrix)
+        public void CalculateIncidenceMatrixSum(double[][] matrix)
         {
             for (int i = 0; i < _parameters.NumberOfVertices; i++)
             {

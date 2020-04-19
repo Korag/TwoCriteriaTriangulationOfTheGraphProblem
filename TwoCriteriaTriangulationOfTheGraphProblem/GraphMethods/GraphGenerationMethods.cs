@@ -15,12 +15,13 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
         public void GenerateBasicGraph()
         {
-            _parameters.GeneratedBasicGraph = new Graph(true);//nowy graf
-
             MatrixMethod matrixMethod = new MatrixMethod(_parameters);
-
-            _parameters.incidenceMatrix = matrixMethod.FillTheMatrix();//macierz incydencji
+           
+            _parameters.GeneratedBasicGraph = new Graph(true);//nowy graf
             _parameters.verticesBasicGeneratedGraph = new List<Vertex>();//lista przechowująca wierzchołki
+
+            _parameters.incidenceMatrix = matrixMethod.FillIncidenceMatrix();//macierz incydencji
+            _parameters.weightsMatrix = matrixMethod.FillWeightsMatrix();//macierz incydencji
 
             //wygenerowanie odpowiedniej ilości wierzchołków
             for (int i = 0; i < _parameters.NumberOfVertices; i++)
