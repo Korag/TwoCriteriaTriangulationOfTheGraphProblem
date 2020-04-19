@@ -201,13 +201,13 @@
 
             <!--Macierz incydencji-->
             <Grid Grid.Column="1" HorizontalAlignment="Left" Height="125" Grid.Row="2" VerticalAlignment="Bottom" Width="293">
-                <Label Content="Incidence Matrix" HorizontalAlignment="Left" Height="25" FontSize="12" VerticalAlignment="Top" Width="108"  Style="{DynamicResource Label}"/>
+                <Label Content="Incidence Matrix" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="123"  Style="{DynamicResource Label}" Margin="0,-3,0,0"/>
                 <DataGrid ItemsSource="{Binding Path=DataViewIncidenceMatrix}" AutoGenerateColumns="True" Margin="0,21,10,0"/>
             </Grid>
 
             <!--Macierz wag-->
             <Grid Grid.Column="1" HorizontalAlignment="Left" Height="125" Grid.Row="3" VerticalAlignment="Bottom" Width="293">
-                <Label Content="Weight Matrix" HorizontalAlignment="Left" Height="29" FontSize="12" VerticalAlignment="Top" Width="150"  Style="{DynamicResource Label}"/>
+                <Label Content="Weight Matrix" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="150"  Style="{DynamicResource Label}" Margin="0,-3,0,0"/>
                 <DataGrid ItemsSource="{Binding Path=DataViewWeightsMatrix}" AutoGenerateColumns="True" Margin="0,21,10,0"/>
             </Grid>
 
@@ -273,21 +273,22 @@
 
                 <!--Input przedziału generowanych wag-->
                 <Label Content="Range of Weights"  Margin="0,20,217,4" Style="{DynamicResource LabelSideMenu}" Grid.Row="2" Grid.RowSpan="2"/>
-                <Slider x:Name="WeigthsLowerLimitSlider" HorizontalAlignment="Left" Value="{Binding Path=WeightsLowerLimit}" Margin="170,3,0,-3" Width="37"  Maximum="100" Minimum="0" Grid.Row="3"/>
-                <TextBox HorizontalAlignment="Left" Margin="207,23,0,5" Style="{DynamicResource TextBox}" Text="{Binding Path=WeightsLowerLimit}" Grid.Row="2" Width="41" Grid.RowSpan="2" />
-                <Slider x:Name="WeightsHigherLimit" HorizontalAlignment="Left" Value="{Binding Path=WeightsHigherLimit}" Margin="253,3,0,-3" Width="37"  Maximum="100" Minimum="0" Grid.Row="3"/>
+                <Slider x:Name="WeigthsLowerLimitSlider" HorizontalAlignment="Left" Value="{Binding Path=WeightsLowerLimit}" Margin="140,3,0,-3" Width="45"  Maximum="100" Minimum="0" Grid.Row="3"/>
+                <TextBox HorizontalAlignment="Left" Margin="185,23,0,5" Style="{DynamicResource TextBox}" Text="{Binding Path=WeightsLowerLimit}" Grid.Row="2" Width="60" Grid.RowSpan="2" />
+                <Slider x:Name="WeightsHigherLimit" HorizontalAlignment="Left" Value="{Binding Path=WeightsHigherLimit}" Margin="250,3,0,-3" Width="45"  Maximum="100" Minimum="0" Grid.Row="3"/>
                 <TextBox Margin="300,23,22,5" Style="{DynamicResource TextBox}" Text="{Binding Path=WeightsHigherLimit}" Grid.Row="2" Grid.RowSpan="2"/>
 
                 <!--Centralny moduł panelu sterującego-->
                 <!--Licznik iteracji-->
                 <Label Content="Iterations" Margin="207,-6,200,0" Style="{DynamicResource LabelCentralMenu}" Grid.Column="1"/>
-                <Label Margin="199,7,195,15" Style="{DynamicResource Label}" Content="{Binding Path=IterationNumber}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="1">
+                <Label Margin="199,7,195,15" Style="{DynamicResource Label}" Content="{Binding Path=IterationNumber}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="1" Foreground="White">
                     <Label.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="Black" Offset="0"/>
-                            <GradientStop Color="#FFFDFD3B" Offset="0.817"/>
-                            <GradientStop Color="#FF75751B" Offset="0.32"/>
-                            <GradientStop Color="#FFDDDD33" Offset="1"/>
+                            <GradientStop Color="White" Offset="0.007"/>
+                            <GradientStop Color="#FF2B1087" Offset="0.477"/>
+                            <GradientStop Color="White" Offset="1"/>
+                            <GradientStop Color="#FFA18BEC" Offset="0.245"/>
+                            <GradientStop Color="#FFA18BEA" Offset="0.789"/>
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
@@ -300,7 +301,7 @@
                 <Label Content="Algorithms" Style="{DynamicResource LabelCentralMenu}" Margin="32,-6,368,16" Grid.RowSpan="2" Grid.Column="1" />
                 <ComboBox ItemsSource="{Binding LayoutAlgorithmTypes}"
                           SelectedItem="{Binding LayoutAlgorithmType, Mode=TwoWay}"
-                          Width="150" Margin="6,0,349,15" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Height="28" VerticalAlignment="Bottom" />
+                          Width="150" Margin="7,7,348,14" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Height="29" VerticalAlignment="Center" Foreground="#FF1A48A4" FontWeight="Bold" HorizontalAlignment="Center" />
 
                 <!--Przyciski sterujące-->
                 <Button x:Name="Start" Content="Start" Margin="158,18,254,5" Style="{DynamicResource GreenButton}" Click="StartGeneticAlgorithm" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Background="#FF37F937" />
@@ -343,7 +344,7 @@
                         <GradientStop Color="#FF081111" Offset="0.993"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Minimum:" Margin="179,0,189,-7" Style="{DynamicResource LabelSideMenu}" Height="Auto" Padding="5,5,5,2"/>
+                <Label Content="Minimum:" Margin="179,-3,189,-4" Style="{DynamicResource LabelSideMenu}" Height="Auto" Padding="5,5,5,2"/>
                 <TextBox Margin="268,0,111,0" Style="{DynamicResource TextBox}" Text="{Binding Path=CountedExtremum}" Height="Auto" Width="Auto" Padding="0,0,0,2" IsReadOnly="True"/>            </Grid>
 
 

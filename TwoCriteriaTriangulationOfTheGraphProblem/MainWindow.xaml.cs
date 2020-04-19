@@ -83,10 +83,17 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //Ustawiamy dane testowe do kontrolek, aby łatwo i szybko można było testować
             //bez konieczności wpisywania danych
 
-            _parameters.IterationNumber = 0;
-            //....
-            //....
-            //....
+            _parameters.NumberOfVertices = 10;
+            _parameters.ProbabilityOfEdgeGeneration = 0.50;
+
+            _parameters.WeightsLowerLimit = 1;
+            _parameters.WeightsHigherLimit = 20;
+
+            _parameters.MutationProbabilityValue = 0.40;
+            _parameters.CrossoverProbabilityValue = 0.30;
+
+            _parameters.Popsize = 5000;
+            _parameters.SleepTime = 1;
         }
     }
 }

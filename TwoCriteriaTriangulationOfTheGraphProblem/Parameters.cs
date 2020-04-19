@@ -88,7 +88,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             get { return _mutationProbabilityValue; }
             set
             {
-                _mutationProbabilityValue = value;
+                _mutationProbabilityValue = Math.Round(value, 2);
                 NotifyPropertyChanged("MutationProbabilityValue");
             }
         }
@@ -99,7 +99,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             get { return _crossoverProbabilityValue; }
             set
             {
-                _crossoverProbabilityValue = value;
+                _crossoverProbabilityValue = Math.Round(value, 2);
                 NotifyPropertyChanged("CrossoverProbabilityValue");
             }
         }
