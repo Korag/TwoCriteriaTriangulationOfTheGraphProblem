@@ -345,7 +345,8 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Label Content="Minimum:" Margin="179,-3,189,-4" Style="{DynamicResource LabelSideMenu}" Height="Auto" Padding="5,5,5,2"/>
-                <TextBox Margin="268,0,111,0" Style="{DynamicResource TextBox}" Text="{Binding Path=CountedExtremum}" Height="Auto" Width="Auto" Padding="0,0,0,2" IsReadOnly="True"/>            </Grid>
+                <TextBox Margin="268,0,111,0" Style="{DynamicResource TextBox}" Text="{Binding Path=CountedExtremum}" Height="Auto" Width="Auto" Padding="0,0,0,2" IsReadOnly="True"/>
+            </Grid>
 
 
         </Grid>

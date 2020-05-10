@@ -60,7 +60,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //Background worker wykonuje algorytm genetyczny + przegenerowanie grafu
             //+ odświeża frontend
 
-            //_bw.worker.RunWorkerAsync();
+            _bw.worker.RunWorkerAsync();
+            
+            var test = new GeneticAlgorithmMethods();
+            test.GeneticAlgorithm(_parameters);
         }
 
         private void ResetCurrentState(object sender, RoutedEventArgs e)
