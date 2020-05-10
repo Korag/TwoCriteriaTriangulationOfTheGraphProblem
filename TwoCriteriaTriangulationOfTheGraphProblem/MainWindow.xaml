@@ -190,12 +190,13 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Label Content="Generated graph" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="128" Style="{DynamicResource Label}" Margin="0,-26,0,0" Foreground="#FF972960"/>
-                <Viewbox Name="BasicGeneratedGraphView" StretchDirection="Both" Stretch="Uniform">
-                    <vm:GraphLayout x:Name="BasicGeneratedGraphChart" Margin="100"
+                <Viewbox Name="BasicGeneratedGraphView" StretchDirection="Both" Stretch="Uniform" MaxWidth="300" MaxHeight="300" MinWidth="100" MinHeight="100">
+                    <vm:GraphLayout x:Name="BasicGeneratedGraphChart" Margin="0"
 						Graph="{Binding Path=GeneratedBasicGraph}"
 						LayoutAlgorithmType="{Binding Path=LayoutAlgorithmType, Mode=OneWay}"
 						OverlapRemovalAlgorithmType="FSA"
-						HighlightAlgorithmType="Simple" />
+						HighlightAlgorithmType="Simple"
+                                    MaxWidth="300" MaxHeight="300"  MinWidth="100" MinHeight="100"/>
                 </Viewbox>
             </Grid>
 
@@ -345,7 +346,8 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Label Content="Minimum:" Margin="179,-3,189,-4" Style="{DynamicResource LabelSideMenu}" Height="Auto" Padding="5,5,5,2"/>
-                <TextBox Margin="268,0,111,0" Style="{DynamicResource TextBox}" Text="{Binding Path=CountedExtremum}" Height="Auto" Width="Auto" Padding="0,0,0,2" IsReadOnly="True"/>            </Grid>
+                <TextBox Margin="268,0,111,0" Style="{DynamicResource TextBox}" Text="{Binding Path=CountedExtremum}" Height="Auto" Width="Auto" Padding="0,0,0,2" IsReadOnly="True"/>
+            </Grid>
 
 
         </Grid>
