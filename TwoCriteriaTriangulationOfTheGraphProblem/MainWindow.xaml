@@ -202,13 +202,28 @@
             <!--Macierz incydencji-->
             <Grid Grid.Column="1" HorizontalAlignment="Left" Height="125" Grid.Row="2" VerticalAlignment="Bottom" Width="293">
                 <Label Content="Incidence Matrix" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="123"  Style="{DynamicResource Label}" Margin="0,-3,0,0"/>
-                <DataGrid ItemsSource="{Binding Path=DataViewIncidenceMatrix}" AutoGenerateColumns="True" Margin="0,21,10,0"/>
+                <DataGrid 
+                    x:Name="DataGridIncidence"
+                    ItemsSource="{Binding Path=DataViewIncidenceMatrix}" 
+                    AutoGenerateColumns="True" 
+                    LoadingRow="DataGrid_LoadingRow"
+                    Margin="0,21,10,0" 
+                    IsReadOnly="True"
+                    >
+
+                </DataGrid>
             </Grid>
 
             <!--Macierz wag-->
             <Grid Grid.Column="1" HorizontalAlignment="Left" Height="125" Grid.Row="3" VerticalAlignment="Bottom" Width="293">
                 <Label Content="Weight Matrix" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="150"  Style="{DynamicResource Label}" Margin="0,-3,0,0"/>
-                <DataGrid ItemsSource="{Binding Path=DataViewWeightsMatrix}" AutoGenerateColumns="True" Margin="0,21,10,0"/>
+                <DataGrid 
+                    x:Name="DataGridWeights"
+                    ItemsSource="{Binding Path=DataViewWeightsMatrix}" 
+                    AutoGenerateColumns="True" 
+                    LoadingRow="DataGrid_LoadingRow"
+                    Margin="0,21,10,0"
+                    IsReadOnly="True"/>
             </Grid>
 
             <!--Pareto Front-->

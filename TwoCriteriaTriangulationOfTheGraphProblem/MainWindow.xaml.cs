@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -50,6 +51,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //Generujemy basic graf, który później nie będzie już zupełnie modyfikowany
             GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
             graphGenerator.GenerateBasicGraph();
+            this.DataGridIncidence.Columns[0].Visibility = Visibility.Hidden;
+            this.DataGridWeights.Columns[0].Visibility = Visibility.Hidden;
         }
 
         private void StartGeneticAlgorithm(object sender, RoutedEventArgs e)
@@ -97,6 +100,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             _parameters.Popsize = 5000;
             _parameters.SleepTime = 1;
+        }
+
+        private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = (e.Row.GetIndex()+1).ToString();
         }
     }
 }
