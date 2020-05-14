@@ -68,7 +68,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 double CheckIfCrossOverHappen = CrossoverProc.Next(0, 100);
                 for (int k = 0; k < parameters.NumberOfVertices; k++)
                 {
-                    CurrentGroup[k] = parameters.Population[k][];
+                    CurrentGroup[k] = parameters.Population[k][i];
                 }
                 var test = parameters.Population;
                 if (CheckIfMutationHappen <= parameters.MutationProbabilityValue)

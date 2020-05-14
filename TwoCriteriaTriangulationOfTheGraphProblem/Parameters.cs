@@ -199,6 +199,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         public double[][] PopulationFunctionValueAfterSelection;
         public double[][] PopulationFunctionValueAfterCrossover;
 
+        public double[] FitnessArray;
+
+
         //minimum dla liczby krawędzi i dla sumy wag
         public double MinAmountOfEdges { get; set; }    
         public double MinSumOfEdgesWeights { get; set; }

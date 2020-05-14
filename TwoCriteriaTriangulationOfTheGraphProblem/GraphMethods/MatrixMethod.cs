@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data;
+using System.Windows.Controls;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
@@ -66,6 +67,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 }
                 else if (i == -1)
                 {
+                    //Moved out to DataGrid_LoadingRow
                     dataTable.Columns.Add(new DataColumn("Wierzchołki"));
                 }
                 else
@@ -82,11 +84,13 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             {
                 if (i == -1)
                 {
+                    //Moved out to DataGrid_LoadingRow
                     dataTable.Columns.Add(new DataColumn("Wagi"));
                 }
                 else
                 {
                     dataTable.Columns.Add(new DataColumn((i + 1).ToString()));
+                    
                 }
             }
         }
@@ -103,8 +107,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 {
                     newRow[j + 1] = matrix[i][j];
                 }
-                newRow[0] = i + 1;
+                //Moved out to DataGrid_LoadingRow
+                //newRow[0] = i + 1;
                 dataTable.Rows.Add(newRow);
+                
             }
         }
 
@@ -120,7 +126,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 {
                     newRow[j + 1] = matrix[i][j];
                 }
-                newRow[0] = i + 1;
+                //Moved out to DataGrid_LoadingRow
+                //newRow[0] = i + 1;
                 dataTable.Rows.Add(newRow);
             }
         }
