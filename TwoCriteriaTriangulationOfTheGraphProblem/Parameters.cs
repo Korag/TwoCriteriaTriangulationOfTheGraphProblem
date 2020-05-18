@@ -199,9 +199,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         public double[][] PopulationFunctionValueAfterSelection;
         public double[][] PopulationFunctionValueAfterCrossover;
 
-        public double FitnessGroup1;
-        public double FitnessGroup2;
-        public double FitnessGroup3;
+        public double[] FitnessGroup1;
+        public double[] FitnessGroup2;
+        public double[] FitnessGroup3;
         public double[] FitnessArray;
 
 
