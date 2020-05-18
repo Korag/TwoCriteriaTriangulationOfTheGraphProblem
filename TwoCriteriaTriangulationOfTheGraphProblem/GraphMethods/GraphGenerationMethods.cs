@@ -1,6 +1,7 @@
 ﻿using QuickGraph;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 
@@ -69,8 +70,17 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             //matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
 
             var graphFromCaran = GenerateGraphFromCaran(_parameters.Population);
-            _parameters.TriangulationOfGraph = graphFromCaran[1];
+            graphFromCaran.Where(x => x != null).ToList().ForEach(x => EdgeMethod.ConnectAllVertices(x));
 
+            var joinedGraphFromCaran = new Graph();
+            graphFromCaran.Where(x => x != null).ToList().ForEach(x => JoinGraphs(joinedGraphFromCaran, x));
+            _parameters.TriangulationOfGraph = joinedGraphFromCaran;
+
+        }
+
+        static void JoinGraphs(Graph graph1, Graph graph2)
+        {
+            graph1.AddVerticesAndEdgeRange(graph2.Edges);
         }
 
         static List<Graph> GenerateGraphFromCaran(double[][] caranArray)
