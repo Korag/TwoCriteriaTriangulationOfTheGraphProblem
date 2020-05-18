@@ -1,4 +1,6 @@
-﻿using QuickGraph;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using QuickGraph;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods;
+using TwoCriteriaTriangulationOfTheGraphProblem.UserControls;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem
 {
@@ -35,6 +38,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             this.DataContext = _parameters;
             this.WindowState = WindowState.Maximized;
+            
 
             DefaultValue();
             InitializeComponent();
@@ -63,11 +67,20 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //Background worker wykonuje algorytm genetyczny + przegenerowanie grafu
             //+ odświeża frontend
 
-            _bw.worker.RunWorkerAsync();
-            
+            //_bw.worker.RunWorkerAsync();
+
+
             var test = new GeneticAlgorithmMethods();
             test.GeneticAlgorithm(_parameters);
+
+            //_parameters.verticesTriangulationOfGraph =
+            GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
+            graphGenerator.GenerateTriangulationOfGraph();
+
+            OverallFluctuationChart.EditSeriesCollection(_parameters.FitnessArray.Min(), _parameters.IterationNumber);
         }
+
+
 
         private void ResetCurrentState(object sender, RoutedEventArgs e)
         {
@@ -98,7 +111,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             _parameters.MutationProbabilityValue = 0.40;
             _parameters.CrossoverProbabilityValue = 0.30;
 
-            _parameters.Popsize = 5000;
+            _parameters.Popsize = 100;
             _parameters.SleepTime = 1;
         }
 
@@ -106,5 +119,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         {
             e.Row.Header = (e.Row.GetIndex()+1).ToString();
         }
+
     }
 }

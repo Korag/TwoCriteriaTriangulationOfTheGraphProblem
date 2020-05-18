@@ -45,6 +45,14 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             }
         }
 
+        public static void ConnectAllVertices(Graph graph)
+        {
+            for (int i = 0; i < graph.Vertices.Count()-1; i++)//TODO: connect last to first
+            {
+                AddNewGraphEdge(graph.Vertices.ToList()[i], graph.Vertices.ToList()[i + 1], graph);
+            }
+        }
+
         //utworzenie obiektu krawędzi i dodanie go do grafu 
         private static void AddNewGraphEdge(Vertex from, Vertex to, Graph graph)
         {

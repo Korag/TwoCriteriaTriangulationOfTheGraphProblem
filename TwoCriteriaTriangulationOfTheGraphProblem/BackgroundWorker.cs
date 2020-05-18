@@ -1,6 +1,10 @@
-﻿using System.ComponentModel;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods;
+using TwoCriteriaTriangulationOfTheGraphProblem.UserControls;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem
 {
@@ -37,7 +41,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             _parameters.incidenceMatrix = matrixMethod.FillTheSecondHalfOfTheMatrix(_parameters.incidenceMatrix);
 
-            _parameters.GeneratedBasicGraph = EdgeMethod.GenerateEdges(_parameters.incidenceMatrix, _parameters.verticesTriangulationOfGraph, _parameters.TriangulationOfGraph);
+            _parameters.GeneratedBasicGraph = EdgeMethod.GenerateEdges(_parameters.incidenceMatrix, _parameters.verticesBasicGeneratedGraph, _parameters.GeneratedBasicGraph);
+
 
             //aktualizacja macierzy wag
             //TODO
@@ -45,6 +50,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //aktualizacja wyświetlanej macierzy incydencji i wag (frontend)
             VertexMethod.CalculateTheSum(_parameters.incidenceMatrix, _parameters.verticesTriangulationOfGraph);
             VertexMethod.SetVertexNeighbors(_parameters.incidenceMatrix, _parameters.verticesTriangulationOfGraph);
+
+
 
             //WAGI
             //TODO 
@@ -55,10 +62,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             //Przebieg algorytmu genetycznego
-            
+            var test = new GeneticAlgorithmMethods();
+            test.GeneticAlgorithm(_parameters);
 
             //Kiedy potrzebujemy odświeżyć UI
-            //worker.Report();
+            this.worker_Report();
 
 
             worker.CancelAsync();

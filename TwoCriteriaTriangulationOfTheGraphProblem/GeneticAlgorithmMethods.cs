@@ -50,6 +50,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 var test = parameters.Population;
                
                 CreateNewPopulation(parameters);
+                parameters.IterationNumber++;
             }
 
 
