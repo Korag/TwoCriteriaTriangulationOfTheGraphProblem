@@ -69,7 +69,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             //matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
 
             var graphFromCaran = GenerateGraphFromCaran(_parameters.Population);
-            matrixMethod.RefreshMatrixUi(graphFromCaran[1]);
         }
 
         static List<Graph> GenerateGraphFromCaran(double[][] caranArray)
