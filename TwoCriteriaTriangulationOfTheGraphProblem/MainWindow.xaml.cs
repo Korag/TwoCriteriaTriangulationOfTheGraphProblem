@@ -73,12 +73,14 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             var test = new GeneticAlgorithmMethods();
             test.GeneticAlgorithm(_parameters);
 
-            //_parameters.verticesTriangulationOfGraph = 
-            //GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
-            //graphGenerator.GenerateTriangulationOfGraph();
+            //_parameters.verticesTriangulationOfGraph =
+            GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
+            graphGenerator.GenerateTriangulationOfGraph();
 
             OverallFluctuationChart.EditSeriesCollection(_parameters.FitnessArray.Min(), _parameters.IterationNumber);
         }
+
+
 
         private void ResetCurrentState(object sender, RoutedEventArgs e)
         {
