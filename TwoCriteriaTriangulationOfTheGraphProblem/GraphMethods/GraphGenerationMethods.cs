@@ -18,7 +18,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         public void GenerateBasicGraph()
         {
             MatrixMethod matrixMethod = new MatrixMethod(_parameters);
-           
+
             _parameters.GeneratedBasicGraph = new Graph(true);//nowy graf
             _parameters.verticesBasicGeneratedGraph = new List<Vertex>();//lista przechowująca wierzchołki
 
@@ -69,6 +69,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             //matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
 
             var graphFromCaran = GenerateGraphFromCaran(_parameters.Population);
+            _parameters.TriangulationOfGraph = graphFromCaran[1];
+
         }
 
         static List<Graph> GenerateGraphFromCaran(double[][] caranArray)
