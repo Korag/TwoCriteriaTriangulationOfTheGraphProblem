@@ -47,10 +47,12 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
         public static void ConnectAllVertices(Graph graph)
         {
-            for (int i = 0; i < graph.Vertices.Count()-1; i++)//TODO: connect last to first
-            {
-                AddNewGraphEdge(graph.Vertices.ToList()[i], graph.Vertices.ToList()[i + 1], graph);
-            }
+            graph.Vertices.Take(graph.Vertices.Count() - 1)
+                          .Zip(graph.Vertices.Skip(1), (item, next) => (item, next))
+                          .ToList()
+                          .ForEach(x => AddNewGraphEdge(x.item, x.next, graph));
+            //Connect last vertex to first
+            AddNewGraphEdge(graph.Vertices.Last(), graph.Vertices.FirstOrDefault(), graph);
         }
 
         //utworzenie obiektu krawędzi i dodanie go do grafu 
