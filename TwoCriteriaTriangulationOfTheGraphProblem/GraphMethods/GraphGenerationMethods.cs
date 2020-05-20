@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows.Media;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
@@ -71,11 +72,35 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
             var graphFromCaran = GenerateGraphFromCaran(_parameters.Population);
             graphFromCaran.Where(x => x != null).ToList().ForEach(x => EdgeMethod.ConnectAllVertices(x));
+            ColorGraphsEdges(graphFromCaran);
 
             var joinedGraphFromCaran = new Graph();
             graphFromCaran.Where(x => x != null).ToList().ForEach(x => JoinGraphs(joinedGraphFromCaran, x));
             _parameters.TriangulationOfGraph = joinedGraphFromCaran;
 
+        }
+
+        static readonly Color[] niceColors = {
+            Colors.Red,
+            Colors.Green,
+            Colors.Blue
+        };
+
+        public static void ColorGraphsEdges(List<Graph> graphs)
+        {
+            graphs.Where(x => x != null).
+                Zip(Enumerable.Range(0, 3), (item, index) => (index, item)).ToList().
+                ForEach(x =>
+                {
+                    var colorBrush = new SolidColorBrush(niceColors[x.index]);
+                    x.item.Edges.ToList().ForEach(y => y.EdgeColor = colorBrush);
+                });
+        }
+
+        public static Color GetRandomNiceColor()
+        {
+            var rnd = new System.Random(System.Guid.NewGuid().GetHashCode());
+            return niceColors.OrderBy(x => rnd.Next()).First();
         }
 
         static void JoinGraphs(Graph graph1, Graph graph2)
