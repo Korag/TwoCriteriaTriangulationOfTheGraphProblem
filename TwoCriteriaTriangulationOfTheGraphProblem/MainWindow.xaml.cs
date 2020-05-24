@@ -38,7 +38,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             this.DataContext = _parameters;
             this.WindowState = WindowState.Maximized;
-            
+
+            _parameters.MainWindow = this;
 
             DefaultValue();
             InitializeComponent();
@@ -61,23 +62,24 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
         private void StartGeneticAlgorithm(object sender, RoutedEventArgs e)
         {
+            Start.IsEnabled = false;
+
             //Uruchamiamy background workera, żeby podczas przetwarzania nie mieć
             //zablokowanego frontendu, który będzie odświeżany co iterację
 
             //Background worker wykonuje algorytm genetyczny + przegenerowanie grafu
             //+ odświeża frontend
 
-            //_bw.worker.RunWorkerAsync();
+            _bw.worker.RunWorkerAsync();
 
+            //OverallFluctuationChart.EditSeriesCollection(_parameters.FitnessArray.Min(), _parameters.IterationNumber);
 
-            var test = new GeneticAlgorithmMethods();
-            test.GeneticAlgorithm(_parameters);
+            //var test = new GeneticAlgorithmMethods();
+            //test.GeneticAlgorithm(_parameters);
 
             //_parameters.verticesTriangulationOfGraph =
-            GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
-            graphGenerator.GenerateTriangulationOfGraph();
+            
 
-            OverallFluctuationChart.EditSeriesCollection(_parameters.FitnessArray.Min(), _parameters.IterationNumber);
         }
 
 
@@ -113,6 +115,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             _parameters.Popsize = 100;
             _parameters.SleepTime = 1;
+
+            _parameters.IterationsLimit = 1;
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)

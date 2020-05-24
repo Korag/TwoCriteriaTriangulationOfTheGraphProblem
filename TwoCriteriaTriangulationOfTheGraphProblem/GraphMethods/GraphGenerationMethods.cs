@@ -76,7 +76,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
             var joinedGraphFromCaran = new Graph();
             graphFromCaran.Where(x => x != null).ToList().ForEach(x => JoinGraphs(joinedGraphFromCaran, x));
+
             _parameters.TriangulationOfGraph = joinedGraphFromCaran;
+            _parameters.verticesTriangulationOfGraph = joinedGraphFromCaran.Vertices.ToList();
 
         }
 

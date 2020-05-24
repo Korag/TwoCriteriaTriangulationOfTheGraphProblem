@@ -2,6 +2,7 @@
 using LiveCharts.Wpf;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods;
 using TwoCriteriaTriangulationOfTheGraphProblem.UserControls;
@@ -29,12 +30,16 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         private void worker_Report()
         {
             worker.ReportProgress(0);
-            Thread.Sleep(500);
+            Thread.Sleep(_parameters.SleepTime * 1000);
         }
 
         private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             // Aktualizujemy frontend
+
+            //Example graph from AI
+            GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
+            graphGenerator.GenerateTriangulationOfGraph();
 
             //aktualizacja macierzy incydencji
             MatrixMethod matrixMethod = new MatrixMethod(_parameters);
@@ -52,9 +57,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             VertexMethod.SetVertexNeighbors(_parameters.incidenceMatrix, _parameters.verticesTriangulationOfGraph);
 
 
+            _parameters.MainWindow.OverallFluctuationChart.EditSeriesCollection(_parameters.FitnessArray.Min(), _parameters.IterationNumber);
 
-            //WAGI
-            //TODO 
+
+
 
             matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
         }
@@ -62,12 +68,17 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             //Przebieg algorytmu genetycznego
+
             var test = new GeneticAlgorithmMethods();
             test.GeneticAlgorithm(_parameters);
 
-            //Kiedy potrzebujemy odświeżyć UI
-            this.worker_Report();
+            for (int i = 0; i < _parameters.IterationsLimit; i++)
+            {
+                test.OneMoreTime();
 
+                //Kiedy potrzebujemy odświeżyć UI
+                this.worker_Report();
+            }
 
             worker.CancelAsync();
         }

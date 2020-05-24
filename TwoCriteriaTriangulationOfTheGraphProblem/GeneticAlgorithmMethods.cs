@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,10 +16,12 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         double PopulationAverage=0;
         TRandom MutationProc = new TRandom();
         TRandom CrossoverProc = new TRandom();
+        Parameters parameters;
         
         public void GeneticAlgorithm(Parameters parameters)//double[][] WeightMatrix, double[][] GraphMatrix, int Iterations)
         {
-           
+            this.parameters = parameters;
+
             int vertexAmount = parameters.NumberOfVertices;//GraphMatrix.GetLength(0);
             
             double[] BestGroups = new double[parameters.Popsize];
@@ -43,18 +46,21 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
            
 
             parameters.Population = InitialPopulation;
-            for (int i = 0; i < parameters.IterationsLimit; i++)
-            {
-                
-                CompetetiveSelection(parameters);
-                var test = parameters.Population;
-               
-                CreateNewPopulation(parameters);
-                parameters.IterationNumber++;
-            }
+           
 
 
             
+        }
+
+        public void OneMoreTime()//we're gonna celebrate
+        {
+                //Oh yeah all right 
+                CompetetiveSelection(parameters);
+                var test = parameters.Population;
+
+                //don't stop the dancing
+                CreateNewPopulation(parameters);
+           
         }
 
 
