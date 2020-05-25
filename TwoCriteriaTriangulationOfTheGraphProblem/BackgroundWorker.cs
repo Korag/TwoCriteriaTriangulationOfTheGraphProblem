@@ -41,6 +41,13 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
             graphGenerator.GenerateTriangulationOfGraph();
 
+            //Refresh pareto front
+            var paretoArray = _parameters.FitnessArray.
+                Zip(_parameters.FitnessGroup1, (FitnessAll, FitnessGroup) => (FitnessAll, FitnessGroup)).
+                Select(x => new double[] { x.FitnessAll, x.FitnessGroup }).ToList();
+            _parameters.RewriteThePoints(paretoArray);
+            _parameters.MainWindow.ParetoChart.EditSeriesCollection(_parameters.ListOfPoints);
+
             //aktualizacja macierzy incydencji
             MatrixMethod matrixMethod = new MatrixMethod(_parameters);
 
