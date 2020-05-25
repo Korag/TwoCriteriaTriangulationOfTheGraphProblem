@@ -140,27 +140,21 @@
             </Grid.ColumnDefinitions>
 
             <!--Wykres kształtowania wartości funkcji celu (sumy wag oraz liczby krawędzi) dla każdej z części trójpodziału grafu na przestrzeni iteracji-->
-            <Grid Grid.Column="3" HorizontalAlignment="Left" Height="142" Grid.Row="4" VerticalAlignment="Top" Width="915" Grid.ColumnSpan="3" Margin="0,28,0,0">
-                <Grid.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="White" Offset="0.003"/>
-                        <GradientStop Color="#FFDADADA" Offset="1"/>
-                    </LinearGradientBrush>
-                </Grid.Background>
-                <Label Content="Values of multicriteria problem for each of group" HorizontalAlignment="Left" Style="{DynamicResource Label}" Margin="0,-24,0,137"/>
-                <UserControls:MainChartUserControl  x:Name="TriangulationFluctuationChart" HorizontalAlignment="Left" Height="142" VerticalAlignment="Top" Width="915" RenderTransformOrigin="0.508,1.283" Margin="-2,0,0,0"/>
-            </Grid>
 
             <!--Wykres kształtowania wartości funkcji celu (sumy wag oraz liczby krawędzi) sumarycznie na przestrzeni iteracji-->
             <Grid Grid.Column="3" HorizontalAlignment="Left" Height="98" Grid.Row="5" VerticalAlignment="Top" Width="915" Grid.ColumnSpan="3" Margin="0,16,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="13*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0.003"/>
                         <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Values of multicriteria problem across iterations" HorizontalAlignment="Left" Width="349" Style="{DynamicResource Label}" Margin="0,-22,0,91"/>
-                <UserControls:MainChartUserControl x:Name="OverallFluctuationChart" HorizontalAlignment="Left" Height="99" VerticalAlignment="Top" Width="914" Margin="1,0,0,-1"/>
+                <Label Content="Values of multicriteria problem across iterations" HorizontalAlignment="Left" Width="349" Style="{DynamicResource Label}" Margin="0,-22,0,91" Grid.ColumnSpan="2"/>
+                <UserControls:MainChartUserControl x:Name="OverallFluctuationChart" HorizontalAlignment="Left" Height="99" VerticalAlignment="Top" Width="914" Margin="1,0,0,-1" Grid.ColumnSpan="2"/>
             </Grid>
 
             <!--Wizualizacja trójpodziału grafu zmieniająca się co każdą iterację-->
