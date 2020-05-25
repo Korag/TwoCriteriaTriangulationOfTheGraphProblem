@@ -1,7 +1,10 @@
-﻿using QuickGraph;
+﻿using LiveCharts.Definitions.Series;
+using QuickGraph;
+using QuickGraph.Algorithms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
 using System.Windows.Media;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
@@ -70,15 +73,19 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
             //matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
 
-            var graphFromCaran = GenerateGraphFromCaran(_parameters.Population).Where(x => x != null).ToList();
-            graphFromCaran.Where(x => x.VertexCount != 0).ToList().ForEach(x => EdgeMethod.ConnectAllVertices(x));
-            ColorGraphsEdges(graphFromCaran);
+            var graphFromCaran = GenerateGraphFromCaranWithCuts(
+                _parameters.GeneratedBasicGraph,
+                _parameters.Population);
 
-            var joinedGraphFromCaran = new Graph();
-            graphFromCaran.ToList().ForEach(x => JoinGraphs(joinedGraphFromCaran, x));
+            //var graphFromCaran = GenerateGraphFromCaran(_parameters.Population).Where(x => x != null).ToList();
+            //graphFromCaran.Where(x => x.VertexCount != 0).ToList().ForEach(x => EdgeMethod.ConnectAllVertices(x));
+            //ColorGraphsEdges(graphFromCaran);
 
-            _parameters.TriangulationOfGraph = joinedGraphFromCaran;
-            _parameters.verticesTriangulationOfGraph = joinedGraphFromCaran.Vertices.ToList();
+            //var joinedGraphFromCaran = new Graph();
+            //graphFromCaran.ToList().ForEach(x => JoinGraphs(joinedGraphFromCaran, x));
+
+            _parameters.TriangulationOfGraph = graphFromCaran;
+            _parameters.verticesTriangulationOfGraph = graphFromCaran.Vertices.ToList();
 
         }
 
@@ -108,6 +115,79 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         static void JoinGraphs(Graph graph1, Graph graph2)
         {
             graph1.AddVerticesAndEdgeRange(graph2.Edges);
+        }
+
+       public static Dictionary<Vertex, int> ReverseVerticesGroups(Dictionary<int, List<Vertex>> verticesGroups)
+        {
+            var groupsVertices = new Dictionary<Vertex, int>();
+            foreach (var item in verticesGroups)
+            {
+                foreach (var vertex in item.Value)
+                {
+                    groupsVertices.Add(vertex, item.Key);
+                }
+            }
+            return groupsVertices;
+        }
+
+        public static Graph GenerateGraphFromCaranWithCuts(Graph baseGraph, double[][] caranArray, int graphId = 0)
+        {
+            var graph = baseGraph.Clone();
+            var vertices = graph.Vertices.ToList();
+            var verticesGroups = vertices.GroupBy(x => caranArray[x.Index][graphId])
+                .ToDictionary(g => Convert.ToInt32(g.Key), g => g.ToList());
+            var groupsVertices = ReverseVerticesGroups(verticesGroups);
+
+
+            foreach (var edge in graph.Edges)
+            {
+               // Different groups - cut
+                if (groupsVertices[edge.Source] != groupsVertices[edge.Target])
+                {
+                    edge.EdgeColor = new SolidColorBrush(Colors.Black);
+                }
+
+                // Same group - color
+                if (groupsVertices[edge.Source] == groupsVertices[edge.Target])
+                {
+                    var edgeGroup = groupsVertices[edge.Source];
+                    edge.EdgeColor = new SolidColorBrush(niceColors[edgeGroup-1]);
+                }
+            }
+
+            return graph;
+
+            //List<double> groupArray = new List<double>();
+            //var output = new List<Graph>(){
+            //    null, //Vertices belonging to non-existing group 0
+            //    new Graph(),
+            //    new Graph(),
+            //    new Graph()
+            //};
+
+
+            //foreach (var popArray in caranArray)
+            //{
+            //    groupArray.Add(popArray[graphId]);
+            //}
+
+            //for (int i = 0; i < groupArray.Count; i++)
+            //{
+            //    switch (Convert.ToInt32(groupArray[i]))
+            //    {
+            //        case 0:
+            //            break;
+            //        case 1:
+            //        case 2:
+            //        case 3:
+            //            output[Convert.ToInt32(groupArray[i])].AddVertex(new Vertex((i + 1).ToString(), i));
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
+
+            //return output.Where(x => x != null).ToList();
         }
 
         public static List<Graph> GenerateGraphFromCaran(double[][] caranArray, int graphId = 0)
