@@ -63,6 +63,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         private void StartGeneticAlgorithm(object sender, RoutedEventArgs e)
         {
             Start.IsEnabled = false;
+            ProgressBar.Maximum = _parameters.IterationsLimit;
 
             //Uruchamiamy background workera, żeby podczas przetwarzania nie mieć
             //zablokowanego frontendu, który będzie odświeżany co iterację

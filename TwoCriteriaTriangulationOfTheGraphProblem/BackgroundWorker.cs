@@ -31,6 +31,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         private void worker_Report()
         {
             worker.ReportProgress(0);
+            _parameters.IterationNumber++;
             Thread.Sleep(_parameters.SleepTime * 1000);
         }
 
@@ -68,17 +69,16 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             _parameters.MainWindow.OverallFluctuationChart.EditSeriesCollection(_parameters.FitnessArray.Min(), _parameters.IterationNumber);
 
-
-
+            _parameters.MainWindow.ProgressBar.Value = _parameters.IterationNumber;
 
             matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
         }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            //Przebieg algorytmu genetycznego
+           //Przebieg algorytmu genetycznego
 
-            geneticAlgorithm = new GeneticAlgorithmMethods();
+           geneticAlgorithm = new GeneticAlgorithmMethods();
             geneticAlgorithm.GeneticAlgorithm(_parameters);
 
             for (int i = 0; i < _parameters.IterationsLimit; i++)
