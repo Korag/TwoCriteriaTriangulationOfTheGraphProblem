@@ -43,9 +43,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             graphGenerator.GenerateTriangulationOfGraph();
 
             //Refresh pareto front
+            var cutsSum = EdgeMethod.GetCutsWeightsSum(_parameters.GeneratedBasicGraph, _parameters.Population);
             var paretoArray = _parameters.FitnessArray.
-                Zip(geneticAlgorithm.EdgeCounts(), (FitnessAll, EdgeCounts) => (FitnessAll, EdgeCounts)).
-                Select(x => new double[] { x.FitnessAll, x.EdgeCounts }).ToList();
+                Zip(cutsSum, (FitnessAll, second) => (FitnessAll, second)).
+                Select(x => new double[] { x.FitnessAll, x.second }).ToList();
             _parameters.RewriteThePoints(paretoArray);
             _parameters.MainWindow.ParetoChart.EditSeriesCollection(_parameters.ListOfPoints);
 

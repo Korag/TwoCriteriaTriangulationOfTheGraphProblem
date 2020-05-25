@@ -1,5 +1,6 @@
 ﻿using LiveCharts;
 using LiveCharts.Defaults;
+using LiveCharts.Wpf.Charts.Base;
 using System;
 using System.ComponentModel;
 using System.Windows.Controls;
@@ -53,6 +54,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
 
       
             DataContext = this;
+
+            
 
         }
 

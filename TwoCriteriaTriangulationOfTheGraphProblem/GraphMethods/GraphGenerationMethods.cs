@@ -49,6 +49,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
             _parameters.UndirectedBasicGraph = new UndirectedBidirectionalGraph<Vertex, Edge>(_parameters.GeneratedBasicGraph);//coś jak canvas
 
+            EdgeMethod.AddWeightsToGraph(_parameters.GeneratedBasicGraph, _parameters.weightsMatrix);
+
             matrixMethod.RefreshMatrixUi(_parameters.GeneratedBasicGraph);
         }
 
@@ -131,13 +133,21 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             return groupsVertices;
         }
 
-        public static Graph GenerateGraphFromCaranWithCuts(Graph baseGraph, double[][] caranArray, int graphId = 0)
+        public static Dictionary<Vertex, int> GetGroupsVertices(Graph graph, double[][] caranArray, int graphId = 0)
         {
-            var graph = baseGraph.Clone();
             var vertices = graph.Vertices.ToList();
             var verticesGroups = vertices.GroupBy(x => caranArray[x.Index][graphId])
                 .ToDictionary(g => Convert.ToInt32(g.Key), g => g.ToList());
             var groupsVertices = ReverseVerticesGroups(verticesGroups);
+
+            return groupsVertices;
+        }
+
+
+        public static Graph GenerateGraphFromCaranWithCuts(Graph baseGraph, double[][] caranArray, int graphId = 0)
+        {
+            var graph = baseGraph.Clone();
+            var groupsVertices = GetGroupsVertices(graph, caranArray, graphId);
 
             groupsVertices.ToList().ForEach(x => Console.WriteLine($"Index: {x.Key.Index + 1}, Group: {x.Value}"));
 

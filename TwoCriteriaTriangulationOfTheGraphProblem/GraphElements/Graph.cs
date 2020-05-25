@@ -26,7 +26,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphElements
             {
                 var edgeSource = result.Vertices.Where(x => x.Index == edge.Source.Index).FirstOrDefault();
                 var edgeTarget = result.Vertices.Where(x => x.Index == edge.Target.Index).FirstOrDefault();
-                var newEdge = new Edge(edge.ID, edgeSource, edgeTarget);
+                var newEdge = new Edge(edge.ID, edgeSource, edgeTarget, edge.Weight);
                 result.AddEdge(newEdge);
             }
 
