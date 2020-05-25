@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
 using System.Windows.Media;
+using Troschuetz.Random.Distributions.Continuous;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
@@ -117,7 +118,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             graph1.AddVerticesAndEdgeRange(graph2.Edges);
         }
 
-       public static Dictionary<Vertex, int> ReverseVerticesGroups(Dictionary<int, List<Vertex>> verticesGroups)
+        public static Dictionary<Vertex, int> ReverseVerticesGroups(Dictionary<int, List<Vertex>> verticesGroups)
         {
             var groupsVertices = new Dictionary<Vertex, int>();
             foreach (var item in verticesGroups)
@@ -138,11 +139,14 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 .ToDictionary(g => Convert.ToInt32(g.Key), g => g.ToList());
             var groupsVertices = ReverseVerticesGroups(verticesGroups);
 
-            groupsVertices.ToList().ForEach(x => Console.WriteLine($"Index: {x.Key.Index+1}, Group: {x.Value}"));
+            groupsVertices.ToList().ForEach(x => Console.WriteLine($"Index: {x.Key.Index + 1}, Group: {x.Value}"));
 
             foreach (var edge in graph.Edges)
             {
-               // Different groups - cut
+                // If group is 0 - skip
+                if (groupsVertices[edge.Source] == 0 || groupsVertices[edge.Target] == 0) continue;
+
+                // Different groups - cut
                 if (groupsVertices[edge.Source] != groupsVertices[edge.Target])
                 {
                     var color = new SolidColorBrush(Colors.Black);
@@ -154,43 +158,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 if (groupsVertices[edge.Source] == groupsVertices[edge.Target])
                 {
                     var edgeGroup = groupsVertices[edge.Source];
-                    edge.EdgeColor = new SolidColorBrush(niceColors[edgeGroup-1]);
+                    edge.EdgeColor = new SolidColorBrush(niceColors[edgeGroup - 1]);
                 }
             }
 
             return graph;
-
-            //List<double> groupArray = new List<double>();
-            //var output = new List<Graph>(){
-            //    null, //Vertices belonging to non-existing group 0
-            //    new Graph(),
-            //    new Graph(),
-            //    new Graph()
-            //};
-
-
-            //foreach (var popArray in caranArray)
-            //{
-            //    groupArray.Add(popArray[graphId]);
-            //}
-
-            //for (int i = 0; i < groupArray.Count; i++)
-            //{
-            //    switch (Convert.ToInt32(groupArray[i]))
-            //    {
-            //        case 0:
-            //            break;
-            //        case 1:
-            //        case 2:
-            //        case 3:
-            //            output[Convert.ToInt32(groupArray[i])].AddVertex(new Vertex((i + 1).ToString(), i));
-            //            break;
-            //        default:
-            //            break;
-            //    }
-            //}
-
-            //return output.Where(x => x != null).ToList();
         }
 
         public static List<Graph> GenerateGraphFromCaran(double[][] caranArray, int graphId = 0)
