@@ -138,13 +138,16 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 .ToDictionary(g => Convert.ToInt32(g.Key), g => g.ToList());
             var groupsVertices = ReverseVerticesGroups(verticesGroups);
 
+            groupsVertices.ToList().ForEach(x => Console.WriteLine($"Index: {x.Key.Index+1}, Group: {x.Value}"));
 
             foreach (var edge in graph.Edges)
             {
                // Different groups - cut
                 if (groupsVertices[edge.Source] != groupsVertices[edge.Target])
                 {
-                    edge.EdgeColor = new SolidColorBrush(Colors.Black);
+                    var color = new SolidColorBrush(Colors.Black);
+                    color.Opacity = 0.5;
+                    edge.EdgeColor = color;
                 }
 
                 // Same group - color
