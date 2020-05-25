@@ -59,7 +59,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             {
                 var groupsVertices = GraphGenerationMethods
                     .GetGroupsVertices(basicGraph, caranArray, i)
-                    .Where(x => x.Value != 0)
+                    //.Where(x => x.Value != 0)
                     .ToDictionary(x => x.Key, x => x.Value);
                 var cuts = basicGraph.Edges.Where(x => groupsVertices[x.Target] != groupsVertices[x.Source]);
                 result.Add(cuts.Select(x => x.Weight).Sum());

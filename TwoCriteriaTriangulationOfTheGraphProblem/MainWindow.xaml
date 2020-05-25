@@ -149,7 +149,6 @@
                 </Grid.Background>
                 <Label Content="Progress" HorizontalAlignment="Left" Style="{DynamicResource Label}" Margin="0,-24,0,137"/>
                 <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" Height="51" Margin="10,52,0,0" VerticalAlignment="Top" Width="895" />
-                <TextBlock Text="{Binding ElementName=pbStatus, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </Grid>
 
             <!--Wykres kształtowania wartości funkcji celu (sumy wag oraz liczby krawędzi) sumarycznie na przestrzeni iteracji-->

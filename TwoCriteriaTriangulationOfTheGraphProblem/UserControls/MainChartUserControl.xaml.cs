@@ -80,6 +80,15 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
 
         }
 
+        public void EditSeriesCollection(double valA, double valB, double valC, double valD, int iteration)
+        {
+            SeriesCollection[0].Values.Add(valA);
+            SeriesCollection[1].Values.Add(valB);
+            SeriesCollection[2].Values.Add(valC);
+            SeriesCollection[3].Values.Add(valD);
+            Labels = GetStringFromIterations(iteration + 1);
+        }
+
         public void EditSeriesCollection(double newValue, int iteration)
         {
             SeriesCollection[0].Values.Add(newValue);

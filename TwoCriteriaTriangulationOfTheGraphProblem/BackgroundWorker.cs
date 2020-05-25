@@ -67,7 +67,14 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             VertexMethod.SetVertexNeighbors(_parameters.incidenceMatrix, _parameters.verticesTriangulationOfGraph);
 
 
-            _parameters.MainWindow.OverallFluctuationChart.EditSeriesCollection(_parameters.FitnessArray.Min(), _parameters.IterationNumber);
+            _parameters.MainWindow.OverallFluctuationChart.EditSeriesCollection(
+                _parameters.FitnessArray.Min(),
+                _parameters.FitnessArray.Max(),
+                cutsSum.Min(),
+                cutsSum.Max(),
+                _parameters.IterationNumber);
+
+            _parameters.CountedExtremum = _parameters.FitnessArray.Min().ToString();
 
             _parameters.MainWindow.ProgressBar.Value = _parameters.IterationNumber;
 
