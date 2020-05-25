@@ -27,7 +27,7 @@
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
         </lvc:CartesianChart>-->
-        <lvc:CartesianChart   Margin="0 0 0 0" >
+        <lvc:CartesianChart   Margin="0 0 0 0" DisableAnimations="True">
             <lvc:CartesianChart.Series>
 
                 <lvc:ScatterSeries Title="Value of Current Population" Values="{Binding ValuesA , FallbackValue=null}" />
