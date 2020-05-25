@@ -6,28 +6,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Troschuetz.Random;
+using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
+using TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem
 {
     public class GeneticAlgorithmMethods
     {
-        
-        double BestFitnessScore= double.PositiveInfinity;
-        double PopulationAverage=0;
+
+        double BestFitnessScore = double.PositiveInfinity;
+        double PopulationAverage = 0;
         TRandom MutationProc = new TRandom();
         TRandom CrossoverProc = new TRandom();
         Parameters parameters;
-        
+
         public void GeneticAlgorithm(Parameters parameters)//double[][] WeightMatrix, double[][] GraphMatrix, int Iterations)
         {
             this.parameters = parameters;
 
             int vertexAmount = parameters.NumberOfVertices;//GraphMatrix.GetLength(0);
-            
+
             double[] BestGroups = new double[parameters.Popsize];
             double[][] Population = new double[vertexAmount][];
             double[] PopulationFitness = new double[parameters.Popsize];
-            double[] FitnessGroup1= new double[parameters.Popsize];
+            double[] FitnessGroup1 = new double[parameters.Popsize];
             double[] FitnessGroup2 = new double[parameters.Popsize];
             double[] FitnessGroup3 = new double[parameters.Popsize];
 
@@ -41,26 +43,26 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 Population[i] = new double[parameters.Popsize];
             }
             var InitialGroup = CreateInitialGroup(vertexAmount);
-            BestFitnessScore=CalculateFitness(InitialGroup,parameters)[0];
-            var InitialPopulation=CreateInitialPopulation(parameters.Popsize,parameters);
-           
+            BestFitnessScore = CalculateFitness(InitialGroup, parameters)[0];
+            var InitialPopulation = CreateInitialPopulation(parameters.Popsize, parameters);
+
 
             parameters.Population = InitialPopulation;
-           
 
 
-            
+
+
         }
 
         public void OneMoreTime()//we're gonna celebrate
         {
-                //Oh yeah all right 
-                CompetetiveSelection(parameters);
-                var test = parameters.Population;
+            //Oh yeah all right 
+            CompetetiveSelection(parameters);
+            var test = parameters.Population;
 
-                //don't stop the dancing
-                CreateNewPopulation(parameters);
-           
+            //don't stop the dancing
+            CreateNewPopulation(parameters);
+
         }
 
 
@@ -102,7 +104,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             int NewGroupIndex = 0;
             double[] Group1 = new double[parameters.NumberOfVertices];
             double[] Group2 = new double[parameters.NumberOfVertices];
-            for (int i = 0; i < parameters.Popsize-1;i+=2)
+            for (int i = 0; i < parameters.Popsize - 1; i += 2)
             {
                 for (int k = 0; k < parameters.Popsize; k++)
                 {
@@ -111,9 +113,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                         Group1[w] = parameters.Population[w][i];
                         Group2[w] = parameters.Population[w][i + 1];
                     }
-                    double[] FitnenssFirstGroup = CalculateFitness(Group1,parameters);
-                    double[] FitnessSecondGroup = CalculateFitness(Group2,parameters);
-                    
+                    double[] FitnenssFirstGroup = CalculateFitness(Group1, parameters);
+                    double[] FitnessSecondGroup = CalculateFitness(Group2, parameters);
+
                     if (FitnenssFirstGroup[0] < FitnessSecondGroup[0])
                     {
                         for (int p = 0; p < parameters.NumberOfVertices; p++)
@@ -138,7 +140,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                         }
                     }
                     var test = parameters.Population;
-                    
+
                 }
                 NewGroupIndex++;
             }
@@ -146,14 +148,14 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
 
 
-        public double GetGroupFitnessValue(Parameters parameters,List<double> Group)
+        public double GetGroupFitnessValue(Parameters parameters, List<double> Group)
         {
             double FitnessValue = 0;
             for (int i = 0; i < parameters.incidenceMatrix.GetLength(0); i++)
             {
-                if (Group.Contains(i)) 
-                { 
-                for (int j = 0; j < parameters.incidenceMatrix.GetLength(0); j++)
+                if (Group.Contains(i))
+                {
+                    for (int j = 0; j < parameters.incidenceMatrix.GetLength(0); j++)
                     {
                         if (Group.Contains(j))
                         {
@@ -165,7 +167,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             return FitnessValue;
         }
 
-        public double[] CalculateFitness(double[] Group,Parameters parameters) //XX
+        public double[] CalculateFitness(double[] Group, Parameters parameters) //XX
         {
             List<double> Group1 = new List<double>();
             List<double> Group2 = new List<double>();
@@ -193,7 +195,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
 
             double CurrentGroupsFitnessScore = Group1FitnessValue + Group2FitnessValue + Group3FitnessValue;
-            if(PopulationAverage==0)
+            if (PopulationAverage == 0)
             {
                 PopulationAverage = CurrentGroupsFitnessScore;
             }
@@ -220,7 +222,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             }
             return InitialGroup;
         }
-        public double[][] CreateInitialPopulation(int GenerationSize,Parameters parameters)
+        public double[][] CreateInitialPopulation(int GenerationSize, Parameters parameters)
         {
             TRandom rnd = new TRandom();
             double[][] NewPopulation = new double[parameters.NumberOfVertices][];
@@ -237,7 +239,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 {
                     NewPopulation[j][k] = NewGroup[j];
                 }
-                var FitnessScore = CalculateFitness(NewGroup,parameters);
+                var FitnessScore = CalculateFitness(NewGroup, parameters);
                 parameters.FitnessArray[k] = FitnessScore[0];
                 parameters.FitnessGroup1[k] = FitnessScore[1];
                 parameters.FitnessGroup2[k] = FitnessScore[2];
@@ -420,7 +422,47 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             return GroupIsValid;
         }
+
+
+        public double[] SumOfWeights()
+        {
+            //var result = CalculateFitness(CreateInitialGroup(parameters.NumberOfVertices), parameters);
+            return parameters.FitnessArray;
+        }
+
+        public int[] EdgeCounts()
+        {
+            var population = parameters.Population;
+            var result = new int[population[0].Length];
+
+            for (int i = 0; i < population[0].Length; i++)
+            {
+                //var edgeCount = 0;
+                var groupGraphs = GraphGenerationMethods.GenerateGraphFromCaran(population, i).
+                    Where(x => x != null).
+                    Where(x => x.VertexCount !=0);
+                groupGraphs.ToList().ForEach(x => EdgeMethod.ConnectAllVertices(x));
+                var edgeCount = groupGraphs.Select(x => x.EdgeCount).Sum();
+                //for (int j = 0; j < population.Length; j++)
+                //{
+
+
+                //    //if (population[j][i] != 0)
+                //    //{
+                //    //    edgeCount++;
+                //    //}
+                //}
+                result[i] = edgeCount;
+            }
+
+            return result;
+        }
+
+
     }
+
+
+
 }
 
 

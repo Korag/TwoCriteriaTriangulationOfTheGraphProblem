@@ -70,12 +70,12 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
             //matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
 
-            var graphFromCaran = GenerateGraphFromCaran(_parameters.Population);
-            graphFromCaran.Where(x => x != null).ToList().ForEach(x => EdgeMethod.ConnectAllVertices(x));
+            var graphFromCaran = GenerateGraphFromCaran(_parameters.Population).Where(x => x != null).ToList();
+            graphFromCaran.Where(x => x.VertexCount != 0).ToList().ForEach(x => EdgeMethod.ConnectAllVertices(x));
             ColorGraphsEdges(graphFromCaran);
 
             var joinedGraphFromCaran = new Graph();
-            graphFromCaran.Where(x => x != null).ToList().ForEach(x => JoinGraphs(joinedGraphFromCaran, x));
+            graphFromCaran.ToList().ForEach(x => JoinGraphs(joinedGraphFromCaran, x));
 
             _parameters.TriangulationOfGraph = joinedGraphFromCaran;
             _parameters.verticesTriangulationOfGraph = joinedGraphFromCaran.Vertices.ToList();
@@ -110,7 +110,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             graph1.AddVerticesAndEdgeRange(graph2.Edges);
         }
 
-        static List<Graph> GenerateGraphFromCaran(double[][] caranArray)
+        public static List<Graph> GenerateGraphFromCaran(double[][] caranArray, int graphId = 0)
         {
             List<double> groupArray = new List<double>();
             var output = new List<Graph>(){
@@ -122,7 +122,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
             foreach (var popArray in caranArray)
             {
-                groupArray.Add(popArray[0]);
+                groupArray.Add(popArray[graphId]);
             }
 
             for (int i = 0; i < groupArray.Count; i++)

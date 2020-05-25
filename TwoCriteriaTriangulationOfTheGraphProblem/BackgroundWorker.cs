@@ -13,6 +13,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
     {
         public readonly System.ComponentModel.BackgroundWorker worker;//to służy do wykonywania naprawy grafu w odzielnym wątku
         private Parameters _parameters { get; set; }
+        private GeneticAlgorithmMethods geneticAlgorithm;
 
         public BackgroundWorker(Parameters parameters)
         {
@@ -43,8 +44,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             //Refresh pareto front
             var paretoArray = _parameters.FitnessArray.
-                Zip(_parameters.FitnessGroup1, (FitnessAll, FitnessGroup) => (FitnessAll, FitnessGroup)).
-                Select(x => new double[] { x.FitnessAll, x.FitnessGroup }).ToList();
+                Zip(geneticAlgorithm.EdgeCounts(), (FitnessAll, EdgeCounts) => (FitnessAll, EdgeCounts)).
+                Select(x => new double[] { x.FitnessAll, x.EdgeCounts }).ToList();
             _parameters.RewriteThePoints(paretoArray);
             _parameters.MainWindow.ParetoChart.EditSeriesCollection(_parameters.ListOfPoints);
 
@@ -76,12 +77,12 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         {
             //Przebieg algorytmu genetycznego
 
-            var test = new GeneticAlgorithmMethods();
-            test.GeneticAlgorithm(_parameters);
+            geneticAlgorithm = new GeneticAlgorithmMethods();
+            geneticAlgorithm.GeneticAlgorithm(_parameters);
 
             for (int i = 0; i < _parameters.IterationsLimit; i++)
             {
-                test.OneMoreTime();
+                geneticAlgorithm.OneMoreTime();
 
                 //Kiedy potrzebujemy odświeżyć UI
                 this.worker_Report();
