@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TwoCriteriaTriangulationOfTheGraphProblem.AdditionalMethods;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods;
 using TwoCriteriaTriangulationOfTheGraphProblem.UserControls;
@@ -70,8 +71,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //_bw.worker.RunWorkerAsync();
 
 
-            var test = new GeneticAlgorithmMethods();
-            test.GeneticAlgorithm(_parameters);
+            var geneticAlgorithm = new GeneticAlgorithmMethods();
+            geneticAlgorithm.GeneticAlgorithm(_parameters);
 
             //_parameters.verticesTriangulationOfGraph =
             GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
@@ -94,7 +95,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
         private void SaveResults(object sender, RoutedEventArgs e)
         {
-            //Obsługa zapisu do pliku
+            var FileSaver = new FileSaver();
+            FileSaver.SaveToFileAsync(_parameters);
         }
 
         private void DefaultValue()
