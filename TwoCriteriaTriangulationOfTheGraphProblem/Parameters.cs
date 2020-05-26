@@ -13,6 +13,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
     {
         //public readonly BackgroundWorker worker = new BackgroundWorker();//to służy do wykonywania naprawy grafu w odzielnym wątku
 
+        public MainWindow MainWindow;
+
         #region UIControls
 
         private int _numberOfVertices;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
@@ -28,6 +29,43 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             }
 
             return graph;
+        }
+
+        public static void AddWeightsToGraph(Graph graph, double[][] weightsMatrix)
+        {
+            //for (int i = 0; i < weightsMatrix.Length; i++)
+            //{
+            //    for (int j = 0; j < weightsMatrix[i].Length; j++)
+            //    {
+            //        var edgeWeight = graph.Edges
+            //            .Where(x => x.Source.Index == i && x.Target.Index == j)
+            //            .FirstOrDefault()
+            //            .Weight;
+            //        edgeWeight = weightsMatrix[i][j];
+            //    }
+            //}
+
+            foreach (var edge in graph.Edges)
+            {
+                edge.Weight = weightsMatrix[edge.Source.Index][edge.Target.Index];
+            }
+        }
+
+
+        public static List<double> GetCutsWeightsSum(Graph basicGraph, double[][] caranArray)
+        {
+            var result = new List<double>();
+            for (int i = 0; i < caranArray[0].Length; i++)
+            {
+                var groupsVertices = GraphGenerationMethods
+                    .GetGroupsVertices(basicGraph, caranArray, i)
+                    //.Where(x => x.Value != 0)
+                    .ToDictionary(x => x.Key, x => x.Value);
+                var cuts = basicGraph.Edges.Where(x => groupsVertices[x.Target] != groupsVertices[x.Source]);
+                result.Add(cuts.Select(x => x.Weight).Sum());
+            }
+
+            return result;
         }
 
         public static void RemoveTheEdge(Graph graph, int source, int target)

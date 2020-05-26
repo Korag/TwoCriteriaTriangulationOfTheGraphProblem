@@ -21,11 +21,20 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphElements
         public bool IsVisited { get; set; } = false;//do ścieżki/cyklu Eulera
         public SolidColorBrush EdgeColor { get; set; } = Brushes.LimeGreen;//do ścieżki/cyklu Eulera
 
+        public double Weight;
+
 
         public Edge(string id, Vertex source, Vertex target)
             : base(source, target)
         {
             ID = id;
+        }
+
+        public Edge(string id, Vertex source, Vertex target, double weight)
+            : base(source, target)
+        {
+            ID = id;
+            Weight = weight;
         }
 
         #region INotifyPropertyChanged Implementation

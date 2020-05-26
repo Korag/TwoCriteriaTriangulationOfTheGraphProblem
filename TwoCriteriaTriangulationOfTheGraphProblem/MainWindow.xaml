@@ -139,7 +139,7 @@
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
 
-            <!--Wykres kształtowania wartości funkcji celu (sumy wag oraz liczby krawędzi) dla każdej z części trójpodziału grafu na przestrzeni iteracji-->
+            <!--Pasek kształtowania wartości funkcji celu (algorytm genetycznt oraz postęp prac) dla każdej z części trójpodziału grafu na przestrzeni iteracji-->
             <Grid Grid.Column="3" HorizontalAlignment="Left" Height="142" Grid.Row="4" VerticalAlignment="Top" Width="915" Grid.ColumnSpan="3" Margin="0,28,0,0">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -147,8 +147,8 @@
                         <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Values of multicriteria problem for each of group" HorizontalAlignment="Left" Style="{DynamicResource Label}" Margin="0,-24,0,137"/>
-                <UserControls:MainChartUserControl  x:Name="TriangulationFluctuationChart" HorizontalAlignment="Left" Height="142" VerticalAlignment="Top" Width="915" RenderTransformOrigin="0.508,1.283" Margin="-2,0,0,0"/>
+                <Label Content="Progress" HorizontalAlignment="Left" Style="{DynamicResource Label}" Margin="0,-24,0,137"/>
+                <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" Height="51" Margin="10,52,0,0" VerticalAlignment="Top" Width="895" />
             </Grid>
 
             <!--Wykres kształtowania wartości funkcji celu (sumy wag oraz liczby krawędzi) sumarycznie na przestrzeni iteracji-->
@@ -362,6 +362,7 @@
                 <Label Content="Minimum:" Margin="179,-3,189,-4" Style="{DynamicResource LabelSideMenu}" Height="Auto" Padding="5,5,5,2"/>
                 <TextBox Margin="268,0,111,0" Style="{DynamicResource TextBox}" Text="{Binding Path=CountedExtremum}" Height="Auto" Width="Auto" Padding="0,0,0,2" IsReadOnly="True"/>
             </Grid>
+
 
 
         </Grid>
