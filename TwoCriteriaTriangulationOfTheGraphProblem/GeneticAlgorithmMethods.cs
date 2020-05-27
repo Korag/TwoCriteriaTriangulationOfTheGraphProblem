@@ -32,6 +32,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             double[] FitnessGroup1 = new double[parameters.Popsize];
             double[] FitnessGroup2 = new double[parameters.Popsize];
             double[] FitnessGroup3 = new double[parameters.Popsize];
+            double[][] PopulationToSave = new double[vertexAmount][];
+
 
             parameters.FitnessArray = PopulationFitness;
             parameters.FitnessGroup1 = FitnessGroup1;
@@ -44,6 +46,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             for (int i = 0; i < vertexAmount; i++)
             {
                 Population[i] = new double[parameters.Popsize];
+                PopulationToSave[i] = new double[parameters.Popsize];
             }
             var InitialGroup = CreateInitialGroup(vertexAmount);
 
@@ -52,6 +55,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             parameters.Population = InitialPopulation;
         }
+
 
         public void OneMoreTime()//we're gonna celebrate
         {
@@ -67,12 +71,22 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             var test2 = parameters.FitnessArray;
             var test3 = parameters.Population;
 
+            PopulationToSave = GetMatrix(parameters.Population, PopulationToSave);
+
             // Music's got me feeling the need
-            parameters.MatrixToSave.Add(parameters.Population);
-            parameters.FitnessesToSave.Add(parameters.FitnessArray);
+            parameters.MatrixToSave.Add(PopulationToSave);
+            parameters.FitnessesToSave.Add((double[])parameters.FitnessArray.Clone());
         }
 
-
+        public double[][] GetMatrix(double[][] MatrixToClone, double[][] MatrixToReturn)
+        {
+            MatrixToReturn = (double[][])MatrixToClone.Clone();
+            for (int j = 0; j < MatrixToClone.GetLength(0); j++)
+            {
+                MatrixToReturn[j] = (double[])MatrixToClone[j].Clone();
+            }
+            return MatrixToReturn;
+        }
         public void CreateNewPopulation(Parameters parameters)
         {
             int Winners = parameters.Popsize / 2;
@@ -104,6 +118,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 }
             }
         }
+
+
+
+
         public void CompetetiveSelection(Parameters parameters)
         {
             //Population[10][5000]
