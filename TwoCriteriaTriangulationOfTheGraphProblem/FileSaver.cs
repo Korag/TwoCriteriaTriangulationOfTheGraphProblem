@@ -56,7 +56,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             for (int i = 0; i < parameters.MatrixToSave.Count; i++)
             {
                 
-                txt.WriteLine("Iteracja "+parameters.IterationNumber);
+                txt.WriteLine("Iteracja "+(i+2));
                 var MatrixFromGeneticAlg = parameters.MatrixToSave[i];
                 SaveMatrixToFile(MatrixFromGeneticAlg, txt);
                 txt.WriteLine("Fitness Pokolenia:");
