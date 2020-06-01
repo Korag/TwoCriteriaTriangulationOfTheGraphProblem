@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem
 {
@@ -13,6 +14,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
         public void SaveToFileAsync(Parameters parameters)
         {
+
             string filePath = "C:\\Users\\Dominik\\Desktop\\lol\\File.txt";
             if (File.Exists("C:\\Users\\Dominik\\Desktop\\lol\\File.txt"))
             {
@@ -29,42 +31,39 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             txt.Write(WorkingGroup);
 
             txt.WriteLine();
-            txt.WriteLine();
-            txt.WriteLine();
             txt.WriteLine("Number of vertices in the graph: " + parameters.NumberOfVertices);
             txt.WriteLine("Number of iterations: " + parameters.IterationsLimit);
 
             txt.WriteLine();
             txt.WriteLine();
-            txt.WriteLine();
             txt.WriteLine("Incidence Matrix: ");
-            SaveMatrixToFile(parameters.incidenceMatrix, txt);
-            txt.WriteLine();
+            SaveIncidenceMatrixToFile(parameters.incidenceMatrix, txt);
             txt.WriteLine();
             txt.WriteLine();
             txt.WriteLine("Weights Matrix: ");
-            SaveMatrixWithDigits(parameters.weightsMatrix,txt);
+            SaveWeightMatrixToFile(parameters.weightsMatrix, txt);
             txt.WriteLine();
             txt.WriteLine();
             txt.WriteLine();
-            txt.WriteLine("Iteracja 1");
-            SaveMatrixToFile(parameters.Population,txt);
+            txt.WriteLine("Vertex belonging to groups for each iteration:");
+            txt.WriteLine();
+            txt.WriteLine();
+            txt.WriteLine("Start Population");
+            SaveMatrixToFile(parameters.Population, txt, parameters.Popsize);
+            txt.WriteLine("Generation Fitness");
             SaveFitness(parameters.FitnessArray, txt);
-            txt.WriteLine();
-            txt.WriteLine();
-            txt.WriteLine();
             for (int i = 0; i < parameters.MatrixToSave.Count; i++)
             {
-                
-                txt.WriteLine("Iteracja "+(i+2));
+
+                txt.WriteLine("Iteration " + (i + 1));
                 var MatrixFromGeneticAlg = parameters.MatrixToSave[i];
-                SaveMatrixToFile(MatrixFromGeneticAlg, txt);
-                txt.WriteLine("Fitness Pokolenia:");
+                SaveMatrixToFile(MatrixFromGeneticAlg, txt, parameters.Popsize);
+                txt.WriteLine("Generation Fitness:");
                 var FitnessFromGeneticAlg = parameters.FitnessesToSave[i];
                 SaveFitness(FitnessFromGeneticAlg, txt);
                 txt.WriteLine();
-                txt.WriteLine();
-                txt.WriteLine();
+                txt.WriteLine("Best Triangulation Groups");
+                GetBestUnit(MatrixFromGeneticAlg, FitnessFromGeneticAlg, txt);
             }
 
 
@@ -74,11 +73,105 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
         }
 
-        public void SaveMatrixToFile(double[][] Matrix,StreamWriter txt)
+ 
+
+
+        public void GetBestUnit(double[][] GenAlgMatrix, double[] Fitness, StreamWriter txt)
         {
+            List<List<int>> Groups = new List<List<int>>();
+            List<int> Group1 = new List<int>();
+            List<int> Group2 = new List<int>();
+            List<int> Group3 = new List<int>();
+            double min = double.PositiveInfinity;
+            int GroupID = 0;
+            for (int i = 0; i < Fitness.Length; i++)
+            {
+                if (Fitness[i] < min)
+                {
+                    min = Fitness[i];
+                    GroupID = i;
+                }
+            }
+
+            for (int i = 0; i < GenAlgMatrix.GetLength(0); i++)
+            {
+                if (GenAlgMatrix[i][GroupID] == 1)
+                {
+                    Group1.Add(i);
+                }
+                if (GenAlgMatrix[i][GroupID] == 2)
+                {
+                    Group2.Add(i);
+                }
+                if (GenAlgMatrix[i][GroupID] == 3)
+                {
+                    Group3.Add(i);
+                }
+            }
+            Groups.Add(Group1);
+            Groups.Add(Group2);
+            Groups.Add(Group3);
+
+            for (int i = 0; i < Groups.Count; i++)
+            {
+                txt.Write("Group " + i+ " Vertices: ");
+                var CurGroup = Groups[i];
+                for (int j = 0; j < Groups[i].Count; j++)
+                {
+
+                    txt.Write(CurGroup[j] + " ");
+                }
+                txt.WriteLine();
+            }
+
+            txt.WriteLine("Fitness of best unit: " + min);
+            txt.WriteLine();
+            txt.WriteLine();
+
+
+        }
+        public void SaveWeightMatrixToFile(double[][] Matrix, StreamWriter txt)
+        {
+
+
             for (int i = 0; i < Matrix.GetLength(0); i++)
             {
+                txt.Write("Vertex \t " + i + ":   ");
                 for (int j = 0; j < Matrix.GetLength(0); j++)
+                {
+
+
+                    txt.Write(Matrix[i][j].ToString("00.00") + " ");
+                }
+            txt.WriteLine();
+        }
+        }
+        public void SaveIncidenceMatrixToFile(double[][] Matrix, StreamWriter txt)
+        {
+
+
+            for (int i = 0; i < Matrix.GetLength(0); i++)
+            {
+                txt.Write("Vertex \t " + i + ":   ");
+                for (int j = 0; j < Matrix.GetLength(0); j++)
+                {
+
+
+                    txt.Write(Matrix[i][j]+ " ");
+                }
+                txt.WriteLine();
+            }
+        }
+
+
+        public void SaveMatrixToFile(double[][] Matrix,StreamWriter txt,int Population)
+        {
+          
+            
+            for (int i = 0; i < Matrix.GetLength(0); i++)
+            {
+                txt.Write("Vertex \t " + i+":   ");
+                for (int j = 0; j < Population ; j++)
                 {
                     
                     
@@ -91,6 +184,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         {
             for (int i = 0; i < Matrix.GetLength(0); i++)
             {
+                txt.Write("Vertex \t " + i + ":   ");
                 for (int j = 0; j < Matrix.GetLength(0); j++)
                 {
      
