@@ -15,7 +15,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
     {
 
         double BestFitnessScore = double.PositiveInfinity;
-        double PopulationAverage = 0;
+        double PopulationAverage = 0; 
+        double[][] PopulationToSave;
         TRandom MutationProc = new TRandom();
         TRandom CrossoverProc = new TRandom();
         Parameters parameters;
@@ -32,7 +33,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             double[] FitnessGroup1 = new double[parameters.Popsize];
             double[] FitnessGroup2 = new double[parameters.Popsize];
             double[] FitnessGroup3 = new double[parameters.Popsize];
-            double[][] PopulationToSave = new double[vertexAmount][];
+            PopulationToSave = new double[vertexAmount][];
 
 
             parameters.FitnessArray = PopulationFitness;
@@ -67,7 +68,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             CreateNewPopulation(parameters);
 
             // Tonight, just feeling
-            parameters.IterationNumber++;
             var test2 = parameters.FitnessArray;
             var test3 = parameters.Population;
 
@@ -76,6 +76,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             // Music's got me feeling the need
             parameters.MatrixToSave.Add(PopulationToSave);
             parameters.FitnessesToSave.Add((double[])parameters.FitnessArray.Clone());
+
+            parameters.IterationNumber++;
         }
 
         public double[][] GetMatrix(double[][] MatrixToClone, double[][] MatrixToReturn)
