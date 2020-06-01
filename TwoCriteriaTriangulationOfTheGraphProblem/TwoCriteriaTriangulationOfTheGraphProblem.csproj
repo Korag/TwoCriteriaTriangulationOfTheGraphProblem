@@ -103,6 +103,7 @@
     </ApplicationDefinition>
     <Compile Include="BackgroundWorker.cs" />
     <Compile Include="ConnectionHelper.cs" />
+    <Compile Include="FileSaver.cs" />
     <Compile Include="GeneticAlgorithmMethods.cs" />
     <Compile Include="GraphMethods\GraphGenerationMethods.cs" />
     <Compile Include="GraphMethods\GraphLayout.cs" />

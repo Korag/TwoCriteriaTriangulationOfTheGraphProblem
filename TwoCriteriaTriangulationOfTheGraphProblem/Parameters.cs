@@ -206,6 +206,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         public double[] FitnessGroup3;
         public double[] FitnessArray;
 
+        public List<double[][]> MatrixToSave;
+        public List<double[]> FitnessesToSave;
 
         //minimum dla liczby krawędzi i dla sumy wag
         public double MinAmountOfEdges { get; set; }    
