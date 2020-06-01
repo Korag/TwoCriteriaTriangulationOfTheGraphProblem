@@ -23,7 +23,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
 
             string CurrentDate = "Date: " + DateTime.Now + "\r\n";
-            string School = "University of Bielsko-Biala \r\n";
+            string School = "University of Bielsko-Biala 50 years of tradition\r\n";
             string WorkingGroup = "Łukasz Czepielik, Dominik Pezda, Konrad Boroń \r\n\r\n";
             StreamWriter txt = new StreamWriter("C:\\Users\\Dominik\\Desktop\\lol\\File.txt"); //sciezka do poprawy!!!!!!
             txt.Write(CurrentDate);
@@ -49,18 +49,18 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             txt.WriteLine();
             txt.WriteLine();
             txt.WriteLine("Start Population");
-            SaveMatrixToFile(parameters.Population, txt, parameters.Popsize);
-            txt.WriteLine("Generation Fitness");
-            SaveFitness(parameters.FitnessArray, txt);
+            SaveMatrixToFile(parameters.Population, txt, parameters.Popsize,parameters.FitnessArray);
+            txt.WriteLine();
+            txt.WriteLine();
             for (int i = 0; i < parameters.MatrixToSave.Count; i++)
             {
 
                 txt.WriteLine("Iteration " + (i + 1));
                 var MatrixFromGeneticAlg = parameters.MatrixToSave[i];
-                SaveMatrixToFile(MatrixFromGeneticAlg, txt, parameters.Popsize);
-                txt.WriteLine("Generation Fitness:");
+                SaveMatrixToFile(MatrixFromGeneticAlg, txt, parameters.Popsize,parameters.FitnessesToSave[i]);
+                //txt.WriteLine("Generation Fitness:");
                 var FitnessFromGeneticAlg = parameters.FitnessesToSave[i];
-                SaveFitness(FitnessFromGeneticAlg, txt);
+                //SaveFitness(FitnessFromGeneticAlg, txt);
                 txt.WriteLine();
                 txt.WriteLine("Best Triangulation Groups");
                 GetBestUnit(MatrixFromGeneticAlg, FitnessFromGeneticAlg, txt);
@@ -73,8 +73,25 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
         }
 
- 
 
+        public void SaveMatrixToFile(double[][] Matrix, StreamWriter txt, int Population, double[] Fitness)
+        {
+
+
+            for (int i = 0; i < Population; i++)
+            {
+                int w = i + 1;
+                txt.Write("Triangular " + w + ": ");
+                for (int j = 0; j < Matrix.GetLength(0); j++)
+                {
+                    txt.Write(Matrix[j][i] + " ");
+                    
+                }
+                txt.Write("\t Triangular Fitness " + Fitness[i]);
+                txt.WriteLine();
+            }
+
+        }
 
         public void GetBestUnit(double[][] GenAlgMatrix, double[] Fitness, StreamWriter txt)
         {
@@ -164,22 +181,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         }
 
 
-        public void SaveMatrixToFile(double[][] Matrix,StreamWriter txt,int Population)
-        {
-          
-            
-            for (int i = 0; i < Matrix.GetLength(0); i++)
-            {
-                txt.Write("Vertex \t " + i+":   ");
-                for (int j = 0; j < Population ; j++)
-                {
-                    
-                    
-                    txt.Write(Matrix[i][j]+ " ");
-                }
-                txt.WriteLine();
-            }
-        }
+
+
+  
         public void SaveMatrixWithDigits(double[][] Matrix, StreamWriter txt)
         {
             for (int i = 0; i < Matrix.GetLength(0); i++)
@@ -205,3 +209,22 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         }
     }
 }
+
+
+//public void GetGroupsToDisplay(double[][] Matrix, StreamWriter txt, int Population)
+//{
+
+//    //for (int i = 0; i < Matrix.GetLength(0); i++)
+//    //{
+//    //    txt.Write("Vertex \t " + i+":   ");
+//    //    for (int j = 0; j < Population ; j++)
+//    //    {
+
+
+//    //        txt.Write(Matrix[i][j]+ " ");
+//    //    }
+//    //    txt.WriteLine();
+//    //}
+
+
+//}
