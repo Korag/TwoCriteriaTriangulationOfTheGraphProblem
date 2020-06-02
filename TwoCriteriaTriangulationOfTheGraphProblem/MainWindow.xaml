@@ -335,11 +335,11 @@
                 <Label Margin="199,7,195,15" Style="{DynamicResource Label}" Content="{Binding Path=IterationNumber}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="1" Foreground="White">
                     <Label.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="White" Offset="0.007"/>
-                            <GradientStop Color="#FF2B1087" Offset="0.477"/>
-                            <GradientStop Color="White" Offset="1"/>
-                            <GradientStop Color="#FFA18BEC" Offset="0.245"/>
-                            <GradientStop Color="#FFA18BEA" Offset="0.789"/>
+                            <GradientStop Color="#FFD8D8DA"/>
+                            <GradientStop Color="#FF4D4D4D" Offset="0.477"/>
+                            <GradientStop Color="#FFCFCFCF" Offset="1"/>
+                            <GradientStop Color="#FFABA9B2" Offset="0.245"/>
+                            <GradientStop Color="#FFABA9B2" Offset="0.789"/>
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>

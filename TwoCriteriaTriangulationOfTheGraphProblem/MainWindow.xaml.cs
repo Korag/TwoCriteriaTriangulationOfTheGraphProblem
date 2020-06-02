@@ -134,7 +134,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //Ustawiamy dane testowe do kontrolek, aby łatwo i szybko można było testować
             //bez konieczności wpisywania danych
 
-            _parameters.NumberOfVertices = 10;
+            _parameters.NumberOfVertices = 12;
             _parameters.ProbabilityOfEdgeGeneration = 0.50;
 
             _parameters.WeightsLowerLimit = 1;
@@ -146,7 +146,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             _parameters.Popsize = 100;
             _parameters.SleepTime = 1;
 
-            _parameters.IterationsLimit = 1;
+            _parameters.IterationsLimit = 20;
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
