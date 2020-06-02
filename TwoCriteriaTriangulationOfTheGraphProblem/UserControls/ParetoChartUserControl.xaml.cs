@@ -78,15 +78,20 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
             //Labels = CreateLabels(interval);
         }
 
+        public void Autoscale()
+        {
+            AxisX.MinValue = ValuesA.Select(x => x.X).Min();
+            AxisX.MaxValue = ValuesA.Select(x => x.X).Max();
+            AxisY.MinValue = ValuesA.Select(x => x.Y).Min();
+            AxisY.MaxValue = ValuesA.Select(x => x.Y).Max();
+        }
+
         
         public void EditSeriesCollection(ChartValues<ObservablePoint> NewCollection)
         {
             ValuesA = NewCollection;
 
-            AxisX.MinValue = ValuesA.Select(x => x.X).Min();
-            AxisX.MaxValue = ValuesA.Select(x => x.X).Max();
-            AxisY.MinValue = ValuesA.Select(x => x.Y).Min();
-            AxisY.MaxValue = ValuesA.Select(x => x.Y).Max();
+            Autoscale();
         }
 
         public void SetPointsOutsideTheDomain(ChartValues<ObservablePoint> NewCollection)
