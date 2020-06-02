@@ -39,18 +39,18 @@
             </lvc:CartesianChart.Series>
             <lvc:CartesianChart.AxisY>
                 <!--setting the axis unit improved the labels rounding rule-->
-                <lvc:Axis Unit="1" Foreground="Black" Name="AxisY">
-                    <lvc:Axis.Separator>
+                <lvc:Axis  Foreground="Black" Name="AxisY">
+                    <!--<lvc:Axis.Separator>
                         <lvc:Separator IsEnabled="False"  Step="2"></lvc:Separator>
-                    </lvc:Axis.Separator>
+                    </lvc:Axis.Separator>-->
                 </lvc:Axis>
             </lvc:CartesianChart.AxisY>
             <lvc:CartesianChart.AxisX>
                 <!--setting the axis unit improved the labels rounding rule-->
-                <lvc:Axis Unit="1" Foreground="Black" Name="AxisX" Labels="{Binding Labels}">
-                    <lvc:Axis.Separator>
+                <lvc:Axis  Foreground="Black" Name="AxisX" Labels="{Binding Labels}">
+                    <!--<lvc:Axis.Separator>
                         <lvc:Separator IsEnabled="False" ></lvc:Separator>
-                    </lvc:Axis.Separator>
+                    </lvc:Axis.Separator>-->
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
         </lvc:CartesianChart>
