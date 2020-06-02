@@ -14,7 +14,7 @@
         xmlns:denxorz="clr-namespace:Denxorz.ZoomControl;assembly=Denxorz.ZoomControl"
        
         Icon="Images\iconPNG.png"
-        Title="Two Criteria Triangulation Of The Graph Problem ULTRA 420! Blaze IT! MORONS" Width="1280" Height="720" MaxWidth="3840" MaxHeight="2160" MinWidth="640" MinHeight="360">
+        Title="Two Criteria Triangulation Of The Graph Problem" Width="1280" Height="720" MaxWidth="3840" MaxHeight="2160" MinWidth="640" MinHeight="360">
 
     <Window.Resources>
         <converter:EdgeColorConverter x:Key="EdgeColorConverter"/>
@@ -288,7 +288,7 @@
                 </Grid.Background>
 
                 <Label Content="© Wihajster 2020" Height="30" VerticalAlignment="Top" Foreground="#FFF2EDF7" FontWeight="Bold" FontFamily="Bernard MT Condensed" HorizontalAlignment="Right" Width="178" FontSize="20" Grid.Column="1" Padding="0,5,5,0" HorizontalContentAlignment="Right" UseLayoutRounding="True"/>
-                <Label Content="© Łukasz Czepielik, Konrad Boroń, Dominik Pezda, TEAM LEADER: Wojciech WojRog Rogowski" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="712" Foreground="White" FontFamily="Sitka Text" FontStyle="Italic" FontSize="16"/>
+                <Label Content="© Łukasz Czepielik, Konrad Boroń, Dominik Pezda" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="712" Foreground="White" FontFamily="Sitka Text" FontStyle="Italic" FontSize="16"/>
             </Grid>
 
             <!--Panel sterujący-->
