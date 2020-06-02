@@ -15,8 +15,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         public void SaveToFileAsync(Parameters parameters)
         {
 
-            string filePath = "C:\\Users\\Dominik\\Desktop\\lol\\File.txt";
-            if (File.Exists("C:\\Users\\Dominik\\Desktop\\lol\\File.txt"))
+            string filePath = ".\\File.txt";
+            if (File.Exists(".\\File.txt"))
             {
                 File.WriteAllText(filePath, " ");
             }
@@ -25,51 +25,60 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             string CurrentDate = "Date: " + DateTime.Now + "\r\n";
             string School = "University of Bielsko-Biala 50 years of tradition\r\n";
             string WorkingGroup = "Łukasz Czepielik, Dominik Pezda, Konrad Boroń \r\n\r\n";
-            StreamWriter txt = new StreamWriter("C:\\Users\\Dominik\\Desktop\\lol\\File.txt"); //sciezka do poprawy!!!!!!
+            StreamWriter txt = new StreamWriter(".\\File.txt"); //sciezka do poprawy!!!!!!
             txt.Write(CurrentDate);
             txt.Write(School);
             txt.Write(WorkingGroup);
-
-            txt.WriteLine();
-            txt.WriteLine("Number of vertices in the graph: " + parameters.NumberOfVertices);
-            txt.WriteLine("Number of iterations: " + parameters.IterationsLimit);
-
-            txt.WriteLine();
-            txt.WriteLine();
-            txt.WriteLine("Incidence Matrix: ");
-            SaveIncidenceMatrixToFile(parameters.incidenceMatrix, txt);
-            txt.WriteLine();
-            txt.WriteLine();
-            txt.WriteLine("Weights Matrix: ");
-            SaveWeightMatrixToFile(parameters.weightsMatrix, txt);
-            txt.WriteLine();
-            txt.WriteLine();
-            txt.WriteLine();
-            txt.WriteLine("Vertex belonging to groups for each iteration:");
-            txt.WriteLine();
-            txt.WriteLine();
-            txt.WriteLine("Start Population");
-            SaveMatrixToFile(parameters.Population, txt, parameters.Popsize,parameters.FitnessArray);
-            txt.WriteLine();
-            txt.WriteLine();
-            for (int i = 0; i < parameters.MatrixToSave.Count; i++)
+            if (parameters.incidenceMatrix == null || parameters.Population == null)
+            {
+                txt.WriteLine("Data not found");
+                txt.Close();
+            }
+            else
             {
 
-                txt.WriteLine("Iteration " + (i + 1));
-                var MatrixFromGeneticAlg = parameters.MatrixToSave[i];
-                SaveMatrixToFile(MatrixFromGeneticAlg, txt, parameters.Popsize,parameters.FitnessesToSave[i]);
-                //txt.WriteLine("Generation Fitness:");
-                var FitnessFromGeneticAlg = parameters.FitnessesToSave[i];
-                //SaveFitness(FitnessFromGeneticAlg, txt);
+
                 txt.WriteLine();
-                txt.WriteLine("Best Triangulation Groups");
-                GetBestUnit(MatrixFromGeneticAlg, FitnessFromGeneticAlg, txt);
+                txt.WriteLine("Number of vertices in the graph: " + parameters.NumberOfVertices);
+                txt.WriteLine("Number of iterations: " + parameters.IterationsLimit);
+
+                txt.WriteLine();
+                txt.WriteLine();
+                txt.WriteLine("Incidence Matrix: ");
+                SaveIncidenceMatrixToFile(parameters.incidenceMatrix, txt);
+                txt.WriteLine();
+                txt.WriteLine();
+                txt.WriteLine("Weights Matrix: ");
+                SaveWeightMatrixToFile(parameters.weightsMatrix, txt);
+                txt.WriteLine();
+                txt.WriteLine();
+                txt.WriteLine();
+                txt.WriteLine("Vertex belonging to groups for each iteration:");
+                txt.WriteLine();
+                txt.WriteLine();
+                txt.WriteLine("Start Population");
+                SaveMatrixToFile(parameters.Population, txt, parameters.Popsize, parameters.FitnessArray);
+                txt.WriteLine();
+                txt.WriteLine();
+                for (int i = 0; i < parameters.MatrixToSave.Count; i++)
+                {
+
+                    txt.WriteLine("Iteration " + (i + 1));
+                    var MatrixFromGeneticAlg = parameters.MatrixToSave[i];
+                    SaveMatrixToFile(MatrixFromGeneticAlg, txt, parameters.Popsize, parameters.FitnessesToSave[i]);
+                    //txt.WriteLine("Generation Fitness:");
+                    var FitnessFromGeneticAlg = parameters.FitnessesToSave[i];
+                    //SaveFitness(FitnessFromGeneticAlg, txt);
+                    txt.WriteLine();
+                    txt.WriteLine("Best Triangulation Groups");
+                    GetBestUnit(MatrixFromGeneticAlg, FitnessFromGeneticAlg, txt);
+                }
+
+
+
+
+                txt.Close();
             }
-
-
-
-
-            txt.Close();
 
         }
 
