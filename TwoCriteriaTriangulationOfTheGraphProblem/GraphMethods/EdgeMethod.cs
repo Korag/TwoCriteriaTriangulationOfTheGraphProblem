@@ -55,7 +55,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         {
             foreach (var edge in graph.Edges)
             {
-                edge.ID = string.Format("Connected vertices: {0}-{1}", edge.Source.Index, edge.Target.Index)
+                edge.ID = string.Format("Connected vertices: {0}-{1}", edge.Source.Index+1, edge.Target.Index+1)
                     + $", Weight: {edge.Weight}";
             }
         }
