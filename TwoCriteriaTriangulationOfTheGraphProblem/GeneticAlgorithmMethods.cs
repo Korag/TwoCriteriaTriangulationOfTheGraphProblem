@@ -76,8 +76,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             // Music's got me feeling the need
             parameters.MatrixToSave.Add(PopulationToSave);
             parameters.FitnessesToSave.Add((double[])parameters.FitnessArray.Clone());
-
-            parameters.IterationNumber++;
         }
 
         public double[][] GetMatrix(double[][] MatrixToClone, double[][] MatrixToReturn)

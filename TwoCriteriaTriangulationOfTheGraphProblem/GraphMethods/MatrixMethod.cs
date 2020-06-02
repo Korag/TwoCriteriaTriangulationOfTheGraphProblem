@@ -26,6 +26,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             SetIncidenceMatrixColumns(_parameters.DataTableIncidenceMatrix);
             FillIncidenceDataTable(_parameters.incidenceMatrix, _parameters.DataTableIncidenceMatrix);
 
+            //Moved out to DataGrid_LoadingRow
+            _parameters.DataTableIncidenceMatrix.Columns.Remove("Wierzchołki");
+
             _parameters.DataViewIncidenceMatrix = _parameters.DataTableIncidenceMatrix.DefaultView;
 
             #endregion
@@ -41,6 +44,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
             SetWeightsMatrixColumns(_parameters.DataTableWeightsMatrix);
             FillWeightsDataTable(_parameters.weightsMatrix, _parameters.DataTableWeightsMatrix);
+
+            //Moved out to DataGrid_LoadingRow
+            _parameters.DataTableWeightsMatrix.Columns.Remove("Wagi");
 
             _parameters.DataViewWeightsMatrix = _parameters.DataTableWeightsMatrix.DefaultView;
 
@@ -68,7 +74,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 else if (i == -1)
                 {
                     //Moved out to DataGrid_LoadingRow
-                    dataTable.Columns.Add(new DataColumn("Wierzchołki"));
+                    var vertexColumn = new DataColumn("Wierzchołki");
+                    vertexColumn.ColumnMapping = MappingType.Hidden;
+                    dataTable.Columns.Add(vertexColumn);
                 }
                 else
                 {
@@ -85,7 +93,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 if (i == -1)
                 {
                     //Moved out to DataGrid_LoadingRow
-                    dataTable.Columns.Add(new DataColumn("Wagi"));
+                    var weightColumn = new DataColumn("Wagi");
+                    weightColumn.ColumnMapping = MappingType.Hidden;
+                    dataTable.Columns.Add(weightColumn);
                 }
                 else
                 {
