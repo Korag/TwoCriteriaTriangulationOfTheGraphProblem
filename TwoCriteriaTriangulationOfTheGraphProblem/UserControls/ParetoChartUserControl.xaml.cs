@@ -3,6 +3,7 @@ using LiveCharts.Defaults;
 using LiveCharts.Wpf.Charts.Base;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Controls;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
@@ -77,10 +78,20 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
             //Labels = CreateLabels(interval);
         }
 
+        public void Autoscale()
+        {
+            AxisX.MinValue = ValuesA.Select(x => x.X).Min();
+            AxisX.MaxValue = ValuesA.Select(x => x.X).Max();
+            AxisY.MinValue = ValuesA.Select(x => x.Y).Min();
+            AxisY.MaxValue = ValuesA.Select(x => x.Y).Max();
+        }
+
         
         public void EditSeriesCollection(ChartValues<ObservablePoint> NewCollection)
         {
             ValuesA = NewCollection;
+
+            Autoscale();
         }
 
         public void SetPointsOutsideTheDomain(ChartValues<ObservablePoint> NewCollection)

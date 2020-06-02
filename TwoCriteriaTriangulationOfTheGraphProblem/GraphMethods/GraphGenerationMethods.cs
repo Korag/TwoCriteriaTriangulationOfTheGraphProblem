@@ -77,9 +77,12 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
             //matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
 
+            var minimumFitnessGraphIndex = _parameters.FitnessArray.ToList().IndexOf(_parameters.FitnessArray.Min());
             var graphFromCaran = GenerateGraphFromCaranWithCuts(
                 _parameters.GeneratedBasicGraph,
-                _parameters.Population);
+                _parameters.Population,
+                minimumFitnessGraphIndex
+                );
 
             //var graphFromCaran = GenerateGraphFromCaran(_parameters.Population).Where(x => x != null).ToList();
             //graphFromCaran.Where(x => x.VertexCount != 0).ToList().ForEach(x => EdgeMethod.ConnectAllVertices(x));
@@ -148,7 +151,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         public static Graph GenerateGraphFromCaranWithCuts(Graph baseGraph, double[][] caranArray, int graphId = 0)
         {
             var graph = baseGraph.Clone();
-            var groupsVertices = GetGroupsVertices(graph, caranArray, graphId);  
+            var groupsVertices = GetGroupsVertices(graph, caranArray, graphId);
 
             foreach (var edge in graph.Edges)
             {

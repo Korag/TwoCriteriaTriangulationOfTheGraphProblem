@@ -1,7 +1,9 @@
 ﻿using LiveCharts;
+using LiveCharts.Definitions.Series;
 using LiveCharts.Wpf;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -31,7 +33,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
             var r = new Random();
 
             SeriesCollection = new SeriesCollection();
-           // SeriesCollection2 = new SeriesCollection();
+            // SeriesCollection2 = new SeriesCollection();
 
 
             YFormatter = value => value.ToString();
@@ -80,6 +82,14 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
 
         }
 
+        public void Autoscale(ISeriesView series)
+        {
+            //AxisX.MinValue = series.ActualValues.GetPoints(series).Select(x => x.X).Min();
+            //AxisX.MaxValue = series.ActualValues.GetPoints(series).Select(x => x.X).Max();
+            AxisY.MinValue = series.ActualValues.GetPoints(series).Select(x => x.Y).Min() - 1;
+            AxisY.MaxValue = series.ActualValues.GetPoints(series).Select(x => x.Y).Max() + 1;
+        }
+
         public void EditSeriesCollection(double valA, double valB, double valC, double valD, int iteration)
         {
             SeriesCollection[0].Values.Add(valA);
@@ -93,12 +103,16 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
         {
             SeriesCollection[0].Values.Add(valA);
             Labels = GetStringFromIterations(iteration + 1);
+
+            Autoscale(SeriesCollection[0]);
         }
 
         public void EditBSeries(double valB, int iteration)
         {
             SeriesCollection[1].Values.Add(valB);
             Labels = GetStringFromIterations(iteration + 1);
+
+            Autoscale(SeriesCollection[1]);
         }
 
         public void EditSeriesCollection(double newValue, int iteration)
@@ -116,7 +130,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
             SeriesCollection[1].Values.Add(Function2Average(FunctionValueCollection));
             SeriesCollection[2].Values.Add(Function1Minimum(FunctionValueCollection));
             SeriesCollection[3].Values.Add(Function2Minimum(FunctionValueCollection));
-            Labels = GetStringFromIterations(Iteration+1);
+            Labels = GetStringFromIterations(Iteration + 1);
         }
 
         private string[] GetStringFromIterations(int Iteration)
@@ -125,7 +139,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
 
             for (int i = 0; i < Iteration; i++)
             {
-                ResultTable[i] = (i+1).ToString();
+                ResultTable[i] = (i + 1).ToString();
             }
 
             return ResultTable;
@@ -140,7 +154,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
                 Result += FunctionValueCollection[i][0];
             }
 
-            return Math.Round(Result / FunctionValueCollection.Length,2);
+            return Math.Round(Result / FunctionValueCollection.Length, 2);
         }
 
         private double Function2Average(double[][] FunctionValueCollection)
@@ -166,7 +180,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
                 {
                     Result = FunctionValueCollection[i][0];
                 }
-                
+
             }
 
             return Math.Round(Result, 2);
@@ -189,7 +203,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
 
 
         public SeriesCollection SeriesCollection { get; set; }
-       // public SeriesCollection SeriesCollection2 { get; set; }
+        // public SeriesCollection SeriesCollection2 { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }
 
