@@ -10,12 +10,15 @@
         xmlns:vm="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods"
         xmlns:converter="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.ValueConverters"
         xmlns:UserControls="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.UserControls"
+        
+        xmlns:denxorz="clr-namespace:Denxorz.ZoomControl;assembly=Denxorz.ZoomControl"
        
         Icon="Images\iconPNG.png"
         Title="Two Criteria Triangulation Of The Graph Problem ULTRA 420! Blaze IT! MORONS" Width="1280" Height="720" MaxWidth="3840" MaxHeight="2160" MinWidth="640" MinHeight="360">
 
     <Window.Resources>
         <converter:EdgeColorConverter x:Key="EdgeColorConverter"/>
+        <converter:VertexColorConverter x:Key="VertexColorConverter"/>
         <converter:ConvertPath x:Key="ConvertPath"/>
         <DataTemplate x:Key="demoTemplate" DataType="{x:Type local:Vertex}">
             <StackPanel Orientation="Horizontal" Margin="5">
@@ -28,9 +31,11 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type graphsharp:VertexControl}">
                         <Border 
+                               x:Name="GraphBorder"
                                Background="LightBlue"
 							   CornerRadius="10,10,10,10"
 							   Padding="{TemplateBinding Padding}">
+
 
                             <StackPanel Orientation="Vertical">
                                 <ContentPresenter Content="{TemplateBinding Vertex}" 
@@ -192,13 +197,13 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Label Content="Triangulation of the graph" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="190" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
-                <Viewbox Name="TriangulationGraphView" StretchDirection="Both" Stretch="Uniform">
-                    <vm:GraphLayout x:Name="TriangulationGraphChart" Margin="100"
+                <denxorz:ZoomControl x:Name="TriangulationGraphZoomControl" Background="White" Mode="Original">
+                    <vm:GraphLayout x:Name="TriangulationGraphChart"
 						Graph="{Binding Path=TriangulationOfGraph}"
 						LayoutAlgorithmType="{Binding Path=LayoutAlgorithmType, Mode=OneWay}"
 						OverlapRemovalAlgorithmType="FSA"
 						HighlightAlgorithmType="Simple" />
-                </Viewbox>
+                </denxorz:ZoomControl>
             </Grid>
 
 
@@ -212,13 +217,13 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Label Content="Generated graph" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="128" Style="{DynamicResource Label}" Margin="0,-26,0,0" Foreground="#FF972960"/>
-                <Viewbox Name="BasicGeneratedGraphView" StretchDirection="Both" Stretch="Uniform">
-                    <vm:GraphLayout x:Name="BasicGeneratedGraphChart" Margin="100"
+                <denxorz:ZoomControl x:Name="BasicGraphZoomControl" Background="White" Mode="Original">
+                    <vm:GraphLayout x:Name="BasicGeneratedGraphChart"
 						Graph="{Binding Path=GeneratedBasicGraph}"
 						LayoutAlgorithmType="{Binding Path=LayoutAlgorithmType, Mode=OneWay}"
 						OverlapRemovalAlgorithmType="FSA"
 						HighlightAlgorithmType="Simple" />
-                </Viewbox>
+                </denxorz:ZoomControl>
             </Grid>
 
             <!--Macierz incydencji-->

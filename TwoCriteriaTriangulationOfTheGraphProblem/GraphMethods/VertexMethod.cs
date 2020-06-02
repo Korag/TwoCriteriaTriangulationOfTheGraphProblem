@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using QuickGraph;
+using System.Collections.Generic;
+using System.Linq;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
@@ -34,6 +36,14 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             }
 
             return tempArray;
+        }
+
+        public static void ColorVerticesByGroup(Graph graph, Dictionary<Vertex, int> groupsVertices)
+        {
+            foreach (var vertex in graph.Vertices)
+            {
+                //graph.Edges.ToList()[0].Source
+            }
         }
 
         //wpisanie sąsiednich wierzchołków do listy sąsiadów<=wykorzystywane w naprawie
