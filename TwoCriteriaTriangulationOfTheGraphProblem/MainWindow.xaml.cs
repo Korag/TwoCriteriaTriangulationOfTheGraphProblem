@@ -3,6 +3,7 @@ using LiveCharts.Wpf;
 using QuickGraph;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             _parameters.MainWindow = this;
 
+
             DefaultValue();
             InitializeComponent();
         }
@@ -54,11 +56,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
         private void GenerateGraph(object sender, RoutedEventArgs e)
         {
+            Start.IsEnabled = true;
             //Generujemy basic graf, który później nie będzie już zupełnie modyfikowany
             GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
             graphGenerator.GenerateBasicGraph();
-            this.DataGridIncidence.Columns[0].Visibility = Visibility.Hidden;
-            this.DataGridWeights.Columns[0].Visibility = Visibility.Hidden;
         }
 
         private void StartGeneticAlgorithm(object sender, RoutedEventArgs e)

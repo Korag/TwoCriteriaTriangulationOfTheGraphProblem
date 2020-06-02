@@ -50,6 +50,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             _parameters.UndirectedBasicGraph = new UndirectedBidirectionalGraph<Vertex, Edge>(_parameters.GeneratedBasicGraph);//coś jak canvas
 
             EdgeMethod.AddWeightsToGraph(_parameters.GeneratedBasicGraph, _parameters.weightsMatrix);
+            EdgeMethod.AddWeightsTooltip(_parameters.GeneratedBasicGraph);
 
             matrixMethod.RefreshMatrixUi(_parameters.GeneratedBasicGraph);
         }
@@ -147,9 +148,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         public static Graph GenerateGraphFromCaranWithCuts(Graph baseGraph, double[][] caranArray, int graphId = 0)
         {
             var graph = baseGraph.Clone();
-            var groupsVertices = GetGroupsVertices(graph, caranArray, graphId);
-
-            groupsVertices.ToList().ForEach(x => Console.WriteLine($"Index: {x.Key.Index + 1}, Group: {x.Value}"));
+            var groupsVertices = GetGroupsVertices(graph, caranArray, graphId);  
 
             foreach (var edge in graph.Edges)
             {

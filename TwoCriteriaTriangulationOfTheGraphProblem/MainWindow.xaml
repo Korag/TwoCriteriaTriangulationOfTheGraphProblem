@@ -140,15 +140,19 @@
             </Grid.ColumnDefinitions>
 
             <!--Pasek kształtowania wartości funkcji celu (algorytm genetycznt oraz postęp prac) dla każdej z części trójpodziału grafu na przestrzeni iteracji-->
-            <Grid Grid.Column="3" HorizontalAlignment="Left" Height="142" Grid.Row="4" VerticalAlignment="Top" Width="915" Grid.ColumnSpan="3" Margin="0,28,0,0">
+            <Grid Grid.Column="3" HorizontalAlignment="Left" Height="40" Grid.Row="4" VerticalAlignment="Top" Width="915" Grid.ColumnSpan="3" Margin="0,27.6,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="704*"/>
+                    <ColumnDefinition Width="211*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0.003"/>
                         <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Progress" HorizontalAlignment="Left" Style="{DynamicResource Label}" Margin="0,-24,0,137"/>
-                <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" Height="51" Margin="10,52,0,0" VerticalAlignment="Top" Width="895" />
+                <Label Content="Progress" HorizontalAlignment="Left" Style="{DynamicResource Label}" Margin="0,-24,0,74"/>
+                <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" Height="21" Margin="10,10,0,0" VerticalAlignment="Top" Width="895" Grid.ColumnSpan="2" />
             </Grid>
 
             <!--Wykres kształtowania wartości funkcji celu (sumy wag oraz liczby krawędzi) sumarycznie na przestrzeni iteracji-->
@@ -159,8 +163,24 @@
                         <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Values of multicriteria problem across iterations" HorizontalAlignment="Left" Width="349" Style="{DynamicResource Label}" Margin="0,-22,0,91"/>
+                <Label Content="Average Fitness" HorizontalAlignment="Left" Width="349" Style="{DynamicResource Label}" Margin="0,-22,0,91"/>
                 <UserControls:MainChartUserControl x:Name="OverallFluctuationChart" HorizontalAlignment="Left" Height="99" VerticalAlignment="Top" Width="914" Margin="1,0,0,-1"/>
+            </Grid>
+
+            <!--Wykres kształtowania wartości funkcji celu (sumy wag oraz liczby krawędzi) sumarycznie na przestrzeni iteracji-->
+            <Grid Grid.Column="3" HorizontalAlignment="Left" Height="80" Grid.Row="4" VerticalAlignment="Top" Width="915" Grid.ColumnSpan="3" Margin="0,88,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="641*"/>
+                    <ColumnDefinition Width="274*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0.003"/>
+                        <GradientStop Color="#FFDADADA" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Label Content="Minimum Fitness" HorizontalAlignment="Left" Width="349" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
+                <UserControls:MainChartUserControl x:Name="SecondChart" HorizontalAlignment="Left" Height="99" VerticalAlignment="Top" Width="914" Margin="1,0,0,-19" Grid.ColumnSpan="2"/>
             </Grid>
 
             <!--Wizualizacja trójpodziału grafu zmieniająca się co każdą iterację-->
@@ -180,6 +200,8 @@
 						HighlightAlgorithmType="Simple" />
                 </Viewbox>
             </Grid>
+
+
 
             <!--Wizualizacja bazowo wygenerowanego grafu-->
             <Grid Grid.Column="1" HorizontalAlignment="Left" Height="256" Grid.Row="4" VerticalAlignment="Top" Width="344" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="1,28,0,0">
@@ -319,7 +341,7 @@
                           Width="150" Margin="7,7,348,14" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Height="29" VerticalAlignment="Center" Foreground="#FF1A48A4" FontWeight="Bold" HorizontalAlignment="Center" />
 
                 <!--Przyciski sterujące-->
-                <Button x:Name="Start" Content="Start" Margin="158,18,254,5" Style="{DynamicResource GreenButton}" Click="StartGeneticAlgorithm" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Background="#FF37F937" />
+                <Button x:Name="Start" Content="Start" Margin="158,18,254,5" Style="{DynamicResource GreenButton}" Click="StartGeneticAlgorithm" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Background="#FF37F937" IsEnabled="False" />
                 <Button x:Name="Generate" Content="Generate graph" Margin="33,18,379,5" Style="{DynamicResource BlueButton}" Click="GenerateGraph" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" />
                 <Button x:Name="Reset" Content="Reset" Margin="256,18,156,5" Style="{DynamicResource RedButton}" Click="ResetCurrentState" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Background="#FF9B1111"  />
                 <Button x:Name="Save" Content="Save to file" Margin="379,18,33,5" Style="{DynamicResource BlueButton}" Click="SaveResults" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2"/>
@@ -360,8 +382,9 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Label Content="Minimum:" Margin="179,-3,189,-4" Style="{DynamicResource LabelSideMenu}" Height="Auto" Padding="5,5,5,2"/>
-                <TextBox Margin="268,0,111,0" Style="{DynamicResource TextBox}" Text="{Binding Path=CountedExtremum}" Height="Auto" Width="Auto" Padding="0,0,0,2" IsReadOnly="True"/>
+                <TextBox Margin="268,0,50,0" Style="{DynamicResource TextBox}" Text="{Binding Path=CountedExtremum}" Height="Auto" Width="Auto" Padding="0,0,0,2" IsReadOnly="True"/>
             </Grid>
+            <Label x:Name="cudaCzepiela" Content="" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="549" Style="{DynamicResource Label}" Margin="165.2,124.4,0,0" Foreground="#FF972960" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2"/>
 
 
 

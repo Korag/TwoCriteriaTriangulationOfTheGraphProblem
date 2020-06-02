@@ -45,9 +45,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             //Refresh pareto front
             var cutsSum = EdgeMethod.GetCutsWeightsSum(_parameters.GeneratedBasicGraph, _parameters.Population);
-            var paretoArray = _parameters.FitnessArray.
-                Zip(cutsSum, (FitnessAll, second) => (FitnessAll, second)).
-                Select(x => new double[] { x.FitnessAll, x.second }).ToList();
+            var cutsCount = EdgeMethod.GetCutsCount(_parameters.GeneratedBasicGraph, _parameters.Population);
+            var paretoArray = cutsCount.
+                Zip(cutsSum, (first, second) => (first, second)).
+                Select(x => new double[] { x.first, x.second }).ToList();
             _parameters.RewriteThePoints(paretoArray);
             _parameters.MainWindow.ParetoChart.EditSeriesCollection(_parameters.ListOfPoints);
 
@@ -67,25 +68,35 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             VertexMethod.SetVertexNeighbors(_parameters.incidenceMatrix, _parameters.verticesTriangulationOfGraph);
 
 
-            _parameters.MainWindow.OverallFluctuationChart.EditSeriesCollection(
-                _parameters.FitnessArray.Min(),
-                _parameters.FitnessArray.Max(),
-                cutsSum.Min(),
-                cutsSum.Max(),
+            _parameters.MainWindow.OverallFluctuationChart.EditASeries(
+                _parameters.FitnessArray.Average(),
                 _parameters.IterationNumber);
 
-            _parameters.CountedExtremum = _parameters.FitnessArray.Min().ToString();
+            _parameters.MainWindow.SecondChart.EditBSeries(
+                _parameters.FitnessArray.Min(),
+                _parameters.IterationNumber);
+
+            var minimumFitnessGraphIndex = _parameters.FitnessArray.ToList().IndexOf(_parameters.FitnessArray.Min());
+            //var minimumFitnessGraphIndex = 0;
+            _parameters.CountedExtremum = $"({cutsCount[minimumFitnessGraphIndex]}; {cutsSum[minimumFitnessGraphIndex]})";
+
 
             _parameters.MainWindow.ProgressBar.Value = _parameters.IterationNumber;
+
+            var groupsVertices = GraphGenerationMethods.GetGroupsVertices(_parameters.GeneratedBasicGraph, _parameters.Population);
+            string groupsVerticesString = "";
+            groupsVertices.OrderBy(x => x.Key.Index).ToList().ForEach(x => groupsVerticesString += $"V: {x.Key.Index + 1}, G: {x.Value}; ");
+            _parameters.MainWindow.cudaCzepiela.Content = groupsVerticesString;
+
 
             matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
         }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-           //Przebieg algorytmu genetycznego
+            //Przebieg algorytmu genetycznego
 
-           geneticAlgorithm = new GeneticAlgorithmMethods();
+            geneticAlgorithm = new GeneticAlgorithmMethods();
             geneticAlgorithm.GeneticAlgorithm(_parameters);
 
             for (int i = 0; i < _parameters.IterationsLimit; i++)

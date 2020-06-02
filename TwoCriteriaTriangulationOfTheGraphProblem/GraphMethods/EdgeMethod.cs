@@ -51,6 +51,15 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             }
         }
 
+        public static void AddWeightsTooltip(Graph graph)
+        {
+            foreach (var edge in graph.Edges)
+            {
+                edge.ID = string.Format("Connected vertices: {0}-{1}", edge.Source.Index, edge.Target.Index)
+                    + $", Weight: {edge.Weight}";
+            }
+        }
+
 
         public static List<double> GetCutsWeightsSum(Graph basicGraph, double[][] caranArray)
         {
@@ -63,6 +72,22 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                     .ToDictionary(x => x.Key, x => x.Value);
                 var cuts = basicGraph.Edges.Where(x => groupsVertices[x.Target] != groupsVertices[x.Source]);
                 result.Add(cuts.Select(x => x.Weight).Sum());
+            }
+
+            return result;
+        }
+
+        public static List<double> GetCutsCount(Graph basicGraph, double[][] caranArray)
+        {
+            var result = new List<double>();
+            for (int i = 0; i < caranArray[0].Length; i++)
+            {
+                var groupsVertices = GraphGenerationMethods
+                    .GetGroupsVertices(basicGraph, caranArray, i)
+                    //.Where(x => x.Value != 0)
+                    .ToDictionary(x => x.Key, x => x.Value);
+                var cuts = basicGraph.Edges.Where(x => groupsVertices[x.Target] != groupsVertices[x.Source]);
+                result.Add(cuts.Count());
             }
 
             return result;

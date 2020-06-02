@@ -39,7 +39,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
             //modifying the series collection will animate and update the chart
             SeriesCollection.Add(new LineSeries
             {
-                Title = "Avg Function 1",
+                Title = "Average Fitness",
                 Values = new ChartValues<double>(),
                 LineSmoothness = 1,
                 PointForeground = Brushes.White,
@@ -49,7 +49,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
 
             SeriesCollection.Add(new LineSeries
             {
-                Title = "Avg Function 2",
+                Title = "Minimum Fitness",
                 Values = new ChartValues<double>(),
                 LineSmoothness = 1,
                 PointForeground = Brushes.White,
@@ -86,6 +86,18 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
             SeriesCollection[1].Values.Add(valB);
             SeriesCollection[2].Values.Add(valC);
             SeriesCollection[3].Values.Add(valD);
+            Labels = GetStringFromIterations(iteration + 1);
+        }
+
+        public void EditASeries(double valA, int iteration)
+        {
+            SeriesCollection[0].Values.Add(valA);
+            Labels = GetStringFromIterations(iteration + 1);
+        }
+
+        public void EditBSeries(double valB, int iteration)
+        {
+            SeriesCollection[1].Values.Add(valB);
             Labels = GetStringFromIterations(iteration + 1);
         }
 
