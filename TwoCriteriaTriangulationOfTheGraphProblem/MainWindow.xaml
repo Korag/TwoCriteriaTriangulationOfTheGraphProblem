@@ -180,7 +180,7 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Label Content="Minimum Fitness" HorizontalAlignment="Left" Width="349" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
-                <UserControls:MainChartUserControl x:Name="SecondChart" HorizontalAlignment="Left" Height="99" VerticalAlignment="Top" Width="914" Margin="1,0,0,-19" Grid.ColumnSpan="2"/>
+                <UserControls:MainChartUserControl x:Name="SecondChart" HorizontalAlignment="Left" Height="85" VerticalAlignment="Top" Width="914" Margin="1,0,0,-20" Grid.ColumnSpan="2"/>
             </Grid>
 
             <!--Wizualizacja trójpodziału grafu zmieniająca się co każdą iterację-->
