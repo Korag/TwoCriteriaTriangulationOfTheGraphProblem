@@ -41,6 +41,9 @@
     <ApplicationIcon>iconICO.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Denxorz.ZoomControl, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Denxorz.ZoomControl.1.1.0\lib\net452\Denxorz.ZoomControl.dll</HintPath>
+    </Reference>
     <Reference Include="GraphSharp, Version=1.0.2.0, Culture=neutral, PublicKeyToken=f9c24778325a6b82, processorArchitecture=MSIL">
       <HintPath>..\packages\GraphSharp.1.1.0.0\lib\net40\GraphSharp.dll</HintPath>
     </Reference>
@@ -118,6 +121,7 @@
       <DependentUpon>ParetoChartUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValueConverters\ConvertPath.cs" />
+    <Compile Include="ValueConverters\VertexColorConverter.cs" />
     <Compile Include="ValueConverters\EdgeColorConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

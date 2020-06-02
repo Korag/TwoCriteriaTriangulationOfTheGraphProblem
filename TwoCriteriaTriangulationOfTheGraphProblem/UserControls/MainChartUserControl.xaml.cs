@@ -101,7 +101,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
 
         public void EditASeries(double valA, int iteration)
         {
-            SeriesCollection[0].Values.Add(valA);
+            SeriesCollection[0].Values.Add(Math.Round(valA, 2));
             Labels = GetStringFromIterations(iteration + 1);
 
             Autoscale(SeriesCollection[0]);
@@ -109,7 +109,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
 
         public void EditBSeries(double valB, int iteration)
         {
-            SeriesCollection[1].Values.Add(valB);
+            SeriesCollection[1].Values.Add(Math.Round(valB, 2));
             Labels = GetStringFromIterations(iteration + 1);
 
             Autoscale(SeriesCollection[1]);
