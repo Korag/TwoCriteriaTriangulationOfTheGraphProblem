@@ -180,7 +180,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 {
                     for (int j = 0; j < parameters.incidenceMatrix.GetLength(0); j++)
                     {
-                        if (Group.Contains(j))
+                        if (!Group.Contains(j))
                         {
                             FitnessValue += parameters.incidenceMatrix[i][j] * parameters.weightsMatrix[i][j];
                         }
