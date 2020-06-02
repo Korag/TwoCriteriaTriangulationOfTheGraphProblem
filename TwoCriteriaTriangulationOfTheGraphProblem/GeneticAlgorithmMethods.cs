@@ -180,7 +180,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 {
                     for (int j = 0; j < parameters.incidenceMatrix.GetLength(0); j++)
                     {
-                        if (Group.Contains(j))
+                        if (!Group.Contains(j))
                         {
                             FitnessValue += parameters.incidenceMatrix[i][j] * parameters.weightsMatrix[i][j];
                         }
@@ -285,7 +285,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             int normalNumber = (GroupSize - checkVertexAmount) / 3;
             if (checkVertexAmount == 0)
             {
-                for (int i = 1; i < 3; i++)
+                for (int i = 1; i < 4; i++)
                 {
                     for (int j = 0; j < normalNumber; j++)
                     {
@@ -336,7 +336,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 {
                     TwoBonus = rnd.Next(1, 3);
                 }
-                for (int i = 1; i < 3; i++)
+                for (int i = 1; i < 4; i++)
                 {
                     for (int j = 0; j < normalNumber; j++)
                     {
