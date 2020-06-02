@@ -83,7 +83,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             _parameters.MainWindow.ProgressBar.Value = _parameters.IterationNumber;
 
-            var groupsVertices = GraphGenerationMethods.GetGroupsVertices(_parameters.GeneratedBasicGraph, _parameters.Population);
+            var groupsVertices = GraphGenerationMethods.GetGroupsVertices(
+                _parameters.GeneratedBasicGraph,
+                _parameters.Population,
+                minimumFitnessGraphIndex);
             string groupsVerticesString = "";
             groupsVertices.OrderBy(x => x.Key.Index).ToList().ForEach(x => groupsVerticesString += $"V: {x.Key.Index + 1}, G: {x.Value}; ");
             _parameters.MainWindow.cudaCzepiela.Content = groupsVerticesString;
