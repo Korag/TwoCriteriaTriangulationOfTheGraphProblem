@@ -38,11 +38,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             return tempArray;
         }
 
-        public static void ColorVerticesByGroup(Graph graph, Dictionary<Vertex, int> groupsVertices)
+        public static void AddVertexGroupInfo(Graph graph, Dictionary<Vertex, int> groupsVertices)
         {
             foreach (var vertex in graph.Vertices)
             {
-                //graph.Edges.ToList()[0].Source
+                vertex.Tooltip = $"Group: {groupsVertices[vertex]}";
             }
         }
 

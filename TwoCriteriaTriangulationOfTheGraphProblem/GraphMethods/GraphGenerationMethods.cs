@@ -84,10 +84,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 minimumFitnessGraphIndex
                 );
             var groupsVertices = GraphGenerationMethods.GetGroupsVertices(
-                _parameters.GeneratedBasicGraph,
+                graphFromCaran,
                 _parameters.Population,
                 minimumFitnessGraphIndex);
-            VertexMethod.ColorVerticesByGroup(
+            VertexMethod.AddVertexGroupInfo(
                 graphFromCaran,
                 groupsVertices
                 );

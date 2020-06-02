@@ -67,7 +67,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             ResetZoomControl(BasicGraphZoomControl);
         }
-        
+
         public void ResetZoomControl(ZoomControl zoomControl)
         {
             zoomControl.Mode = Denxorz.ZoomControl.ZoomControlModes.Custom;
@@ -98,7 +98,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //+ odświeża frontend
 
             _bw.worker.RunWorkerAsync();
-            
+
             //OverallFluctuationChart.EditSeriesCollection(_parameters.FitnessArray.Min(), _parameters.IterationNumber);
 
             //var test = new GeneticAlgorithmMethods();
@@ -107,7 +107,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //geneticAlgorithm.GeneticAlgorithm(_parameters);
 
             //_parameters.verticesTriangulationOfGraph =
-            
+
 
         }
 
@@ -151,7 +151,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
-            e.Row.Header = (e.Row.GetIndex()+1).ToString();
+            e.Row.Header = (e.Row.GetIndex() + 1).ToString();
         }
 
     }
