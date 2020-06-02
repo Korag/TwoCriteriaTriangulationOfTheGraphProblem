@@ -113,6 +113,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             //Metoda zostaje wywołana zawsze po zakończeniu pracy przez BackgroundWorkera
+
+            _parameters.MainWindow.Start.IsEnabled = true;
         }
 
         #region INotifyPropertyChanged Implementation
