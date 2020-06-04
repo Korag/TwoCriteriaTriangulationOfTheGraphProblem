@@ -14,9 +14,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
         public void SaveToFileAsync(Parameters parameters)
         {
-
-            string filePath = ".\\File.txt";
-            if (File.Exists(".\\File.txt"))
+            Directory.CreateDirectory("..\\..\\Results");
+            string fileName = DateTime.Now.ToString("yyyyMMddTHHmmss");
+            string filePath = "..\\..\\Results\\" + fileName+".txt";
+            
+            if (File.Exists("..\\..\\Results\\" + fileName+".txt"))
             {
                 File.WriteAllText(filePath, " ");
             }
@@ -27,7 +29,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             string WorkingGroup = "Łukasz Czepielik, Dominik Pezda, Konrad Boroń \r\n";
             string Department = "Department of Computer Science Master Degree\r\n";
            
-            StreamWriter txt = new StreamWriter(".\\File.txt"); //sciezka do poprawy!!!!!!
+            StreamWriter txt = new StreamWriter(filePath); //sciezka do poprawy!!!!!!
             txt.Write(CurrentDate);
             txt.Write(School);
             txt.Write(WorkingGroup);

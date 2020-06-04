@@ -26,6 +26,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             worker.WorkerSupportsCancellation = true;
             worker.WorkerReportsProgress = true;
+
         }
 
         private void worker_Report()
@@ -104,7 +105,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             geneticAlgorithm = new GeneticAlgorithmMethods();
             geneticAlgorithm.GeneticAlgorithm(_parameters);
-
+            
             for (int i = 0; i < _parameters.IterationsLimit; i++)
             {
                 geneticAlgorithm.OneMoreTime();
@@ -112,7 +113,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 //Kiedy potrzebujemy odświeżyć UI
                 this.worker_Report();
             }
-
+            
             worker.CancelAsync();
         }
 
@@ -121,6 +122,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //Metoda zostaje wywołana zawsze po zakończeniu pracy przez BackgroundWorkera
 
             _parameters.MainWindow.Start.IsEnabled = true;
+            _parameters.MainWindow.Save.IsEnabled = true;
+          
         }
 
         #region INotifyPropertyChanged Implementation

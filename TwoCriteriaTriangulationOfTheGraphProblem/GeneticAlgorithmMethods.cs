@@ -63,6 +63,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             var InitialPopulation = CreateInitialPopulation(parameters.Popsize, parameters);
 
             parameters.Population = InitialPopulation;
+
+           
         }
 
 

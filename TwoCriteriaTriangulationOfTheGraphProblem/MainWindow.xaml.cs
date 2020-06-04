@@ -39,6 +39,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         public MainWindow()
         {
             _parameters = new Parameters();
+           
             // Initialize background worker
             _bw = new BackgroundWorker(this._parameters);
 
@@ -46,10 +47,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             this.WindowState = WindowState.Maximized;
 
             _parameters.MainWindow = this;
-
+            _parameters.SaveToFile = false;
 
             DefaultValue();
             InitializeComponent();
+            _parameters.MainWindow.Save.IsEnabled = false;
         }
 
         // w tej klasie będą umieszczone tylko i wyłącznie zdarzenia połączone z frontendem
@@ -89,6 +91,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         private void StartGeneticAlgorithm(object sender, RoutedEventArgs e)
         {
             Start.IsEnabled = false;
+            
             ProgressBar.Maximum = _parameters.IterationsLimit;
 
             //Uruchamiamy background workera, żeby podczas przetwarzania nie mieć
@@ -98,6 +101,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //+ odświeża frontend
 
             _bw.worker.RunWorkerAsync();
+
 
             //OverallFluctuationChart.EditSeriesCollection(_parameters.FitnessArray.Min(), _parameters.IterationNumber);
 
@@ -147,6 +151,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             _parameters.SleepTime = 1;
 
             _parameters.IterationsLimit = 20;
+
+            
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)

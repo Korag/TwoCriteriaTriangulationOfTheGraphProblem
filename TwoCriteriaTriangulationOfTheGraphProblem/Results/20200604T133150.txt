@@ -1,0 +1,588 @@
+Date: 04.06.2020 13:31:50
+University of Bielsko-Biala 50 years of tradition
+Łukasz Czepielik, Dominik Pezda, Konrad Boroń 
+Department of Computer Science Master Degree
+
+Number of vertices in the graph: 12
+Number of iterations: 5
+
+
+Incidence Matrix: 
+Vertex 	 0:   0 1 1 0 1 0 0 1 1 1 0 0 
+Vertex 	 1:   1 0 1 0 1 0 1 1 0 0 0 0 
+Vertex 	 2:   1 1 0 0 0 1 0 1 1 0 1 1 
+Vertex 	 3:   0 0 0 0 0 1 0 1 1 1 1 1 
+Vertex 	 4:   1 1 0 0 0 1 1 1 1 0 0 1 
+Vertex 	 5:   0 0 1 1 1 0 0 1 0 0 0 0 
+Vertex 	 6:   0 1 0 0 1 0 0 0 1 0 0 1 
+Vertex 	 7:   1 1 1 1 1 1 0 0 0 0 0 0 
+Vertex 	 8:   1 0 1 1 1 0 1 0 0 0 0 0 
+Vertex 	 9:   1 0 0 1 0 0 0 0 0 0 0 1 
+Vertex 	 10:   0 0 1 1 0 0 0 0 0 0 0 0 
+Vertex 	 11:   0 0 1 1 1 0 1 0 0 1 0 0 
+
+
+Weights Matrix: 
+Vertex 	 0:   08,45 08,90 04,97 13,86 02,67 12,92 11,10 10,16 10,11 08,38 15,50 17,90 
+Vertex 	 1:   08,90 05,71 03,09 14,97 07,71 19,89 07,82 06,00 15,84 12,33 12,48 17,44 
+Vertex 	 2:   04,97 03,09 07,19 17,59 12,66 01,45 16,47 05,62 06,16 17,60 04,68 06,19 
+Vertex 	 3:   13,86 14,97 17,59 13,66 18,06 04,35 11,35 03,87 03,35 06,67 09,38 07,75 
+Vertex 	 4:   02,67 07,71 12,66 18,06 15,54 05,15 05,51 09,86 02,93 15,08 15,45 09,98 
+Vertex 	 5:   12,92 19,89 01,45 04,35 05,15 10,54 19,78 10,00 11,89 16,16 15,97 11,46 
+Vertex 	 6:   11,10 07,82 16,47 11,35 05,51 19,78 17,78 16,27 10,01 12,47 14,62 05,54 
+Vertex 	 7:   10,16 06,00 05,62 03,87 09,86 10,00 16,27 04,95 10,78 11,82 12,71 12,06 
+Vertex 	 8:   10,11 15,84 06,16 03,35 02,93 11,89 10,01 10,78 05,02 11,62 16,36 17,02 
+Vertex 	 9:   08,38 12,33 17,60 06,67 15,08 16,16 12,47 11,82 11,62 05,46 19,34 07,46 
+Vertex 	 10:   15,50 12,48 04,68 09,38 15,45 15,97 14,62 12,71 16,36 19,34 05,58 16,94 
+Vertex 	 11:   17,90 17,44 06,19 07,75 09,98 11,46 05,54 12,06 17,02 07,46 16,94 13,30 
+
+
+
+Vertex belonging to groups for each iteration:
+
+
+Iteration 1
+Triangular 1: 3 1 2 1 3 3 3 1 2 2 1 2 	 Triangular Fitness 286,66
+Triangular 2: 2 2 1 1 1 3 3 3 2 2 1 3 	 Triangular Fitness 277,46
+Triangular 3: 1 3 1 2 3 2 1 2 2 3 3 1 	 Triangular Fitness 299,48
+Triangular 4: 1 1 2 3 2 2 1 3 1 3 2 3 	 Triangular Fitness 243,7
+Triangular 5: 3 2 1 1 1 3 2 3 2 3 1 2 	 Triangular Fitness 259,5
+Triangular 6: 3 3 2 2 1 1 3 2 1 2 3 1 	 Triangular Fitness 289,56
+Triangular 7: 1 2 3 3 1 3 2 1 1 2 3 2 	 Triangular Fitness 238,62
+Triangular 8: 1 3 3 1 2 1 2 3 3 1 2 2 	 Triangular Fitness 268,84
+Triangular 9: 1 1 1 2 2 3 3 2 3 3 1 2 	 Triangular Fitness 265,22
+Triangular 10: 3 1 3 2 2 2 1 1 1 2 3 3 	 Triangular Fitness 279,76
+Triangular 11: 1 3 3 1 3 3 2 1 1 2 2 2 	 Triangular Fitness 275,66
+Triangular 12: 2 3 3 2 1 1 3 2 2 1 1 3 	 Triangular Fitness 280,88
+Triangular 13: 1 1 2 3 3 3 1 2 1 3 2 2 	 Triangular Fitness 252,44
+Triangular 14: 3 1 3 3 2 1 2 2 2 1 3 1 	 Triangular Fitness 281,84
+Triangular 15: 1 1 1 3 2 2 3 3 1 2 3 2 	 Triangular Fitness 253,3
+Triangular 16: 2 1 3 3 1 2 2 1 3 2 3 1 	 Triangular Fitness 260,44
+Triangular 17: 1 1 2 2 1 1 3 3 2 3 2 3 	 Triangular Fitness 269,44
+Triangular 18: 2 1 3 3 1 3 2 1 1 2 3 2 	 Triangular Fitness 255,96
+Triangular 19: 3 2 2 1 1 1 2 3 3 3 1 2 	 Triangular Fitness 251,1
+Triangular 20: 2 3 3 3 1 2 2 2 1 3 1 1 	 Triangular Fitness 305,78
+Triangular 21: 2 3 1 1 1 3 2 3 1 2 3 2 	 Triangular Fitness 291,8
+Triangular 22: 1 3 3 3 1 2 2 3 1 2 1 2 	 Triangular Fitness 296,86
+Triangular 23: 3 3 2 1 2 1 2 1 2 3 3 1 	 Triangular Fitness 255,72
+Triangular 24: 2 2 1 1 2 3 2 3 3 1 3 1 	 Triangular Fitness 250,08
+Triangular 25: 1 3 3 2 3 1 2 1 1 3 2 2 	 Triangular Fitness 263,96
+Triangular 26: 3 3 2 3 2 1 1 3 1 2 1 2 	 Triangular Fitness 266,3
+Triangular 27: 2 2 3 1 2 1 1 3 2 3 1 3 	 Triangular Fitness 260,8
+Triangular 28: 2 2 1 3 3 1 3 2 1 3 2 1 	 Triangular Fitness 289,36
+Triangular 29: 3 2 1 3 2 1 1 1 3 2 2 3 	 Triangular Fitness 299,46
+Triangular 30: 3 1 3 1 2 1 3 1 2 3 2 2 	 Triangular Fitness 290,48
+Triangular 31: 1 1 3 3 2 2 2 1 2 3 1 3 	 Triangular Fitness 237,98
+Triangular 32: 2 2 2 3 1 2 3 1 1 3 3 1 	 Triangular Fitness 276,98
+Triangular 33: 2 1 1 1 3 3 3 1 3 2 2 2 	 Triangular Fitness 275,4
+Triangular 34: 1 1 3 2 1 1 2 3 2 3 2 3 	 Triangular Fitness 258,56
+Triangular 35: 2 2 2 3 1 1 3 3 2 3 1 1 	 Triangular Fitness 273,64
+Triangular 36: 1 2 2 1 3 1 2 1 3 3 2 3 	 Triangular Fitness 262,76
+Triangular 37: 2 1 2 1 3 2 1 3 3 2 3 1 	 Triangular Fitness 294,04
+Triangular 38: 1 3 3 1 3 1 2 2 2 1 2 3 	 Triangular Fitness 278,68
+Triangular 39: 2 2 3 1 2 1 2 3 3 3 1 1 	 Triangular Fitness 259,7
+Triangular 40: 3 3 3 1 2 2 2 1 1 3 1 2 	 Triangular Fitness 255,2
+Triangular 41: 1 1 2 1 3 2 1 2 3 3 2 3 	 Triangular Fitness 273,76
+Triangular 42: 3 1 3 1 2 2 1 2 2 3 1 3 	 Triangular Fitness 247,16
+Triangular 43: 3 1 1 2 2 3 1 3 1 2 3 2 	 Triangular Fitness 233,24
+Triangular 44: 1 2 3 3 3 2 2 3 1 1 2 1 	 Triangular Fitness 285,2
+Triangular 45: 1 2 1 3 2 1 2 3 3 1 3 2 	 Triangular Fitness 255,52
+Triangular 46: 2 1 3 2 3 1 3 3 1 2 2 1 	 Triangular Fitness 300,6
+Triangular 47: 1 3 1 2 2 2 3 1 1 3 2 3 	 Triangular Fitness 238
+Triangular 48: 3 2 3 1 1 2 3 1 3 2 2 1 	 Triangular Fitness 266,02
+Triangular 49: 2 3 1 1 2 1 3 2 2 1 3 3 	 Triangular Fitness 268,32
+Triangular 50: 2 2 3 1 3 3 2 3 1 1 2 1 	 Triangular Fitness 243,38
+Triangular 51: 1 1 2 3 3 1 2 3 2 1 3 2 	 Triangular Fitness 292,92
+Triangular 52: 2 1 3 2 3 2 3 2 1 3 1 1 	 Triangular Fitness 266,3
+Triangular 53: 1 1 1 3 2 3 3 2 2 3 2 1 	 Triangular Fitness 280,62
+Triangular 54: 2 3 1 3 1 1 2 1 3 2 3 2 	 Triangular Fitness 260,8
+Triangular 55: 3 1 1 3 2 1 2 2 2 3 3 1 	 Triangular Fitness 312,34
+Triangular 56: 1 1 3 3 2 1 3 1 2 3 2 2 	 Triangular Fitness 289,36
+Triangular 57: 3 3 1 1 3 1 2 2 1 2 2 3 	 Triangular Fitness 314,3
+Triangular 58: 1 2 1 3 1 3 2 3 1 2 2 3 	 Triangular Fitness 299,46
+Triangular 59: 1 1 1 2 3 2 1 2 3 2 3 3 	 Triangular Fitness 290,48
+Triangular 60: 2 1 1 1 3 3 3 1 2 2 2 3 	 Triangular Fitness 298,1
+Triangular 61: 1 3 2 3 1 1 2 2 2 3 3 1 	 Triangular Fitness 237,98
+Triangular 62: 2 3 3 2 1 3 2 1 1 3 1 2 	 Triangular Fitness 296,02
+Triangular 63: 1 2 2 3 1 3 2 1 3 2 1 3 	 Triangular Fitness 276,98
+Triangular 64: 1 1 2 3 1 1 2 2 3 3 3 2 	 Triangular Fitness 279,38
+Triangular 65: 3 3 2 2 1 1 1 3 1 3 2 2 	 Triangular Fitness 275,4
+Triangular 66: 3 3 1 2 2 1 2 1 2 3 3 1 	 Triangular Fitness 290,34
+Triangular 67: 2 3 1 3 2 1 3 2 3 1 1 2 	 Triangular Fitness 302,52
+Triangular 68: 3 3 2 1 1 1 3 3 1 2 2 2 	 Triangular Fitness 258,56
+Triangular 69: 2 3 1 3 3 3 1 1 1 2 2 2 	 Triangular Fitness 273,64
+Triangular 70: 1 2 3 3 1 1 2 1 2 3 3 2 	 Triangular Fitness 309,72
+Triangular 71: 2 1 1 2 3 1 3 2 1 3 2 3 	 Triangular Fitness 284,4
+Triangular 72: 3 3 1 1 2 1 3 3 2 2 1 2 	 Triangular Fitness 262,76
+Triangular 73: 3 3 3 1 1 2 3 1 2 1 2 2 	 Triangular Fitness 312,68
+Triangular 74: 3 3 1 2 1 3 2 2 2 1 3 1 	 Triangular Fitness 294,04
+Triangular 75: 2 1 1 3 3 2 3 1 2 2 3 1 	 Triangular Fitness 298,42
+Triangular 76: 1 1 3 3 1 2 2 3 1 2 3 2 	 Triangular Fitness 278,68
+Triangular 77: 3 3 1 2 3 2 1 2 1 2 3 1 	 Triangular Fitness 259,7
+Triangular 78: 2 2 1 1 3 1 2 2 3 3 1 3 	 Triangular Fitness 303,28
+Triangular 79: 2 3 3 2 2 1 3 1 1 2 3 1 	 Triangular Fitness 255,2
+Triangular 80: 3 2 3 2 1 3 2 2 1 3 1 1 	 Triangular Fitness 308,1
+Triangular 81: 3 1 3 3 2 1 2 3 1 2 1 2 	 Triangular Fitness 320,26
+Triangular 82: 2 3 3 1 1 2 3 1 1 2 3 2 	 Triangular Fitness 273,76
+Triangular 83: 1 2 1 3 2 3 1 2 3 3 2 1 	 Triangular Fitness 301,44
+Triangular 84: 3 1 2 2 3 3 1 2 3 2 1 1 	 Triangular Fitness 247,16
+Triangular 85: 3 1 1 2 1 1 2 3 2 3 2 3 	 Triangular Fitness 233,24
+Triangular 86: 1 1 3 1 3 2 3 2 2 3 2 1 	 Triangular Fitness 337,5
+Triangular 87: 2 1 2 3 2 1 3 3 2 3 1 1 	 Triangular Fitness 285,2
+Triangular 88: 3 1 1 3 2 2 3 1 2 1 3 2 	 Triangular Fitness 286,94
+Triangular 89: 1 3 2 2 3 2 3 1 1 2 1 3 	 Triangular Fitness 255,52
+Triangular 90: 3 3 1 2 1 3 2 2 2 3 1 1 	 Triangular Fitness 277,08
+Triangular 91: 1 3 2 2 2 3 3 3 2 1 1 1 	 Triangular Fitness 300,6
+Triangular 92: 3 1 1 1 2 3 2 1 3 2 2 3 	 Triangular Fitness 301,56
+Triangular 93: 3 1 2 1 2 3 3 1 1 2 3 2 	 Triangular Fitness 238
+Triangular 94: 1 2 2 3 1 3 2 2 3 1 3 1 	 Triangular Fitness 255,2
+Triangular 95: 1 3 1 2 3 3 3 2 1 1 2 2 	 Triangular Fitness 266,02
+Triangular 96: 2 2 3 3 1 2 1 3 3 2 1 1 	 Triangular Fitness 292,66
+Triangular 97: 3 1 1 3 2 2 1 2 3 3 1 2 	 Triangular Fitness 268,32
+Triangular 98: 2 1 3 2 1 3 3 2 2 3 1 1 	 Triangular Fitness 270,98
+Triangular 99: 2 1 1 2 2 1 3 3 3 2 1 3 	 Triangular Fitness 280,22
+Triangular 100: 3 2 3 3 2 1 2 2 1 3 1 1 	 Triangular Fitness 243,38
+
+Best Triangulation Groups
+Group 0 Vertices: 1 2 6 8 
+Group 1 Vertices: 3 4 9 11 
+Group 2 Vertices: 0 5 7 10 
+Fitness of best unit: 233,24
+
+
+Iteration 2
+Triangular 1: 2 2 1 1 1 3 3 3 2 2 1 3 	 Triangular Fitness 277,46
+Triangular 2: 1 1 2 3 2 2 1 3 1 3 2 3 	 Triangular Fitness 243,7
+Triangular 3: 3 2 1 1 1 3 2 3 2 3 1 2 	 Triangular Fitness 259,5
+Triangular 4: 1 2 3 3 1 3 2 1 1 2 3 2 	 Triangular Fitness 238,62
+Triangular 5: 1 1 1 2 2 3 3 2 3 3 1 2 	 Triangular Fitness 265,22
+Triangular 6: 1 3 3 1 3 3 2 1 1 2 2 2 	 Triangular Fitness 275,66
+Triangular 7: 1 1 2 3 3 3 1 2 1 3 2 2 	 Triangular Fitness 252,44
+Triangular 8: 1 1 1 3 2 2 3 3 1 2 3 2 	 Triangular Fitness 253,3
+Triangular 9: 2 1 3 3 1 3 2 1 1 2 3 2 	 Triangular Fitness 255,96
+Triangular 10: 3 2 2 1 1 1 2 3 3 3 1 2 	 Triangular Fitness 251,1
+Triangular 11: 2 3 1 1 1 3 2 3 1 2 3 2 	 Triangular Fitness 291,8
+Triangular 12: 2 2 1 1 2 3 2 3 3 1 3 1 	 Triangular Fitness 250,08
+Triangular 13: 1 3 3 2 3 1 2 1 1 3 2 2 	 Triangular Fitness 263,96
+Triangular 14: 2 2 3 1 2 1 1 3 2 3 1 3 	 Triangular Fitness 260,8
+Triangular 15: 3 1 3 1 2 1 3 1 2 3 2 2 	 Triangular Fitness 290,48
+Triangular 16: 1 1 3 3 2 2 2 1 2 3 1 3 	 Triangular Fitness 237,98
+Triangular 17: 1 1 3 2 1 1 2 3 2 3 2 3 	 Triangular Fitness 258,56
+Triangular 18: 1 2 2 1 3 1 2 1 3 3 2 3 	 Triangular Fitness 262,76
+Triangular 19: 1 3 3 1 3 1 2 2 2 1 2 3 	 Triangular Fitness 278,68
+Triangular 20: 3 3 3 1 2 2 2 1 1 3 1 2 	 Triangular Fitness 255,2
+Triangular 21: 3 1 3 1 2 2 1 2 2 3 1 3 	 Triangular Fitness 247,16
+Triangular 22: 3 1 1 2 2 3 1 3 1 2 3 2 	 Triangular Fitness 233,24
+Triangular 23: 1 2 1 3 2 1 2 3 3 1 3 2 	 Triangular Fitness 255,52
+Triangular 24: 1 3 1 2 2 2 3 1 1 3 2 3 	 Triangular Fitness 238
+Triangular 25: 2 2 3 1 3 3 2 3 1 1 2 1 	 Triangular Fitness 243,38
+Triangular 26: 1 1 2 3 3 1 2 3 2 1 3 2 	 Triangular Fitness 254,86
+Triangular 27: 2 3 1 3 1 1 2 1 3 2 3 2 	 Triangular Fitness 259,06
+Triangular 28: 3 1 1 3 2 1 2 2 2 3 3 1 	 Triangular Fitness 264,5
+Triangular 29: 1 2 1 3 1 3 2 3 1 2 2 3 	 Triangular Fitness 270,18
+Triangular 30: 2 1 1 1 3 3 3 1 2 2 2 3 	 Triangular Fitness 264,94
+Triangular 31: 1 3 2 3 1 1 2 2 2 3 3 1 	 Triangular Fitness 280,16
+Triangular 32: 1 1 2 3 1 1 2 2 3 3 3 2 	 Triangular Fitness 269,08
+Triangular 33: 3 3 2 2 1 1 1 3 1 3 2 2 	 Triangular Fitness 221,36
+Triangular 34: 3 3 2 1 1 1 3 3 1 2 2 2 	 Triangular Fitness 257,46
+Triangular 35: 1 2 3 3 1 1 2 1 2 3 3 2 	 Triangular Fitness 227,56
+Triangular 36: 3 3 1 1 2 1 3 3 2 2 1 2 	 Triangular Fitness 245,22
+Triangular 37: 3 3 1 2 1 3 2 2 2 1 3 1 	 Triangular Fitness 291,92
+Triangular 38: 1 1 3 3 1 2 2 3 1 2 3 2 	 Triangular Fitness 253,7
+Triangular 39: 2 2 1 1 3 1 2 2 3 3 1 3 	 Triangular Fitness 245,22
+Triangular 40: 3 2 3 2 1 3 2 2 1 3 1 1 	 Triangular Fitness 300,64
+Triangular 41: 3 1 3 3 2 1 2 3 1 2 1 2 	 Triangular Fitness 285,22
+Triangular 42: 1 2 1 3 2 3 1 2 3 3 2 1 	 Triangular Fitness 282,16
+Triangular 43: 3 1 1 2 1 1 2 3 2 3 2 3 	 Triangular Fitness 259,16
+Triangular 44: 3 1 1 3 2 2 3 1 2 1 3 2 	 Triangular Fitness 307,14
+Triangular 45: 1 3 2 2 3 2 3 1 1 2 1 3 	 Triangular Fitness 252,84
+Triangular 46: 1 3 2 2 2 3 3 3 2 1 1 1 	 Triangular Fitness 287,24
+Triangular 47: 1 2 2 3 1 3 2 2 3 1 3 1 	 Triangular Fitness 255,24
+Triangular 48: 1 3 1 2 3 3 3 2 1 1 2 2 	 Triangular Fitness 237,82
+Triangular 49: 3 1 1 3 2 2 1 2 3 3 1 2 	 Triangular Fitness 233,26
+Triangular 50: 3 2 3 3 2 1 2 2 1 3 1 1 	 Triangular Fitness 277,6
+Triangular 51: 1 3 2 2 1 3 3 1 1 2 3 2 	 Triangular Fitness 292,92
+Triangular 52: 1 2 1 3 3 1 1 3 2 3 2 2 	 Triangular Fitness 266,3
+Triangular 53: 2 3 3 3 1 1 3 1 2 2 2 1 	 Triangular Fitness 280,62
+Triangular 54: 3 2 2 1 3 1 2 1 2 3 3 1 	 Triangular Fitness 260,8
+Triangular 55: 1 1 2 3 3 2 2 2 1 3 1 3 	 Triangular Fitness 312,34
+Triangular 56: 1 1 1 2 3 3 3 2 3 1 2 2 	 Triangular Fitness 289,36
+Triangular 57: 2 1 2 3 3 1 3 2 3 1 1 2 	 Triangular Fitness 314,3
+Triangular 58: 1 3 2 2 1 3 1 3 2 2 3 1 	 Triangular Fitness 299,46
+Triangular 59: 1 3 3 2 1 2 3 1 2 1 3 2 	 Triangular Fitness 290,48
+Triangular 60: 1 2 2 3 2 1 1 3 1 2 3 3 	 Triangular Fitness 298,1
+Triangular 61: 2 1 3 3 3 2 2 3 1 1 1 2 	 Triangular Fitness 237,98
+Triangular 62: 1 3 3 3 2 2 2 3 2 1 1 1 	 Triangular Fitness 296,02
+Triangular 63: 3 2 1 3 2 1 1 3 2 3 1 2 	 Triangular Fitness 276,98
+Triangular 64: 2 3 1 3 3 2 1 1 3 2 2 1 	 Triangular Fitness 279,38
+Triangular 65: 2 2 3 2 3 1 1 3 1 1 3 2 	 Triangular Fitness 275,4
+Triangular 66: 1 2 1 3 3 2 2 3 1 3 2 1 	 Triangular Fitness 290,34
+Triangular 67: 3 1 3 3 3 1 2 1 2 1 2 2 	 Triangular Fitness 302,52
+Triangular 68: 2 1 3 3 2 2 2 3 1 1 1 3 	 Triangular Fitness 258,56
+Triangular 69: 3 2 1 1 3 2 1 2 1 2 3 3 	 Triangular Fitness 273,64
+Triangular 70: 1 2 1 3 2 3 1 3 1 2 3 2 	 Triangular Fitness 309,72
+Triangular 71: 3 1 1 3 3 1 2 2 2 1 2 3 	 Triangular Fitness 284,4
+Triangular 72: 1 1 3 1 2 1 3 2 3 2 3 2 	 Triangular Fitness 262,76
+Triangular 73: 1 2 2 2 1 3 3 3 1 1 2 3 	 Triangular Fitness 312,68
+Triangular 74: 1 2 1 2 3 3 3 1 2 1 2 3 	 Triangular Fitness 294,04
+Triangular 75: 1 3 2 1 2 2 1 3 3 3 1 2 	 Triangular Fitness 298,42
+Triangular 76: 2 2 1 3 1 1 3 1 2 3 2 3 	 Triangular Fitness 278,68
+Triangular 77: 1 1 3 2 2 1 3 2 2 3 1 3 	 Triangular Fitness 259,7
+Triangular 78: 1 3 2 2 1 1 3 3 2 1 2 3 	 Triangular Fitness 303,28
+Triangular 79: 3 1 2 1 2 3 3 1 2 2 1 3 	 Triangular Fitness 255,2
+Triangular 80: 1 2 1 2 1 3 1 3 3 2 3 2 	 Triangular Fitness 308,1
+Triangular 81: 1 3 1 3 2 3 1 2 1 2 3 2 	 Triangular Fitness 320,26
+Triangular 82: 3 1 1 1 2 3 3 3 2 2 1 2 	 Triangular Fitness 273,76
+Triangular 83: 2 3 1 1 2 3 2 1 3 3 2 1 	 Triangular Fitness 301,44
+Triangular 84: 2 1 3 3 1 3 2 1 2 2 1 3 	 Triangular Fitness 247,16
+Triangular 85: 2 3 1 2 2 1 1 3 1 3 3 2 	 Triangular Fitness 233,24
+Triangular 86: 2 1 3 3 1 1 3 2 1 2 2 3 	 Triangular Fitness 337,5
+Triangular 87: 1 3 2 1 1 2 3 2 2 1 3 3 	 Triangular Fitness 285,2
+Triangular 88: 1 2 2 2 1 3 3 3 1 1 3 2 	 Triangular Fitness 286,94
+Triangular 89: 2 1 1 2 3 3 1 2 3 2 1 3 	 Triangular Fitness 255,52
+Triangular 90: 1 2 1 2 3 1 2 3 2 3 1 3 	 Triangular Fitness 277,08
+Triangular 91: 2 3 1 1 3 3 1 2 1 2 3 2 	 Triangular Fitness 300,6
+Triangular 92: 3 1 2 2 3 2 1 1 3 2 3 1 	 Triangular Fitness 301,56
+Triangular 93: 1 3 3 1 1 3 1 2 2 3 2 2 	 Triangular Fitness 238
+Triangular 94: 1 3 2 2 3 2 1 2 3 1 1 3 	 Triangular Fitness 255,2
+Triangular 95: 1 1 2 1 3 3 1 3 2 2 2 3 	 Triangular Fitness 266,02
+Triangular 96: 1 3 3 3 1 1 2 2 3 2 1 2 	 Triangular Fitness 292,66
+Triangular 97: 1 1 1 3 2 3 2 2 1 2 3 3 	 Triangular Fitness 268,32
+Triangular 98: 2 3 3 2 1 1 1 3 2 1 2 3 	 Triangular Fitness 270,98
+Triangular 99: 3 3 3 1 2 1 2 3 1 1 2 2 	 Triangular Fitness 280,22
+Triangular 100: 3 3 2 2 1 1 1 2 3 3 1 2 	 Triangular Fitness 243,38
+
+Best Triangulation Groups
+Group 0 Vertices: 4 5 6 8 
+Group 1 Vertices: 2 3 10 11 
+Group 2 Vertices: 0 1 7 9 
+Fitness of best unit: 221,36
+
+
+Iteration 3
+Triangular 1: 1 1 2 3 2 2 1 3 1 3 2 3 	 Triangular Fitness 243,7
+Triangular 2: 1 2 3 3 1 3 2 1 1 2 3 2 	 Triangular Fitness 238,62
+Triangular 3: 1 1 1 2 2 3 3 2 3 3 1 2 	 Triangular Fitness 265,22
+Triangular 4: 1 1 2 3 3 3 1 2 1 3 2 2 	 Triangular Fitness 252,44
+Triangular 5: 3 2 2 1 1 1 2 3 3 3 1 2 	 Triangular Fitness 251,1
+Triangular 6: 2 2 1 1 2 3 2 3 3 1 3 1 	 Triangular Fitness 250,08
+Triangular 7: 2 2 3 1 2 1 1 3 2 3 1 3 	 Triangular Fitness 260,8
+Triangular 8: 1 1 3 3 2 2 2 1 2 3 1 3 	 Triangular Fitness 237,98
+Triangular 9: 1 1 3 2 1 1 2 3 2 3 2 3 	 Triangular Fitness 258,56
+Triangular 10: 3 3 3 1 2 2 2 1 1 3 1 2 	 Triangular Fitness 255,2
+Triangular 11: 3 1 1 2 2 3 1 3 1 2 3 2 	 Triangular Fitness 233,24
+Triangular 12: 1 3 1 2 2 2 3 1 1 3 2 3 	 Triangular Fitness 238
+Triangular 13: 2 2 3 1 3 3 2 3 1 1 2 1 	 Triangular Fitness 243,38
+Triangular 14: 2 3 1 3 1 1 2 1 3 2 3 2 	 Triangular Fitness 259,06
+Triangular 15: 2 1 1 1 3 3 3 1 2 2 2 3 	 Triangular Fitness 264,94
+Triangular 16: 1 1 2 3 1 1 2 2 3 3 3 2 	 Triangular Fitness 269,08
+Triangular 17: 3 3 2 2 1 1 1 3 1 3 2 2 	 Triangular Fitness 221,36
+Triangular 18: 1 2 3 3 1 1 2 1 2 3 3 2 	 Triangular Fitness 227,56
+Triangular 19: 1 1 3 3 1 2 2 3 1 2 3 2 	 Triangular Fitness 253,7
+Triangular 20: 2 2 1 1 3 1 2 2 3 3 1 3 	 Triangular Fitness 245,22
+Triangular 21: 1 2 1 3 2 3 1 2 3 3 2 1 	 Triangular Fitness 282,16
+Triangular 22: 3 1 1 2 1 1 2 3 2 3 2 3 	 Triangular Fitness 259,16
+Triangular 23: 1 3 2 2 3 2 3 1 1 2 1 3 	 Triangular Fitness 252,84
+Triangular 24: 1 3 1 2 3 3 3 2 1 1 2 2 	 Triangular Fitness 237,82
+Triangular 25: 3 1 1 3 2 2 1 2 3 3 1 2 	 Triangular Fitness 233,26
+Triangular 26: 1 3 2 2 1 3 3 1 1 2 3 2 	 Triangular Fitness 248,2
+Triangular 27: 2 3 3 3 1 1 3 1 2 2 2 1 	 Triangular Fitness 262,66
+Triangular 28: 1 1 1 2 3 3 3 2 3 1 2 2 	 Triangular Fitness 251,56
+Triangular 29: 1 3 2 2 1 3 1 3 2 2 3 1 	 Triangular Fitness 279,68
+Triangular 30: 1 3 3 2 1 2 3 1 2 1 3 2 	 Triangular Fitness 267,22
+Triangular 31: 1 3 3 3 2 2 2 3 2 1 1 1 	 Triangular Fitness 275,4
+Triangular 32: 3 2 1 3 2 1 1 3 2 3 1 2 	 Triangular Fitness 279,78
+Triangular 33: 1 2 1 3 3 2 2 3 1 3 2 1 	 Triangular Fitness 280,14
+Triangular 34: 3 1 3 3 3 1 2 1 2 1 2 2 	 Triangular Fitness 313,06
+Triangular 35: 1 2 1 3 2 3 1 3 1 2 3 2 	 Triangular Fitness 223,44
+Triangular 36: 1 1 3 1 2 1 3 2 3 2 3 2 	 Triangular Fitness 268,64
+Triangular 37: 1 2 1 2 3 3 3 1 2 1 2 3 	 Triangular Fitness 255,36
+Triangular 38: 2 2 1 3 1 1 3 1 2 3 2 3 	 Triangular Fitness 234,42
+Triangular 39: 1 3 2 2 1 1 3 3 2 1 2 3 	 Triangular Fitness 273,18
+Triangular 40: 1 2 1 2 1 3 1 3 3 2 3 2 	 Triangular Fitness 301,38
+Triangular 41: 1 3 1 3 2 3 1 2 1 2 3 2 	 Triangular Fitness 246,88
+Triangular 42: 2 1 3 3 1 3 2 1 2 2 1 3 	 Triangular Fitness 247,82
+Triangular 43: 2 1 3 3 1 1 3 2 1 2 2 3 	 Triangular Fitness 283,82
+Triangular 44: 1 3 2 1 1 2 3 2 2 1 3 3 	 Triangular Fitness 282,82
+Triangular 45: 2 1 1 2 3 3 1 2 3 2 1 3 	 Triangular Fitness 265,98
+Triangular 46: 2 3 1 1 3 3 1 2 1 2 3 2 	 Triangular Fitness 274,68
+Triangular 47: 1 3 2 2 3 2 1 2 3 1 1 3 	 Triangular Fitness 282,86
+Triangular 48: 1 1 2 1 3 3 1 3 2 2 2 3 	 Triangular Fitness 266,34
+Triangular 49: 1 1 1 3 2 3 2 2 1 2 3 3 	 Triangular Fitness 251,28
+Triangular 50: 3 3 3 1 2 1 2 3 1 1 2 2 	 Triangular Fitness 243,16
+Triangular 51: 1 3 1 2 2 2 1 3 3 3 1 2 	 Triangular Fitness 292,92
+Triangular 52: 1 1 2 2 1 3 3 1 3 2 3 2 	 Triangular Fitness 266,3
+Triangular 53: 3 3 1 3 1 1 2 2 3 2 1 2 	 Triangular Fitness 280,62
+Triangular 54: 2 2 3 3 3 1 2 2 1 3 1 1 	 Triangular Fitness 260,8
+Triangular 55: 2 2 1 3 1 1 2 2 3 1 3 3 	 Triangular Fitness 312,34
+Triangular 56: 2 1 2 1 1 1 2 3 3 2 3 3 	 Triangular Fitness 289,36
+Triangular 57: 1 3 1 3 1 2 2 3 3 2 2 1 	 Triangular Fitness 314,3
+Triangular 58: 3 3 1 1 2 2 3 1 2 2 3 1 	 Triangular Fitness 299,46
+Triangular 59: 2 3 1 1 1 3 2 2 1 3 2 3 	 Triangular Fitness 290,48
+Triangular 60: 1 3 1 2 3 1 2 3 2 2 3 1 	 Triangular Fitness 298,1
+Triangular 61: 2 3 1 2 1 2 1 3 3 2 1 3 	 Triangular Fitness 237,98
+Triangular 62: 2 1 1 3 1 3 3 3 2 2 1 2 	 Triangular Fitness 296,02
+Triangular 63: 1 2 3 1 3 2 2 3 2 1 3 1 	 Triangular Fitness 276,98
+Triangular 64: 1 3 3 1 2 3 1 3 1 2 2 2 	 Triangular Fitness 279,38
+Triangular 65: 3 2 2 2 3 1 3 1 1 1 2 3 	 Triangular Fitness 275,4
+Triangular 66: 2 3 3 2 1 2 1 2 3 1 3 1 	 Triangular Fitness 290,34
+Triangular 67: 3 3 1 2 2 1 1 2 2 3 1 3 	 Triangular Fitness 302,52
+Triangular 68: 2 3 1 3 1 2 1 3 2 2 3 1 	 Triangular Fitness 258,56
+Triangular 69: 2 1 3 3 3 1 2 1 3 2 2 1 	 Triangular Fitness 273,64
+Triangular 70: 3 3 3 3 1 1 1 2 2 1 2 2 	 Triangular Fitness 309,72
+Triangular 71: 2 3 1 1 2 1 2 3 3 3 1 2 	 Triangular Fitness 284,4
+Triangular 72: 1 1 1 2 3 3 2 1 3 2 3 2 	 Triangular Fitness 262,76
+Triangular 73: 3 2 1 3 1 1 2 1 3 2 2 3 	 Triangular Fitness 312,68
+Triangular 74: 2 2 1 1 1 3 2 2 3 3 1 3 	 Triangular Fitness 294,04
+Triangular 75: 1 2 1 1 3 2 2 2 1 3 3 3 	 Triangular Fitness 298,42
+Triangular 76: 3 2 3 3 3 1 2 1 2 1 1 2 	 Triangular Fitness 278,68
+Triangular 77: 2 3 2 1 2 3 2 3 1 3 1 1 	 Triangular Fitness 259,7
+Triangular 78: 2 2 1 1 2 3 1 3 1 3 2 3 	 Triangular Fitness 303,28
+Triangular 79: 1 1 3 3 3 2 2 2 3 1 2 1 	 Triangular Fitness 255,2
+Triangular 80: 1 2 1 3 1 2 1 3 3 2 2 3 	 Triangular Fitness 308,1
+Triangular 81: 1 3 2 2 1 3 3 3 2 1 2 1 	 Triangular Fitness 320,26
+Triangular 82: 1 1 3 2 2 1 2 3 1 3 3 2 	 Triangular Fitness 273,76
+Triangular 83: 3 1 2 1 1 2 2 3 2 3 3 1 	 Triangular Fitness 301,44
+Triangular 84: 1 3 2 1 2 3 1 3 1 2 2 3 	 Triangular Fitness 247,16
+Triangular 85: 3 1 2 1 3 3 2 1 2 1 2 3 	 Triangular Fitness 233,24
+Triangular 86: 2 1 3 1 2 2 3 3 1 1 3 2 	 Triangular Fitness 337,5
+Triangular 87: 1 2 2 1 2 3 3 3 1 1 3 2 	 Triangular Fitness 285,2
+Triangular 88: 3 1 1 2 1 2 2 3 3 3 2 1 	 Triangular Fitness 286,94
+Triangular 89: 2 3 3 1 1 3 2 1 1 2 2 3 	 Triangular Fitness 255,52
+Triangular 90: 3 1 3 3 2 1 2 1 2 2 1 3 	 Triangular Fitness 277,08
+Triangular 91: 2 2 2 2 3 1 3 3 1 3 1 1 	 Triangular Fitness 300,6
+Triangular 92: 2 2 1 1 2 1 3 2 1 3 3 3 	 Triangular Fitness 301,56
+Triangular 93: 3 2 2 1 2 3 3 1 1 2 1 3 	 Triangular Fitness 238
+Triangular 94: 2 3 2 2 3 3 1 1 2 1 3 1 	 Triangular Fitness 255,2
+Triangular 95: 3 2 3 2 2 1 3 2 1 1 1 3 	 Triangular Fitness 266,02
+Triangular 96: 1 2 2 3 3 1 3 3 1 1 2 2 	 Triangular Fitness 292,66
+Triangular 97: 2 3 1 2 3 1 1 1 3 3 2 2 	 Triangular Fitness 268,32
+Triangular 98: 3 1 3 1 2 1 3 2 3 2 2 1 	 Triangular Fitness 270,98
+Triangular 99: 2 2 1 3 3 2 1 2 3 1 1 3 	 Triangular Fitness 280,22
+Triangular 100: 2 1 3 2 1 2 1 3 2 1 3 3 	 Triangular Fitness 243,38
+
+Best Triangulation Groups
+Group 0 Vertices: 4 5 6 8 
+Group 1 Vertices: 2 3 10 11 
+Group 2 Vertices: 0 1 7 9 
+Fitness of best unit: 221,36
+
+
+Iteration 4
+Triangular 1: 1 2 3 3 1 3 2 1 1 2 3 2 	 Triangular Fitness 238,62
+Triangular 2: 1 1 2 3 3 3 1 2 1 3 2 2 	 Triangular Fitness 252,44
+Triangular 3: 2 2 1 1 2 3 2 3 3 1 3 1 	 Triangular Fitness 250,08
+Triangular 4: 1 1 3 3 2 2 2 1 2 3 1 3 	 Triangular Fitness 237,98
+Triangular 5: 3 3 3 1 2 2 2 1 1 3 1 2 	 Triangular Fitness 255,2
+Triangular 6: 3 1 1 2 2 3 1 3 1 2 3 2 	 Triangular Fitness 233,24
+Triangular 7: 2 2 3 1 3 3 2 3 1 1 2 1 	 Triangular Fitness 243,38
+Triangular 8: 2 1 1 1 3 3 3 1 2 2 2 3 	 Triangular Fitness 264,94
+Triangular 9: 3 3 2 2 1 1 1 3 1 3 2 2 	 Triangular Fitness 221,36
+Triangular 10: 2 2 1 1 3 1 2 2 3 3 1 3 	 Triangular Fitness 245,22
+Triangular 11: 3 1 1 2 1 1 2 3 2 3 2 3 	 Triangular Fitness 259,16
+Triangular 12: 1 3 1 2 3 3 3 2 1 1 2 2 	 Triangular Fitness 237,82
+Triangular 13: 3 1 1 3 2 2 1 2 3 3 1 2 	 Triangular Fitness 233,26
+Triangular 14: 1 1 1 2 3 3 3 2 3 1 2 2 	 Triangular Fitness 251,56
+Triangular 15: 1 3 3 2 1 2 3 1 2 1 3 2 	 Triangular Fitness 267,22
+Triangular 16: 1 3 3 3 2 2 2 3 2 1 1 1 	 Triangular Fitness 275,4
+Triangular 17: 1 2 1 3 3 2 2 3 1 3 2 1 	 Triangular Fitness 280,14
+Triangular 18: 1 2 1 3 2 3 1 3 1 2 3 2 	 Triangular Fitness 223,44
+Triangular 19: 2 2 1 3 1 1 3 1 2 3 2 3 	 Triangular Fitness 234,42
+Triangular 20: 1 3 2 2 1 1 3 3 2 1 2 3 	 Triangular Fitness 273,18
+Triangular 21: 1 3 1 3 2 3 1 2 1 2 3 2 	 Triangular Fitness 246,88
+Triangular 22: 1 3 2 1 1 2 3 2 2 1 3 3 	 Triangular Fitness 282,82
+Triangular 23: 2 1 1 2 3 3 1 2 3 2 1 3 	 Triangular Fitness 265,98
+Triangular 24: 1 1 2 1 3 3 1 3 2 2 2 3 	 Triangular Fitness 266,34
+Triangular 25: 3 3 3 1 2 1 2 3 1 1 2 2 	 Triangular Fitness 243,16
+Triangular 26: 1 1 2 2 1 3 3 1 3 2 3 2 	 Triangular Fitness 224,68
+Triangular 27: 3 3 1 3 1 1 2 2 3 2 1 2 	 Triangular Fitness 298,16
+Triangular 28: 2 2 1 3 1 1 2 2 3 1 3 3 	 Triangular Fitness 271,52
+Triangular 29: 3 3 1 1 2 2 3 1 2 2 3 1 	 Triangular Fitness 294,98
+Triangular 30: 1 3 1 2 3 1 2 3 2 2 3 1 	 Triangular Fitness 279,02
+Triangular 31: 2 1 1 3 1 3 3 3 2 2 1 2 	 Triangular Fitness 272,14
+Triangular 32: 1 2 3 1 3 2 2 3 2 1 3 1 	 Triangular Fitness 254,94
+Triangular 33: 2 3 3 2 1 2 1 2 3 1 3 1 	 Triangular Fitness 249,84
+Triangular 34: 2 3 1 3 1 2 1 3 2 2 3 1 	 Triangular Fitness 261,52
+Triangular 35: 2 1 3 3 3 1 2 1 3 2 2 1 	 Triangular Fitness 317,8
+Triangular 36: 1 1 1 2 3 3 2 1 3 2 3 2 	 Triangular Fitness 242,96
+Triangular 37: 3 2 1 3 1 1 2 1 3 2 2 3 	 Triangular Fitness 269,22
+Triangular 38: 1 2 1 1 3 2 2 2 1 3 3 3 	 Triangular Fitness 259,74
+Triangular 39: 2 2 1 1 2 3 1 3 1 3 2 3 	 Triangular Fitness 278,92
+Triangular 40: 1 1 3 3 3 2 2 2 3 1 2 1 	 Triangular Fitness 297,08
+Triangular 41: 1 3 2 2 1 3 3 3 2 1 2 1 	 Triangular Fitness 239,68
+Triangular 42: 3 1 2 1 1 2 2 3 2 3 3 1 	 Triangular Fitness 268,24
+Triangular 43: 3 1 2 1 3 3 2 1 2 1 2 3 	 Triangular Fitness 281,06
+Triangular 44: 3 1 1 2 1 2 2 3 3 3 2 1 	 Triangular Fitness 252,74
+Triangular 45: 3 1 3 3 2 1 2 1 2 2 1 3 	 Triangular Fitness 284,72
+Triangular 46: 2 2 1 1 2 1 3 2 1 3 3 3 	 Triangular Fitness 244,22
+Triangular 47: 2 3 2 2 3 3 1 1 2 1 3 1 	 Triangular Fitness 290,54
+Triangular 48: 1 2 2 3 3 1 3 3 1 1 2 2 	 Triangular Fitness 288,06
+Triangular 49: 3 1 3 1 2 1 3 2 3 2 2 1 	 Triangular Fitness 285,02
+Triangular 50: 2 2 1 3 3 2 1 2 3 1 1 3 	 Triangular Fitness 263,94
+Triangular 51: 3 2 1 3 3 2 2 2 1 3 1 1 	 Triangular Fitness 292,92
+Triangular 52: 2 1 2 1 3 3 1 2 1 2 3 3 	 Triangular Fitness 266,3
+Triangular 53: 1 1 2 2 1 3 3 1 3 2 3 2 	 Triangular Fitness 280,62
+Triangular 54: 3 2 1 2 2 3 3 2 3 1 1 1 	 Triangular Fitness 260,8
+Triangular 55: 1 2 1 3 2 3 1 2 3 2 1 3 	 Triangular Fitness 312,34
+Triangular 56: 1 2 3 3 3 3 2 1 1 1 2 2 	 Triangular Fitness 289,36
+Triangular 57: 2 3 2 3 2 1 1 1 2 3 1 3 	 Triangular Fitness 314,3
+Triangular 58: 3 1 1 2 2 1 2 3 1 3 2 3 	 Triangular Fitness 299,46
+Triangular 59: 3 1 3 3 2 2 1 1 2 2 3 1 	 Triangular Fitness 290,48
+Triangular 60: 1 1 2 2 3 3 3 2 3 1 1 2 	 Triangular Fitness 298,1
+Triangular 61: 2 2 1 1 3 3 2 1 3 3 2 1 	 Triangular Fitness 237,98
+Triangular 62: 2 3 3 2 3 1 3 2 1 1 1 2 	 Triangular Fitness 296,02
+Triangular 63: 3 1 2 1 1 3 2 2 2 3 1 3 	 Triangular Fitness 276,98
+Triangular 64: 1 3 1 3 2 2 3 1 2 2 3 1 	 Triangular Fitness 279,38
+Triangular 65: 3 1 3 2 2 2 3 1 2 1 1 3 	 Triangular Fitness 275,4
+Triangular 66: 1 3 1 3 1 2 3 2 2 3 1 2 	 Triangular Fitness 290,34
+Triangular 67: 3 2 2 2 1 3 3 1 3 1 1 2 	 Triangular Fitness 302,52
+Triangular 68: 3 2 1 3 2 1 2 2 1 3 3 1 	 Triangular Fitness 258,56
+Triangular 69: 1 3 1 1 2 2 3 3 3 1 2 2 	 Triangular Fitness 273,64
+Triangular 70: 3 1 2 1 3 2 2 1 1 3 2 3 	 Triangular Fitness 309,72
+Triangular 71: 3 2 3 1 1 1 2 2 3 1 3 2 	 Triangular Fitness 284,4
+Triangular 72: 2 2 2 3 1 3 1 1 1 2 3 3 	 Triangular Fitness 262,76
+Triangular 73: 1 2 1 3 3 3 3 1 1 2 2 2 	 Triangular Fitness 312,68
+Triangular 74: 2 1 1 2 2 3 3 1 1 2 3 3 	 Triangular Fitness 294,04
+Triangular 75: 1 2 2 1 1 3 1 3 3 2 3 2 	 Triangular Fitness 298,42
+Triangular 76: 1 2 3 3 1 2 2 2 1 1 3 3 	 Triangular Fitness 278,68
+Triangular 77: 2 1 2 2 2 3 1 1 3 3 3 1 	 Triangular Fitness 259,7
+Triangular 78: 2 2 1 1 3 3 1 2 1 3 3 2 	 Triangular Fitness 303,28
+Triangular 79: 2 1 3 1 2 2 1 3 1 3 3 2 	 Triangular Fitness 255,2
+Triangular 80: 3 2 2 3 2 1 1 3 2 1 3 1 	 Triangular Fitness 308,1
+Triangular 81: 1 2 2 3 2 1 1 3 2 1 3 3 	 Triangular Fitness 320,26
+Triangular 82: 1 3 3 2 1 1 2 2 2 3 1 3 	 Triangular Fitness 273,76
+Triangular 83: 1 1 2 3 3 1 1 3 2 2 2 3 	 Triangular Fitness 301,44
+Triangular 84: 2 1 2 2 1 3 3 2 1 3 1 3 	 Triangular Fitness 247,16
+Triangular 85: 2 2 3 3 1 2 1 3 1 3 2 1 	 Triangular Fitness 233,24
+Triangular 86: 3 1 2 2 2 1 1 2 3 1 3 3 	 Triangular Fitness 337,5
+Triangular 87: 2 1 2 1 1 2 3 3 1 3 3 2 	 Triangular Fitness 285,2
+Triangular 88: 3 2 1 1 1 2 2 1 2 3 3 3 	 Triangular Fitness 286,94
+Triangular 89: 2 3 1 1 3 3 1 2 3 2 1 2 	 Triangular Fitness 255,52
+Triangular 90: 2 2 2 3 2 1 3 3 1 1 1 3 	 Triangular Fitness 277,08
+Triangular 91: 1 2 2 3 3 3 1 2 3 2 1 1 	 Triangular Fitness 300,6
+Triangular 92: 1 3 3 2 2 3 2 1 2 1 3 1 	 Triangular Fitness 301,56
+Triangular 93: 3 1 1 2 2 2 3 1 1 2 3 3 	 Triangular Fitness 238
+Triangular 94: 1 3 1 2 2 3 2 3 1 3 2 1 	 Triangular Fitness 255,2
+Triangular 95: 1 3 1 3 1 3 1 2 2 2 3 2 	 Triangular Fitness 266,02
+Triangular 96: 3 3 1 2 2 2 3 1 3 1 2 1 	 Triangular Fitness 292,66
+Triangular 97: 2 3 3 2 2 1 1 3 1 1 2 3 	 Triangular Fitness 268,32
+Triangular 98: 2 3 1 1 3 3 3 1 2 1 2 2 	 Triangular Fitness 270,98
+Triangular 99: 2 1 3 3 1 2 2 3 3 1 1 2 	 Triangular Fitness 280,22
+Triangular 100: 3 3 1 3 3 1 2 1 2 1 2 2 	 Triangular Fitness 243,38
+
+Best Triangulation Groups
+Group 0 Vertices: 4 5 6 8 
+Group 1 Vertices: 2 3 10 11 
+Group 2 Vertices: 0 1 7 9 
+Fitness of best unit: 221,36
+
+
+Iteration 5
+Triangular 1: 1 2 3 3 1 3 2 1 1 2 3 2 	 Triangular Fitness 238,62
+Triangular 2: 1 1 3 3 2 2 2 1 2 3 1 3 	 Triangular Fitness 237,98
+Triangular 3: 3 1 1 2 2 3 1 3 1 2 3 2 	 Triangular Fitness 233,24
+Triangular 4: 2 2 3 1 3 3 2 3 1 1 2 1 	 Triangular Fitness 243,38
+Triangular 5: 3 3 2 2 1 1 1 3 1 3 2 2 	 Triangular Fitness 221,36
+Triangular 6: 1 3 1 2 3 3 3 2 1 1 2 2 	 Triangular Fitness 237,82
+Triangular 7: 3 1 1 3 2 2 1 2 3 3 1 2 	 Triangular Fitness 233,26
+Triangular 8: 1 3 3 2 1 2 3 1 2 1 3 2 	 Triangular Fitness 267,22
+Triangular 9: 1 2 1 3 2 3 1 3 1 2 3 2 	 Triangular Fitness 223,44
+Triangular 10: 2 2 1 3 1 1 3 1 2 3 2 3 	 Triangular Fitness 234,42
+Triangular 11: 1 3 1 3 2 3 1 2 1 2 3 2 	 Triangular Fitness 246,88
+Triangular 12: 2 1 1 2 3 3 1 2 3 2 1 3 	 Triangular Fitness 265,98
+Triangular 13: 1 1 2 2 1 3 3 1 3 2 3 2 	 Triangular Fitness 224,68
+Triangular 14: 2 2 1 3 1 1 2 2 3 1 3 3 	 Triangular Fitness 271,52
+Triangular 15: 1 3 1 2 3 1 2 3 2 2 3 1 	 Triangular Fitness 279,02
+Triangular 16: 1 2 3 1 3 2 2 3 2 1 3 1 	 Triangular Fitness 254,94
+Triangular 17: 2 3 3 2 1 2 1 2 3 1 3 1 	 Triangular Fitness 249,84
+Triangular 18: 1 1 1 2 3 3 2 1 3 2 3 2 	 Triangular Fitness 242,96
+Triangular 19: 1 2 1 1 3 2 2 2 1 3 3 3 	 Triangular Fitness 259,74
+Triangular 20: 2 2 1 1 2 3 1 3 1 3 2 3 	 Triangular Fitness 278,92
+Triangular 21: 1 3 2 2 1 3 3 3 2 1 2 1 	 Triangular Fitness 239,68
+Triangular 22: 3 1 1 2 1 2 2 3 3 3 2 1 	 Triangular Fitness 252,74
+Triangular 23: 2 2 1 1 2 1 3 2 1 3 3 3 	 Triangular Fitness 244,22
+Triangular 24: 1 2 2 3 3 1 3 3 1 1 2 2 	 Triangular Fitness 288,06
+Triangular 25: 2 2 1 3 3 2 1 2 3 1 1 3 	 Triangular Fitness 263,94
+Triangular 26: 2 1 2 1 3 3 1 2 1 2 3 3 	 Triangular Fitness 260,56
+Triangular 27: 1 1 2 2 1 3 3 1 3 2 3 2 	 Triangular Fitness 224,68
+Triangular 28: 1 2 3 3 3 3 2 1 1 1 2 2 	 Triangular Fitness 285,52
+Triangular 29: 2 3 2 3 2 1 1 1 2 3 1 3 	 Triangular Fitness 274
+Triangular 30: 1 1 2 2 3 3 3 2 3 1 1 2 	 Triangular Fitness 262,82
+Triangular 31: 2 2 1 1 3 3 2 1 3 3 2 1 	 Triangular Fitness 294,98
+Triangular 32: 3 1 2 1 1 3 2 2 2 3 1 3 	 Triangular Fitness 282
+Triangular 33: 3 1 3 2 2 2 3 1 2 1 1 3 	 Triangular Fitness 314,48
+Triangular 34: 3 2 1 3 2 1 2 2 1 3 3 1 	 Triangular Fitness 241,18
+Triangular 35: 1 3 1 1 2 2 3 3 3 1 2 2 	 Triangular Fitness 273,48
+Triangular 36: 2 2 2 3 1 3 1 1 1 2 3 3 	 Triangular Fitness 241,18
+Triangular 37: 1 2 1 3 3 3 3 1 1 2 2 2 	 Triangular Fitness 272,46
+Triangular 38: 1 2 3 3 1 2 2 2 1 1 3 3 	 Triangular Fitness 239,62
+Triangular 39: 2 2 1 1 3 3 1 2 1 3 3 2 	 Triangular Fitness 291,98
+Triangular 40: 3 2 2 3 2 1 1 3 2 1 3 1 	 Triangular Fitness 278,84
+Triangular 41: 1 2 2 3 2 1 1 3 2 1 3 3 	 Triangular Fitness 292,9
+Triangular 42: 1 1 2 3 3 1 1 3 2 2 2 3 	 Triangular Fitness 273,4
+Triangular 43: 2 2 3 3 1 2 1 3 1 3 2 1 	 Triangular Fitness 273,38
+Triangular 44: 3 2 1 1 1 2 2 1 2 3 3 3 	 Triangular Fitness 285,4
+Triangular 45: 2 3 1 1 3 3 1 2 3 2 1 2 	 Triangular Fitness 279,74
+Triangular 46: 1 3 3 2 2 3 2 1 2 1 3 1 	 Triangular Fitness 277,4
+Triangular 47: 1 3 1 2 2 3 2 3 1 3 2 1 	 Triangular Fitness 274,8
+Triangular 48: 3 3 1 2 2 2 3 1 3 1 2 1 	 Triangular Fitness 241,46
+Triangular 49: 2 3 1 1 3 3 3 1 2 1 2 2 	 Triangular Fitness 286,52
+Triangular 50: 3 3 1 3 3 1 2 1 2 1 2 2 	 Triangular Fitness 287,64
+Triangular 51: 2 1 3 2 1 3 2 2 3 1 1 3 	 Triangular Fitness 292,92
+Triangular 52: 3 2 3 2 2 1 1 3 3 1 2 1 	 Triangular Fitness 266,3
+Triangular 53: 2 3 2 2 1 3 3 3 2 1 1 1 	 Triangular Fitness 280,62
+Triangular 54: 2 3 1 1 1 2 3 3 1 3 2 2 	 Triangular Fitness 260,8
+Triangular 55: 3 3 2 1 3 2 2 2 1 1 3 1 	 Triangular Fitness 312,34
+Triangular 56: 1 3 2 2 3 2 3 1 1 2 3 1 	 Triangular Fitness 289,36
+Triangular 57: 3 3 1 2 2 1 1 3 2 3 2 1 	 Triangular Fitness 314,3
+Triangular 58: 1 2 2 3 2 1 1 3 2 1 3 3 	 Triangular Fitness 299,46
+Triangular 59: 1 3 1 2 1 2 3 2 3 2 1 3 	 Triangular Fitness 290,48
+Triangular 60: 3 1 1 3 3 2 1 1 3 2 2 2 	 Triangular Fitness 298,1
+Triangular 61: 3 2 2 3 3 1 1 1 1 2 3 2 	 Triangular Fitness 237,98
+Triangular 62: 1 1 2 2 3 3 3 2 2 3 1 1 	 Triangular Fitness 296,02
+Triangular 63: 3 1 3 2 3 1 1 2 1 3 2 2 	 Triangular Fitness 276,98
+Triangular 64: 1 1 2 1 3 3 2 2 2 1 3 3 	 Triangular Fitness 279,38
+Triangular 65: 1 1 2 3 3 2 3 2 2 3 1 1 	 Triangular Fitness 275,4
+Triangular 66: 2 1 3 1 1 1 3 3 3 2 2 2 	 Triangular Fitness 290,34
+Triangular 67: 1 1 2 3 3 1 3 2 2 3 2 1 	 Triangular Fitness 302,52
+Triangular 68: 3 2 1 2 1 2 2 1 3 3 3 1 	 Triangular Fitness 258,56
+Triangular 69: 1 3 3 1 3 1 3 2 2 2 2 1 	 Triangular Fitness 273,64
+Triangular 70: 3 2 1 3 2 2 1 1 3 2 3 1 	 Triangular Fitness 309,72
+Triangular 71: 1 1 2 1 2 3 2 1 3 3 3 2 	 Triangular Fitness 284,4
+Triangular 72: 3 2 1 3 3 1 1 2 2 1 3 2 	 Triangular Fitness 262,76
+Triangular 73: 3 2 1 3 1 1 2 2 3 1 3 2 	 Triangular Fitness 312,68
+Triangular 74: 2 1 1 3 1 2 2 3 3 1 2 3 	 Triangular Fitness 294,04
+Triangular 75: 1 3 1 1 2 2 2 1 3 3 3 2 	 Triangular Fitness 298,42
+Triangular 76: 3 1 3 1 1 2 1 2 2 2 3 3 	 Triangular Fitness 278,68
+Triangular 77: 3 2 3 1 2 3 1 1 2 1 2 3 	 Triangular Fitness 259,7
+Triangular 78: 3 2 3 1 3 1 1 2 2 3 1 2 	 Triangular Fitness 303,28
+Triangular 79: 2 1 3 2 3 2 3 1 3 2 1 1 	 Triangular Fitness 255,2
+Triangular 80: 3 1 3 2 3 2 3 2 1 2 1 1 	 Triangular Fitness 308,1
+Triangular 81: 1 2 1 2 3 1 2 3 2 3 3 1 	 Triangular Fitness 320,26
+Triangular 82: 3 3 1 3 1 2 1 2 3 1 2 2 	 Triangular Fitness 273,76
+Triangular 83: 3 2 2 3 2 2 3 1 1 1 1 3 	 Triangular Fitness 301,44
+Triangular 84: 3 2 3 1 1 2 1 2 3 1 2 3 	 Triangular Fitness 247,16
+Triangular 85: 2 1 3 3 2 3 2 3 2 1 1 1 	 Triangular Fitness 233,24
+Triangular 86: 3 1 1 2 2 3 2 1 1 3 2 3 	 Triangular Fitness 337,5
+Triangular 87: 1 1 1 3 3 3 2 2 1 2 3 2 	 Triangular Fitness 285,2
+Triangular 88: 3 2 1 3 3 1 2 1 3 2 1 2 	 Triangular Fitness 286,94
+Triangular 89: 1 1 2 3 1 3 1 2 2 3 2 3 	 Triangular Fitness 255,52
+Triangular 90: 2 2 1 1 3 2 3 3 3 1 2 1 	 Triangular Fitness 277,08
+Triangular 91: 1 2 3 1 3 2 2 1 2 3 1 3 	 Triangular Fitness 300,6
+Triangular 92: 1 1 3 3 1 2 2 2 2 3 1 3 	 Triangular Fitness 301,56
+Triangular 93: 2 2 3 1 1 1 3 1 2 2 3 3 	 Triangular Fitness 238
+Triangular 94: 1 2 3 1 3 3 2 2 1 2 1 3 	 Triangular Fitness 255,2
+Triangular 95: 2 3 1 2 2 1 3 1 1 3 2 3 	 Triangular Fitness 266,02
+Triangular 96: 3 2 3 2 3 1 3 2 1 1 1 2 	 Triangular Fitness 292,66
+Triangular 97: 2 2 1 1 1 3 2 3 2 3 3 1 	 Triangular Fitness 268,32
+Triangular 98: 1 2 1 2 1 3 3 3 1 2 3 2 	 Triangular Fitness 270,98
+Triangular 99: 1 3 2 3 2 2 1 2 1 3 3 1 	 Triangular Fitness 280,22
+Triangular 100: 1 1 2 2 2 3 2 3 3 3 1 1 	 Triangular Fitness 243,38
+
+Best Triangulation Groups
+Group 0 Vertices: 4 5 6 8 
+Group 1 Vertices: 2 3 10 11 
+Group 2 Vertices: 0 1 7 9 
+Fitness of best unit: 221,36
+
+

@@ -197,6 +197,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         public double[][] PopulationAfterMutation;
         public double[][] PopulationAfterCrossover;
 
+        public bool SaveToFile;
+
         public double[][] PopulationFunctionValue;
         public double[][] PopulationFunctionValueAfterSelection;
         public double[][] PopulationFunctionValueAfterCrossover;
