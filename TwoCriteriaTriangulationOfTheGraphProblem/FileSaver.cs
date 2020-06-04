@@ -56,10 +56,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 txt.WriteLine("Vertex belonging to groups for each iteration:");
                 txt.WriteLine();
                 txt.WriteLine();
-                txt.WriteLine("Start Population");
-                SaveMatrixToFile(parameters.Population, txt, parameters.Popsize, parameters.FitnessArray);
-                txt.WriteLine();
-                txt.WriteLine();
                 for (int i = 0; i < parameters.MatrixToSave.Count; i++)
                 {
 
