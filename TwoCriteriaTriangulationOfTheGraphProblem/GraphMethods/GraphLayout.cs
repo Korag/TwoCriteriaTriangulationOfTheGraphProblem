@@ -1,5 +1,6 @@
 ﻿using GraphSharp.Controls;
 using System;
+using System.Windows.Controls;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
@@ -10,5 +11,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         {
             base.AnimationLength = TimeSpan.FromMilliseconds(0);
         }
+
     }
 }

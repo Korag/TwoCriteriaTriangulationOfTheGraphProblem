@@ -1,4 +1,5 @@
-﻿using LiveCharts;
+﻿using Denxorz.ZoomControl;
+using LiveCharts;
 using LiveCharts.Wpf;
 using QuickGraph;
 using System;
@@ -32,6 +33,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         private Parameters _parameters { get; set; }
         private BackgroundWorker _bw { get; set; }
 
+        const double ZoomControlTranslateX = 120;
+        const double ZoomControlTranslateY = 80;
+
         public MainWindow()
         {
             _parameters = new Parameters();
@@ -60,6 +64,26 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //Generujemy basic graf, który później nie będzie już zupełnie modyfikowany
             GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
             graphGenerator.GenerateBasicGraph();
+
+            ResetZoomControl(BasicGraphZoomControl);
+        }
+
+        public void ResetZoomControl(ZoomControl zoomControl)
+        {
+            zoomControl.Mode = Denxorz.ZoomControl.ZoomControlModes.Custom;
+            zoomControl.Zoom = 0.8;
+
+            if (zoomControl == BasicGraphZoomControl)
+            {
+                zoomControl.TranslateX = 120;
+                zoomControl.TranslateY = 80;
+            }
+            else if (zoomControl == TriangulationGraphZoomControl)
+            {
+                zoomControl.TranslateX = 150;
+                zoomControl.TranslateY = 65;
+            }
+            zoomControl.Mode = Denxorz.ZoomControl.ZoomControlModes.Fill;
         }
 
         private void StartGeneticAlgorithm(object sender, RoutedEventArgs e)
@@ -83,7 +107,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //geneticAlgorithm.GeneticAlgorithm(_parameters);
 
             //_parameters.verticesTriangulationOfGraph =
-            
+
 
         }
 
@@ -110,7 +134,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //Ustawiamy dane testowe do kontrolek, aby łatwo i szybko można było testować
             //bez konieczności wpisywania danych
 
-            _parameters.NumberOfVertices = 10;
+            _parameters.NumberOfVertices = 12;
             _parameters.ProbabilityOfEdgeGeneration = 0.50;
 
             _parameters.WeightsLowerLimit = 1;
@@ -122,12 +146,12 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             _parameters.Popsize = 100;
             _parameters.SleepTime = 1;
 
-            _parameters.IterationsLimit = 1;
+            _parameters.IterationsLimit = 20;
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
-            e.Row.Header = (e.Row.GetIndex()+1).ToString();
+            e.Row.Header = (e.Row.GetIndex() + 1).ToString();
         }
 
     }

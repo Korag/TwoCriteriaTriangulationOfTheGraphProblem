@@ -94,6 +94,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
 
             matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
+
+            _parameters.MainWindow.ResetZoomControl(_parameters.MainWindow.TriangulationGraphZoomControl);
         }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)

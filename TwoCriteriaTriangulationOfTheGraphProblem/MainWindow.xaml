@@ -10,12 +10,15 @@
         xmlns:vm="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods"
         xmlns:converter="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.ValueConverters"
         xmlns:UserControls="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem.UserControls"
+        
+        xmlns:denxorz="clr-namespace:Denxorz.ZoomControl;assembly=Denxorz.ZoomControl"
        
         Icon="Images\iconPNG.png"
-        Title="Two Criteria Triangulation Of The Graph Problem ULTRA 420! Blaze IT! MORONS" Width="1280" Height="720" MaxWidth="3840" MaxHeight="2160" MinWidth="640" MinHeight="360">
+        Title="Two Criteria Triangulation Of The Graph Problem" Width="1280" Height="720" MaxWidth="3840" MaxHeight="2160" MinWidth="640" MinHeight="360">
 
     <Window.Resources>
         <converter:EdgeColorConverter x:Key="EdgeColorConverter"/>
+        <converter:VertexColorConverter x:Key="VertexColorConverter"/>
         <converter:ConvertPath x:Key="ConvertPath"/>
         <DataTemplate x:Key="demoTemplate" DataType="{x:Type local:Vertex}">
             <StackPanel Orientation="Horizontal" Margin="5">
@@ -24,13 +27,24 @@
         </DataTemplate>
 
         <Style TargetType="{x:Type graphsharp:VertexControl}">
+            <Style.Resources>
+                <ToolTip x:Key="ToolTipContent">
+                    <StackPanel>
+                        <TextBlock FontWeight="Bold" Text="Vertex information"/>
+                        <TextBlock Text="{Binding Tooltip}"/>
+                    </StackPanel>
+                </ToolTip>
+            </Style.Resources>
+            <Setter Property="ToolTip" Value="{StaticResource ToolTipContent}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type graphsharp:VertexControl}">
                         <Border 
+                               x:Name="GraphBorder"
                                Background="LightBlue"
 							   CornerRadius="10,10,10,10"
 							   Padding="{TemplateBinding Padding}">
+
 
                             <StackPanel Orientation="Vertical">
                                 <ContentPresenter Content="{TemplateBinding Vertex}" 
@@ -180,7 +194,7 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Label Content="Minimum Fitness" HorizontalAlignment="Left" Width="349" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
-                <UserControls:MainChartUserControl x:Name="SecondChart" HorizontalAlignment="Left" Height="99" VerticalAlignment="Top" Width="914" Margin="1,0,0,-19" Grid.ColumnSpan="2"/>
+                <UserControls:MainChartUserControl x:Name="SecondChart" HorizontalAlignment="Left" Height="85" VerticalAlignment="Top" Width="914" Margin="1,0,0,-20" Grid.ColumnSpan="2"/>
             </Grid>
 
             <!--Wizualizacja trójpodziału grafu zmieniająca się co każdą iterację-->
@@ -192,13 +206,13 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Label Content="Triangulation of the graph" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="190" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
-                <Viewbox Name="TriangulationGraphView" StretchDirection="Both" Stretch="Uniform">
-                    <vm:GraphLayout x:Name="TriangulationGraphChart" Margin="100"
+                <denxorz:ZoomControl x:Name="TriangulationGraphZoomControl" Background="White" Mode="Original">
+                    <vm:GraphLayout x:Name="TriangulationGraphChart"
 						Graph="{Binding Path=TriangulationOfGraph}"
 						LayoutAlgorithmType="{Binding Path=LayoutAlgorithmType, Mode=OneWay}"
 						OverlapRemovalAlgorithmType="FSA"
 						HighlightAlgorithmType="Simple" />
-                </Viewbox>
+                </denxorz:ZoomControl>
             </Grid>
 
 
@@ -212,13 +226,13 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Label Content="Generated graph" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="128" Style="{DynamicResource Label}" Margin="0,-26,0,0" Foreground="#FF972960"/>
-                <Viewbox Name="BasicGeneratedGraphView" StretchDirection="Both" Stretch="Uniform">
-                    <vm:GraphLayout x:Name="BasicGeneratedGraphChart" Margin="100"
+                <denxorz:ZoomControl x:Name="BasicGraphZoomControl" Background="White" Mode="Original">
+                    <vm:GraphLayout x:Name="BasicGeneratedGraphChart"
 						Graph="{Binding Path=GeneratedBasicGraph}"
 						LayoutAlgorithmType="{Binding Path=LayoutAlgorithmType, Mode=OneWay}"
 						OverlapRemovalAlgorithmType="FSA"
 						HighlightAlgorithmType="Simple" />
-                </Viewbox>
+                </denxorz:ZoomControl>
             </Grid>
 
             <!--Macierz incydencji-->
@@ -274,7 +288,7 @@
                 </Grid.Background>
 
                 <Label Content="© Wihajster 2020" Height="30" VerticalAlignment="Top" Foreground="#FFF2EDF7" FontWeight="Bold" FontFamily="Bernard MT Condensed" HorizontalAlignment="Right" Width="178" FontSize="20" Grid.Column="1" Padding="0,5,5,0" HorizontalContentAlignment="Right" UseLayoutRounding="True"/>
-                <Label Content="© Łukasz Czepielik, Konrad Boroń, Dominik Pezda, TEAM LEADER: Wojciech WojRog Rogowski" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="712" Foreground="White" FontFamily="Sitka Text" FontStyle="Italic" FontSize="16"/>
+                <Label Content="© Łukasz Czepielik, Konrad Boroń, Dominik Pezda" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="712" Foreground="White" FontFamily="Sitka Text" FontStyle="Italic" FontSize="16"/>
             </Grid>
 
             <!--Panel sterujący-->
@@ -321,11 +335,11 @@
                 <Label Margin="199,7,195,15" Style="{DynamicResource Label}" Content="{Binding Path=IterationNumber}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="1" Foreground="White">
                     <Label.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="White" Offset="0.007"/>
-                            <GradientStop Color="#FF2B1087" Offset="0.477"/>
-                            <GradientStop Color="White" Offset="1"/>
-                            <GradientStop Color="#FFA18BEC" Offset="0.245"/>
-                            <GradientStop Color="#FFA18BEA" Offset="0.789"/>
+                            <GradientStop Color="#FFD8D8DA"/>
+                            <GradientStop Color="#FF4D4D4D" Offset="0.477"/>
+                            <GradientStop Color="#FFCFCFCF" Offset="1"/>
+                            <GradientStop Color="#FFABA9B2" Offset="0.245"/>
+                            <GradientStop Color="#FFABA9B2" Offset="0.789"/>
                         </LinearGradientBrush>
                     </Label.Background>
                 </Label>
@@ -384,7 +398,7 @@
                 <Label Content="Minimum:" Margin="179,-3,189,-4" Style="{DynamicResource LabelSideMenu}" Height="Auto" Padding="5,5,5,2"/>
                 <TextBox Margin="268,0,50,0" Style="{DynamicResource TextBox}" Text="{Binding Path=CountedExtremum}" Height="Auto" Width="Auto" Padding="0,0,0,2" IsReadOnly="True"/>
             </Grid>
-            <Label x:Name="cudaCzepiela" Content="" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="549" Style="{DynamicResource Label}" Margin="165.2,124.4,0,0" Foreground="#FF972960" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2"/>
+            <Label x:Name="cudaCzepiela" Visibility="Hidden" Content="" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="549" Style="{DynamicResource Label}" Margin="165.2,124.4,0,0" Foreground="#FF972960" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2"/>
 
 
 
