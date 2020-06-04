@@ -24,11 +24,16 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             string CurrentDate = "Date: " + DateTime.Now + "\r\n";
             string School = "University of Bielsko-Biala 50 years of tradition\r\n";
-            string WorkingGroup = "Łukasz Czepielik, Dominik Pezda, Konrad Boroń \r\n\r\n";
+            string WorkingGroup = "Łukasz Czepielik, Dominik Pezda, Konrad Boroń \r\n";
+            string Department = "Department of Computer Science Master Degree\r\n";
+           
             StreamWriter txt = new StreamWriter(".\\File.txt"); //sciezka do poprawy!!!!!!
             txt.Write(CurrentDate);
             txt.Write(School);
             txt.Write(WorkingGroup);
+            txt.Write(Department);
+
+
             if (parameters.incidenceMatrix == null || parameters.Population == null)
             {
                 txt.WriteLine("Data not found");
