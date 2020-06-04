@@ -21,12 +21,12 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         TRandom CrossoverProc = new TRandom();
         Parameters parameters;
 
-        public void GeneticAlgorithm(Parameters parameters)//double[][] WeightMatrix, double[][] GraphMatrix, int Iterations)
+        public void GeneticAlgorithm(Parameters parameters)
         {
+            //creating Matrixes for population and arrays for fitnesses
+
             this.parameters = parameters;
-
-            int vertexAmount = parameters.NumberOfVertices;//GraphMatrix.GetLength(0);
-
+            int vertexAmount = parameters.NumberOfVertices;
             double[] BestGroups = new double[parameters.Popsize];
             double[][] Population = new double[vertexAmount][];
             double[] PopulationFitness = new double[parameters.Popsize];
@@ -41,14 +41,22 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             parameters.FitnessGroup2 = FitnessGroup2;
             parameters.FitnessGroup3 = FitnessGroup3;
 
+
+
+            //matrix for filesave
             parameters.MatrixToSave = new List<double[][]>();
             parameters.FitnessesToSave = new List<double[]>();
+
+
 
             for (int i = 0; i < vertexAmount; i++)
             {
                 Population[i] = new double[parameters.Popsize];
                 PopulationToSave[i] = new double[parameters.Popsize];
             }
+
+
+            //creating first population, calculating first fitness
             var InitialGroup = CreateInitialGroup(vertexAmount);
 
             BestFitnessScore = CalculateFitness(InitialGroup, parameters)[0];
@@ -58,26 +66,23 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         }
 
 
-        public void OneMoreTime()//we're gonna celebrate
+
+        //calling Selection, fill the population, updating saved file
+        public void OneMoreTime()//we're gonna celebrate <3
         {
-            //Oh yeah all right 
+            //Oh yeah all right <3
             CompetetiveSelection(parameters);
-            var test = parameters.Population;
-
-            //don't stop the dancing
+            //don't stop the dancing <3
             CreateNewPopulation(parameters);
-
-            // Tonight, just feeling
-            var test2 = parameters.FitnessArray;
-            var test3 = parameters.Population;
-
+            // Tonight, just feeling <3
             PopulationToSave = GetMatrix(parameters.Population, PopulationToSave);
-
-            // Music's got me feeling the need
+            // Music's got me feeling the need <3
             parameters.MatrixToSave.Add(PopulationToSave);
             parameters.FitnessesToSave.Add((double[])parameters.FitnessArray.Clone());
         }
 
+
+        //cloning matrix
         public double[][] GetMatrix(double[][] MatrixToClone, double[][] MatrixToReturn)
         {
             MatrixToReturn = (double[][])MatrixToClone.Clone();
@@ -87,10 +92,16 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             }
             return MatrixToReturn;
         }
+
+        //creating new population (half of last population won, so function is creating new units for the rest of population)
         public void CreateNewPopulation(Parameters parameters)
         {
+
+            //getting winners amount
             int Winners = parameters.Popsize / 2;
             double[] CurrentGroup = new double[parameters.NumberOfVertices];
+
+            //creating new groups
             for (int k = Winners; k < parameters.Popsize; k++)
             {
                 var NewGroup = CreateGroup(parameters.NumberOfVertices);
@@ -99,6 +110,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                     parameters.Population[j][k] = NewGroup[j];
                 }
             }
+
+            //checking if mutation or crossover occur
             for (int i = Winners; i < parameters.Popsize; i++)
             {
                 double CheckIfMutationHappen = MutationProc.Next(0, 100);
@@ -107,13 +120,14 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 {
                     CurrentGroup[k] = parameters.Population[k][i];
                 }
-                var test = parameters.Population;
                 if (CheckIfMutationHappen <= parameters.MutationProbabilityValue)
                 {
+                    //mutation
                     Mutation(CurrentGroup);
                 }
                 if (CheckIfCrossOverHappen <= parameters.CrossoverProbabilityValue)
                 {
+                    //crossover
                     Crossover(CurrentGroup);
                 }
             }
@@ -121,11 +135,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
 
 
-
+        //competetive selection
         public void CompetetiveSelection(Parameters parameters)
         {
-            //Population[10][5000]
-            //GroupX[10]
+
+            //getting population units and their fitnesses
             int NewGroupIndex = 0;
             double[] Group1 = new double[parameters.NumberOfVertices];
             double[] Group2 = new double[parameters.NumberOfVertices];
@@ -139,6 +153,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 double[] FitnenssFirstGroup = CalculateFitness(Group1, parameters);
                 double[] FitnessSecondGroup = CalculateFitness(Group2, parameters);
 
+
+                //checking which unit is better and choosing it
                 if (FitnenssFirstGroup[0] < FitnessSecondGroup[0])
                 {
                     parameters.FitnessArray[NewGroupIndex] = FitnenssFirstGroup[0];
@@ -161,16 +177,12 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                         parameters.Population[p][NewGroupIndex] = Group2[p];
                     }
                 }
-                var test = parameters.Population;
-
-
-
                 NewGroupIndex++;
             }
         }
 
 
-
+        //calculate group fitness
         public double GetGroupFitnessValue(Parameters parameters, List<double> Group)
         {
             double FitnessValue = 0;
@@ -190,6 +202,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             return FitnessValue;
         }
 
+
+        //calculate fitness of one unit
         public double[] CalculateFitness(double[] Group, Parameters parameters) //XX
         {
             List<double> Group1 = new List<double>();
@@ -230,6 +244,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             return Fitness;
         }
+
+        //creating first unit
         public double[] CreateInitialGroup(int VertexAmount)
         {
             double[] InitialGroup = new double[VertexAmount];
@@ -245,8 +261,13 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             }
             return InitialGroup;
         }
+
+
+        //creating first population
         public double[][] CreateInitialPopulation(int GenerationSize, Parameters parameters)
         {
+
+            //getting random values to fill population matrix
             TRandom rnd = new TRandom();
             double[][] NewPopulation = new double[parameters.NumberOfVertices][];
 
@@ -255,6 +276,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 NewPopulation[i] = new double[GenerationSize];
             }
 
+
+            //creating units and calculating fitness of each group
             for (int k = 0; k < GenerationSize; k++)
             {
                 var NewGroup = CreateGroup(parameters.NumberOfVertices);
@@ -273,16 +296,23 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             return NewPopulation;
         }
 
+
+        //creating group
         public double[] CreateGroup(int GroupSize)
         {
+            //filling whole group with 0
             TRandom rnd = new TRandom();
             double[] Group = new double[GroupSize];
             for (int i = 0; i < GroupSize; i++)
             {
                 Group[i] = 0;
             }
+
+            //checking size of each group
             int checkVertexAmount = GroupSize % 3;
             int normalNumber = (GroupSize - checkVertexAmount) / 3;
+
+            //creating group if vertex amount is divided by 3
             if (checkVertexAmount == 0)
             {
                 for (int i = 1; i < 4; i++)
@@ -301,6 +331,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                     }
                 }
             }
+
+            //creating group if exactly one of groups is bigger than others
             if (checkVertexAmount == 1)
             {
                 int OneMore = rnd.Next(1, 3);
@@ -328,6 +360,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 }
 
             }
+
+            //creating group if exactly one group size is less than others
             if (checkVertexAmount == 2)
             {
                 int OneBonus = rnd.Next(1, 3);
@@ -370,6 +404,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             }
             return Group;
         }
+
+
+        //crossover function, swap random two elements
         public void Crossover(double[] Group)
         {
             TRandom rnd = new TRandom();
@@ -383,13 +420,13 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             Group[index] = Group[index2];
             Group[index2] = Group[index];
         }
+
+        //mutation function, changing one value in unit, checking if group is correct
         public void Mutation(double[] Group)
         {
 
             TRandom rnd = new TRandom();
             int MutationNumber = rnd.Next(1, 3);
-
-
             bool works = false;
             while (works == false)
             {
@@ -411,6 +448,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
 
         }
+
+
+        //function to check if the size of each group in unit is correct
         public bool CheckGroup(double[] Group)
         {
 
@@ -446,13 +486,15 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             return GroupIsValid;
         }
 
-
+        //its KB functions but imo it does nothing
         public double[] SumOfWeights()
         {
             //var result = CalculateFitness(CreateInitialGroup(parameters.NumberOfVertices), parameters);
             return parameters.FitnessArray;
         }
 
+
+        //function to count edges
         public int[] EdgeCounts()
         {
             var population = parameters.Population;
