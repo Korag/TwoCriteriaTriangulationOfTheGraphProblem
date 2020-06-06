@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem.ValueConverters
 {
-    //konwerter wykorzystywany w kolorawniu krawędzi
+    //konwerter wykorzystywany w kolorowaniu krawędzi
     public class VertexColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

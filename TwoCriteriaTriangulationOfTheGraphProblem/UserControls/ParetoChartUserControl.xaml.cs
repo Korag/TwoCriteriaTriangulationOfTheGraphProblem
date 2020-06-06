@@ -17,7 +17,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
 
         private Parameters _parameters = ConnectionHelper.ParametersObject;
 
-
         private double? F1LeftConstraint;
         private double? F1RightConstraint;
         private double? F2LeftConstraint;

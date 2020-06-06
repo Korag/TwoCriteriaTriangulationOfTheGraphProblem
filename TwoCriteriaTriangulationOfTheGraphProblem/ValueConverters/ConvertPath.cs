@@ -15,7 +15,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.ValueConverters
         {
             Debug.Assert(values != null && values.Length == 9, "EdgeRouteToPathConverter should have 9 parameters: pos (1,2), size (3,4) of source; pos (5,6), size (7,8) of target; routeInformation (9).");
 
-
             //get the position of the source
             Point sourcePos = new Point()
             {
@@ -41,20 +40,15 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.ValueConverters
                 Height = (values[7] != DependencyProperty.UnsetValue ? (double)values[7] : 0.0)
             };
 
-
-
             //get the position of the source
 
             Point[] routeInformation = (values[8] != DependencyProperty.UnsetValue ? (Point[])values[8] : null);
 
             bool hasRouteInfo = routeInformation != null && routeInformation.Length > 0;
 
-            //
             // Create the path
-            //
             Point p1 = GraphConverterHelper.CalculateAttachPoint(sourcePos, sourceSize, (hasRouteInfo ? routeInformation[0] : targetPos));
             Point p2 = GraphConverterHelper.CalculateAttachPoint(targetPos, targetSize, (hasRouteInfo ? routeInformation[routeInformation.Length - 1] : sourcePos));
-
 
             PathSegment[] segments = new PathSegment[1 + (hasRouteInfo ? routeInformation.Length : 0)];
             if (hasRouteInfo)
@@ -71,6 +65,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.ValueConverters
 
             PathFigureCollection pfc = new PathFigureCollection(2);
             pfc.Add(new PathFigure(p1, segments, false));
+
             //pfc.Add(new PathFigure(p2,
             //                         new PathSegment[] {
             //                                            new LineSegment(p2 + v - n, true),
@@ -78,6 +73,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.ValueConverters
 
             return pfc;
         }
+
         private class GraphConverterHelper
         {
             public static Point CalculateAttachPoint(Point s, Size sourceSize, Point t)
@@ -89,6 +85,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.ValueConverters
                 sides[3] = (s.Y + sourceSize.Height / 2.0 - t.Y) / (s.Y - t.Y);
 
                 double fi = 0;
+
                 for (int i = 0; i < 4; i++)
                 {
                     if (sides[i] <= 1)
@@ -98,7 +95,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.ValueConverters
                 return t + fi * (s - t);
             }
         }
-
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {

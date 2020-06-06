@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphElements
@@ -26,7 +25,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphElements
         }
 
         public SolidColorBrush Color { get; set; } = Brushes.Red;//do ścieżki/cyklu Eulera
-
 
         public Vertex(string value, int index)
         {

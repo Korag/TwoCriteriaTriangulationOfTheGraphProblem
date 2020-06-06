@@ -11,9 +11,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         public static Graph GenerateEdges(double[][] matrix, List<Vertex> existingVertices, Graph graph)
         {
             var numberOfVertices = matrix.Length;
+
             for (int i = 0; i < numberOfVertices; i++)
             {
                 int j = i;
+
                 while (j < numberOfVertices)
                 {
                     if (matrix[i][j] == 1)
@@ -55,15 +57,15 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         {
             foreach (var edge in graph.Edges)
             {
-                edge.ID = string.Format("Connected vertices: {0}-{1}", edge.Source.Index+1, edge.Target.Index+1)
+                edge.ID = string.Format("Connected vertices: {0}-{1}", edge.Source.Index + 1, edge.Target.Index + 1)
                     + $", Weight: {edge.Weight}";
             }
         }
 
-
         public static List<double> GetCutsWeightsSum(Graph basicGraph, double[][] caranArray)
         {
             var result = new List<double>();
+
             for (int i = 0; i < caranArray[0].Length; i++)
             {
                 var groupsVertices = GraphGenerationMethods
@@ -80,6 +82,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         public static List<double> GetCutsCount(Graph basicGraph, double[][] caranArray)
         {
             var result = new List<double>();
+
             for (int i = 0; i < caranArray[0].Length; i++)
             {
                 var groupsVertices = GraphGenerationMethods
@@ -96,11 +99,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         public static void RemoveTheEdge(Graph graph, int source, int target)
         {
             Edge edge = null;
+
             if (source != target)
             {
                 edge = graph.Edges.Where(e => e.Source.Index == source || e.Source.Index == target
                                         && e.Target.Index == source || e.Target.Index == target).FirstOrDefault();
-
             }
             if (edge != null)
             {

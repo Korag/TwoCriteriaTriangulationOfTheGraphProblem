@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data;
-using System.Windows.Controls;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
@@ -34,10 +33,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             #endregion
 
             #region WeightsMatrix
-
-            //TODO:
-            //Należy dodać do struktury grafu informację o wadze dotyczącej konkretnej krawędzi
-            //oraz metodę, która z obiektu struktury grafu wygeneruje macierz wag
 
             //_parameters.weightsMatrix = GenerateWeightsMatrixFromGraph(_parameters.weightsMatrix, graph);
             _parameters.DataTableWeightsMatrix = new DataTable();
@@ -100,7 +95,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 else
                 {
                     dataTable.Columns.Add(new DataColumn((i + 1).ToString()));
-                    
                 }
             }
         }
@@ -109,6 +103,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         public void FillIncidenceDataTable(double[][] matrix, DataTable dataTable)
         {
             dataTable.Rows.Clear();
+
             for (int i = 0; i < _parameters.NumberOfVertices; i++)
             {
                 var newRow = dataTable.NewRow();
@@ -117,17 +112,18 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 {
                     newRow[j + 1] = matrix[i][j];
                 }
+
                 //Moved out to DataGrid_LoadingRow
                 //newRow[0] = i + 1;
                 dataTable.Rows.Add(newRow);
-                
             }
         }
 
-        ////wiersze z danymi w macierzy wag(UI)
+        //wiersze z danymi w macierzy wag(UI)
         public void FillWeightsDataTable(double[][] matrix, DataTable dataTable)
         {
             dataTable.Rows.Clear();
+
             for (int i = 0; i < _parameters.NumberOfVertices; i++)
             {
                 var newRow = dataTable.NewRow();
@@ -136,6 +132,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 {
                     newRow[j + 1] = matrix[i][j];
                 }
+
                 //Moved out to DataGrid_LoadingRow
                 //newRow[0] = i + 1;
                 dataTable.Rows.Add(newRow);
@@ -148,6 +145,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             //utworzenie macierzy
             double[][] tempMatrix = new double[_parameters.NumberOfVertices][];
             tempMatrix = new double[_parameters.NumberOfVertices][];
+
             for (int i = 0; i < _parameters.NumberOfVertices; i++)
             {
                 tempMatrix[i] = new double[_parameters.NumberOfVertices + 1];
@@ -156,9 +154,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             int j = 0;
             double ArraySingleValue = 0;
             Random random = new Random();
+
             for (int i = 0; i < _parameters.NumberOfVertices; i++)
             {
                 j = i;
+
                 while (j < _parameters.NumberOfVertices)
                 {
                     ArraySingleValue = random.NextDouble();
@@ -178,11 +178,12 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                     {
                         ArraySingleValue = 0;
                     }
+
                     tempMatrix[i][j] = ArraySingleValue;
                     j++;
                 }
-
             }
+
             //przekopiowanie jednej połowy macierzy na drugą połowę
             tempMatrix = FillTheSecondHalfOfTheMatrix(tempMatrix);
             return tempMatrix;
@@ -194,6 +195,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             //utworzenie macierzy
             double[][] tempMatrix = new double[_parameters.NumberOfVertices][];
             tempMatrix = new double[_parameters.NumberOfVertices][];
+
             for (int i = 0; i < _parameters.NumberOfVertices; i++)
             {
                 tempMatrix[i] = new double[_parameters.NumberOfVertices + 1];
@@ -201,6 +203,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
             int j = 0;
             Random random = new Random();
+
             for (int i = 0; i < _parameters.NumberOfVertices; i++)
             {
                 j = i;
@@ -210,6 +213,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                     j++;
                 }
             }
+
             //przekopiowanie jednej połowy macierzy na drugą połowę
             tempMatrix = FillTheSecondHalfOfTheMatrix(tempMatrix);
             return tempMatrix;
@@ -219,15 +223,18 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         public double[][] GenerateIncidenceMatrixFromGraph(double[][] matrixUI, Graph graph)
         {
             matrixUI = new double[_parameters.NumberOfVertices][];
+
             for (int i = 0; i < _parameters.NumberOfVertices; i++)
             {
                 matrixUI[i] = new double[_parameters.NumberOfVertices + 1];
             }
+
             foreach (var Edge in graph.Edges)
             {
                 matrixUI[Edge.Source.Index][Edge.Target.Index] = 1;
                 matrixUI[Edge.Target.Index][Edge.Source.Index] = 1;
             }
+
             CalculateIncidenceMatrixSum(matrixUI);
             return matrixUI;
         }
@@ -238,10 +245,12 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             for (int i = 0; i < _parameters.NumberOfVertices; i++)
             {
                 double sum = 0;
+
                 for (int j = 0; j < _parameters.NumberOfVertices; j++)
                 {
                     sum += matrix[i][j];
                 }
+
                 matrix[i][_parameters.NumberOfVertices] = sum;
             }
         }
@@ -256,6 +265,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                     matrix[i][j] = matrix[j][i];
                 }
             }
+
             return matrix;
         }
 

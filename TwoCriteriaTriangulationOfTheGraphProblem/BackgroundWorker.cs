@@ -1,11 +1,7 @@
-﻿using LiveCharts;
-using LiveCharts.Wpf;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods;
-using TwoCriteriaTriangulationOfTheGraphProblem.UserControls;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem
 {
@@ -26,7 +22,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             worker.WorkerSupportsCancellation = true;
             worker.WorkerReportsProgress = true;
-
         }
 
         private void worker_Report()
@@ -38,8 +33,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
         private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            // Aktualizujemy frontend
-
             //Example graph from AI
             GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
             graphGenerator.GenerateTriangulationOfGraph();
@@ -60,14 +53,9 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             _parameters.GeneratedBasicGraph = EdgeMethod.GenerateEdges(_parameters.incidenceMatrix, _parameters.verticesBasicGeneratedGraph, _parameters.GeneratedBasicGraph);
 
-
-            //aktualizacja macierzy wag
-            //TODO
-
             //aktualizacja wyświetlanej macierzy incydencji i wag (frontend)
             VertexMethod.CalculateTheSum(_parameters.incidenceMatrix, _parameters.verticesTriangulationOfGraph);
             VertexMethod.SetVertexNeighbors(_parameters.incidenceMatrix, _parameters.verticesTriangulationOfGraph);
-
 
             _parameters.MainWindow.OverallFluctuationChart.EditASeries(
                 _parameters.FitnessArray.Average(),
@@ -81,7 +69,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             //var minimumFitnessGraphIndex = 0;
             _parameters.CountedExtremum = $"({cutsCount[minimumFitnessGraphIndex]}; {cutsSum[minimumFitnessGraphIndex]})";
 
-
             _parameters.MainWindow.ProgressBar.Value = _parameters.IterationNumber;
 
             var groupsVertices = GraphGenerationMethods.GetGroupsVertices(
@@ -92,7 +79,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             if (groupsVertices.ContainsValue(0)) groupsVerticesString += "Warning: group 0 detected. ";
             groupsVertices.OrderBy(x => x.Key.Index).ToList().ForEach(x => groupsVerticesString += $"V: {x.Key.Index + 1}, G: {x.Value}; ");
             _parameters.MainWindow.cudaCzepiela.Content = groupsVerticesString;
-
 
             matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
 
@@ -105,7 +91,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             geneticAlgorithm = new GeneticAlgorithmMethods();
             geneticAlgorithm.GeneticAlgorithm(_parameters);
-            
+
             for (int i = 0; i < _parameters.IterationsLimit; i++)
             {
                 geneticAlgorithm.OneMoreTime();
@@ -113,7 +99,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 //Kiedy potrzebujemy odświeżyć UI
                 this.worker_Report();
             }
-            
+
             worker.CancelAsync();
         }
 
@@ -123,10 +109,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             _parameters.MainWindow.Start.IsEnabled = true;
             _parameters.MainWindow.Save.IsEnabled = true;
-          
+
         }
 
         #region INotifyPropertyChanged Implementation
+
         //tym w WPF'ie odświeżamy UI
         public event PropertyChangedEventHandler PropertyChanged;
 

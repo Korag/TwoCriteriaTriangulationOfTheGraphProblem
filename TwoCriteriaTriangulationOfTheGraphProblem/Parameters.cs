@@ -11,8 +11,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 {
     public class Parameters : INotifyPropertyChanged
     {
-        //public readonly BackgroundWorker worker = new BackgroundWorker();//to służy do wykonywania naprawy grafu w odzielnym wątku
-
         public MainWindow MainWindow;
 
         #region UIControls
@@ -151,6 +149,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         }
 
         public List<string> LayoutAlgorithmTypes { get; } = new List<string>();//lista z algorytmami rysowania grafów
+
         #endregion
 
         #region MacierzIncydencji i MacierzWag
@@ -212,7 +211,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         public List<double[]> FitnessesToSave;
 
         //minimum dla liczby krawędzi i dla sumy wag
-        public double MinAmountOfEdges { get; set; }    
+        public double MinAmountOfEdges { get; set; }
         public double MinSumOfEdgesWeights { get; set; }
         #endregion
 

@@ -23,7 +23,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphElements
 
         public double Weight;
 
-
         public Edge(string id, Vertex source, Vertex target)
             : base(source, target)
         {

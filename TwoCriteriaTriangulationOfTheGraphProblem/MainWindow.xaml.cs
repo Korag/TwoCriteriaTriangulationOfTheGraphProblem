@@ -1,27 +1,7 @@
 ﻿using Denxorz.ZoomControl;
-using LiveCharts;
-using LiveCharts.Wpf;
-using QuickGraph;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using TwoCriteriaTriangulationOfTheGraphProblem.AdditionalMethods;
-using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods;
-using TwoCriteriaTriangulationOfTheGraphProblem.UserControls;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem
 {
@@ -54,15 +34,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             _parameters.MainWindow.Save.IsEnabled = false;
         }
 
-        // w tej klasie będą umieszczone tylko i wyłącznie zdarzenia połączone z frontendem
-        // każda operacja musi być przekierowywana do zewnętrznych klas
-
-        //Generowanie basicowego grafu -> akcja wywoływana wyłącznie
-        //1 raz dlatego może zablokować frontend
-
         private void GenerateGraph(object sender, RoutedEventArgs e)
         {
             Start.IsEnabled = true;
+
             //Generujemy basic graf, który później nie będzie już zupełnie modyfikowany
             GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
             graphGenerator.GenerateBasicGraph();
@@ -85,43 +60,20 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
                 zoomControl.TranslateX = 150;
                 zoomControl.TranslateY = 65;
             }
+
             zoomControl.Mode = Denxorz.ZoomControl.ZoomControlModes.Fill;
         }
 
         private void StartGeneticAlgorithm(object sender, RoutedEventArgs e)
         {
             Start.IsEnabled = false;
-            
             ProgressBar.Maximum = _parameters.IterationsLimit;
 
-            //Uruchamiamy background workera, żeby podczas przetwarzania nie mieć
-            //zablokowanego frontendu, który będzie odświeżany co iterację
-
-            //Background worker wykonuje algorytm genetyczny + przegenerowanie grafu
-            //+ odświeża frontend
-
             _bw.worker.RunWorkerAsync();
-
-
-            //OverallFluctuationChart.EditSeriesCollection(_parameters.FitnessArray.Min(), _parameters.IterationNumber);
-
-            //var test = new GeneticAlgorithmMethods();
-            //test.GeneticAlgorithm(_parameters);
-            //var geneticAlgorithm = new GeneticAlgorithmMethods();
-            //geneticAlgorithm.GeneticAlgorithm(_parameters);
-
-            //_parameters.verticesTriangulationOfGraph =
-
-
         }
-
-
 
         private void ResetCurrentState(object sender, RoutedEventArgs e)
         {
-            //Usuwamy wszystkie zapisane dane + wszystko co było generowane
-            //Na szybko w sposób toporny, ale działający
-
             MainWindow mw = new MainWindow();
             this.Close();
             mw.Show();
@@ -150,15 +102,12 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             _parameters.Popsize = 100;
             _parameters.SleepTime = 1;
 
-            _parameters.IterationsLimit = 20;
-
-            
+            _parameters.IterationsLimit = 20; 
         }
 
         private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             e.Row.Header = (e.Row.GetIndex() + 1).ToString();
         }
-
     }
 }

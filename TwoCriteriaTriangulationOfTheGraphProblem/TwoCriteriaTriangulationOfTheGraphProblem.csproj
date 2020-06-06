@@ -38,7 +38,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>iconICO.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Denxorz.ZoomControl, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -127,9 +128,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AdditionalMethods\ConnectionChecker.cs" />
-    <Compile Include="AdditionalMethods\EulerChecker.cs" />
-    <Compile Include="AdditionalMethods\FileSaver.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -189,16 +187,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="giswi_szkic.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\iconICO.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\iconPNG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="iconICO.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

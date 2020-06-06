@@ -1,6 +1,4 @@
-﻿using QuickGraph;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
@@ -15,6 +13,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             tempArray[1] = new Stack<Vertex>();//przechowuje wierzchołki o nieparzystym stopniu
             tempArray[2] = new Stack<Vertex>();//przechowuje wierzchołki o parzystym stopniu
             CalculateTheSum(matrix, verticesList);//aktualizacja sumy w macierzy i stopni wierzchołków
+
             for (int i = 0; i < matrix.Length; i++)
             {
                 var lastColumn = matrix[i].Length - 1;
@@ -52,6 +51,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             for (int i = 0; i < matrix.Length; i++)
             {
                 existingVertices[i].Neighbors = new List<Vertex>();
+
                 for (int k = 0; k < matrix[i].Length - 1; k++)
                 {
                     if (matrix[i][k] == 1)
@@ -61,17 +61,21 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 }
             }
         }
+
         //aktualizacja sumy w macierzy i stopni wierzchołków
         public static void CalculateTheSum(double[][] matrix, List<Vertex> existingVertices)
         {
             var numberOfVertices = matrix.Length;
+
             for (int i = 0; i < numberOfVertices; i++)
             {
                 double sum = 0;
+
                 for (int j = 0; j < numberOfVertices; j++)
                 {
                     sum += matrix[i][j];
                 }
+
                 matrix[i][numberOfVertices] = sum;
                 existingVertices[i].VertexDegree = (int)sum;
             }

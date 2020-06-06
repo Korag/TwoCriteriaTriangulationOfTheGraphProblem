@@ -1,13 +1,8 @@
-﻿using LiveCharts.Definitions.Series;
-using QuickGraph;
-using QuickGraph.Algorithms;
+﻿using QuickGraph;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Text.RegularExpressions;
 using System.Windows.Media;
-using Troschuetz.Random.Distributions.Continuous;
 using TwoCriteriaTriangulationOfTheGraphProblem.GraphElements;
 
 namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
@@ -64,19 +59,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
             _parameters.verticesTriangulationOfGraph = new List<Vertex>();//lista przechowująca wierzchołki
 
-            //generowanie krawędzi na podstawie macierzy
-            //EdgeMethod.GenerateEdges(_parameters.incidenceMatrix, _parameters.verticesTriangulationOfGraph, _parameters.TriangulationOfGraph);
-
-            ////suma jest zapisana w ostatniej kolumnie macierzy oraz we właściwości obiektu vertex(VertexDegree)<=potrzebne w naprawie
-            //VertexMethod.CalculateTheSum(_parameters.incidenceMatrix, _parameters.verticesTriangulationOfGraph);
-
-            ////zapisanie wierzołków sąsiadujących ze sobą(potrzebne w naprawie)
-            //VertexMethod.SetVertexNeighbors(_parameters.incidenceMatrix, _parameters.verticesTriangulationOfGraph);
-
-            //_parameters.UndirectedTriangulationOfGraph = new UndirectedBidirectionalGraph<Vertex, Edge>(_parameters.TriangulationOfGraph);//coś jak canvas
-
-            //matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
-
             var minimumFitnessGraphIndex = _parameters.FitnessArray.ToList().IndexOf(_parameters.FitnessArray.Min());
             var graphFromCaran = GenerateGraphFromCaranWithCuts(
                 _parameters.GeneratedBasicGraph,
@@ -91,15 +73,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                 graphFromCaran,
                 groupsVertices
                 );
-
-
-
-            //var graphFromCaran = GenerateGraphFromCaran(_parameters.Population).Where(x => x != null).ToList();
-            //graphFromCaran.Where(x => x.VertexCount != 0).ToList().ForEach(x => EdgeMethod.ConnectAllVertices(x));
-            //ColorGraphsEdges(graphFromCaran);
-
-            //var joinedGraphFromCaran = new Graph();
-            //graphFromCaran.ToList().ForEach(x => JoinGraphs(joinedGraphFromCaran, x));
 
             _parameters.TriangulationOfGraph = graphFromCaran;
             _parameters.verticesTriangulationOfGraph = graphFromCaran.Vertices.ToList();
@@ -137,6 +110,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
         public static Dictionary<Vertex, int> ReverseVerticesGroups(Dictionary<int, List<Vertex>> verticesGroups)
         {
             var groupsVertices = new Dictionary<Vertex, int>();
+
             foreach (var item in verticesGroups)
             {
                 foreach (var vertex in item.Value)
@@ -144,6 +118,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
                     groupsVertices.Add(vertex, item.Key);
                 }
             }
+
             return groupsVertices;
         }
 
@@ -156,7 +131,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
 
             return groupsVertices;
         }
-
 
         public static Graph GenerateGraphFromCaranWithCuts(Graph baseGraph, double[][] caranArray, int graphId = 0)
         {
@@ -219,7 +193,6 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.GraphMethods
             }
 
             return output;
-
         }
     }
 }
