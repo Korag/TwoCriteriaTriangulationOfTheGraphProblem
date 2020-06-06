@@ -179,7 +179,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Images\color_palette.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -200,9 +199,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="iconICO.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\color_palette.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
