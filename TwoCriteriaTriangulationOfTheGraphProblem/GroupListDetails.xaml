@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem"
         mc:Ignorable="d"
-        Title="Group list details" Height="200" Width="600">
+        Icon="Images\iconPNG.png"
+        Title="Group list details - Two Criteria Triangulation Of The Graph Problem" Height="250" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -17,7 +18,7 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Content="Group list details:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
-        <FlowDocumentScrollViewer x:Name="FlowDocViewer" Grid.Row="1" Grid.Column="0">
+        <FlowDocumentScrollViewer x:Name="FlowDocViewer" Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         </FlowDocumentScrollViewer>
 
         <Button Content="Ok" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="75" Click="Button_Click"/>
