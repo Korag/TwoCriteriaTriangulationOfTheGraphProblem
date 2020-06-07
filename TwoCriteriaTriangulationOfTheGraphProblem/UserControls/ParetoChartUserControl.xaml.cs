@@ -59,6 +59,13 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
 
         }
 
+        public void ResetAll()
+        {
+            ValuesA = new ChartValues<ObservablePoint>();
+            ValuesB = new ChartValues<ObservablePoint>();
+            ValuesC = new ChartValues<ObservablePoint>();
+        }
+
         private void ReinitializeVariables()
         {
             //przez to ze strona jest zbindowana do parameters musimy reinicjowac, bo dane z gui sa przesylane tylko do parameters

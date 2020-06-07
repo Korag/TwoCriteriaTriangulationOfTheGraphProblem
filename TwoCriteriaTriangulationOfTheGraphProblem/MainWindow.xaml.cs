@@ -49,6 +49,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
             graphGenerator.GenerateBasicGraph();
 
+            //Reset pareto, triangulation graph
+            ParetoChart.ResetAll();
+            _parameters.TriangulationOfGraph = new Graph(true);
+
             ResetZoomControl(BasicGraphZoomControl);
         }
 
