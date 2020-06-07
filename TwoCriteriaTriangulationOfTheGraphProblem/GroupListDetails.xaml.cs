@@ -19,6 +19,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
     /// </summary>
     public partial class GroupListDetails : Window
     {
+
+
         public GroupListDetails()
         {
             InitializeComponent();

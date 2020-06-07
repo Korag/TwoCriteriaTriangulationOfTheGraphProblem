@@ -17,7 +17,9 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Content="Group list details:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" x:Name="DetailsBlock" HorizontalAlignment="Left"  TextWrapping="NoWrap" Text="TextBlock" VerticalAlignment="Top" Margin="10,10.2,0,0"/>
+        <FlowDocumentScrollViewer x:Name="FlowDocViewer" Grid.Row="1" Grid.Column="0">
+        </FlowDocumentScrollViewer>
+
         <Button Content="Ok" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="75" Click="Button_Click"/>
     </Grid>
 </Window>
