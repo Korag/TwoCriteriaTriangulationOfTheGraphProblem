@@ -398,7 +398,7 @@
                 <Label Content="Minimum:" Margin="179,-3,189,-4" Style="{DynamicResource LabelSideMenu}" Height="Auto" Padding="5,5,5,2"/>
                 <TextBox Margin="268,0,50,0" Style="{DynamicResource TextBox}" Text="{Binding Path=CountedExtremum}" Height="Auto" Width="Auto" Padding="0,0,0,2" IsReadOnly="True"/>
             </Grid>
-            <Label x:Name="GroupList" Content="" MouseDown="GroupList_Click" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="549" Style="{DynamicResource Label}" Margin="165.2,124.4,0,0" Foreground="#FF972960" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2"/>
+            <Label x:Name="GroupList" Content="" MouseDown="GroupList_Click" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="320" Style="{DynamicResource Label}" Margin="165.2,124.4,0,0" Foreground="#FF972960" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2"/>
 
 
 
