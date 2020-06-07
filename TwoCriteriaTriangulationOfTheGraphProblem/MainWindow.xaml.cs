@@ -49,6 +49,10 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             GraphGenerationMethods graphGenerator = new GraphGenerationMethods(_parameters);
             graphGenerator.GenerateBasicGraph();
 
+            //Reset pareto, triangulation graph
+            ParetoChart.ResetAll();
+            _parameters.TriangulationOfGraph = new Graph(true);
+
             ResetZoomControl(BasicGraphZoomControl);
         }
 
@@ -75,6 +79,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         {
             Start.IsEnabled = false;
             ProgressBar.Maximum = _parameters.IterationsLimit;
+
+            //Reset charts, iteration count
+            OverallFluctuationChart.ResetAll();
+            SecondChart.ResetAll();
+            _parameters.IterationNumber = 0;
 
             _bw.worker.RunWorkerAsync();
         }

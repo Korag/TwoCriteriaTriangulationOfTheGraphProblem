@@ -90,6 +90,15 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem.UserControls
             AxisY.MaxValue = series.ActualValues.GetPoints(series).Select(x => x.Y).Max() + 1;
         }
 
+        public void ResetAll()
+        {
+            SeriesCollection[0].Values = new ChartValues<double>();
+            SeriesCollection[1].Values = new ChartValues<double>();
+            SeriesCollection[2].Values = new ChartValues<double>();
+            SeriesCollection[3].Values = new ChartValues<double>();
+            Labels = GetStringFromIterations(0);
+        }
+
         public void EditSeriesCollection(double valA, double valB, double valC, double valD, int iteration)
         {
             SeriesCollection[0].Values.Add(valA);
