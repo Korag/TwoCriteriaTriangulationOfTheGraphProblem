@@ -111,6 +111,9 @@
     <Compile Include="GeneticAlgorithmMethods.cs" />
     <Compile Include="GraphMethods\GraphGenerationMethods.cs" />
     <Compile Include="GraphMethods\GraphLayout.cs" />
+    <Compile Include="GroupListDetails.xaml.cs">
+      <DependentUpon>GroupListDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Parameters.cs" />
     <Compile Include="UserControls\CartesianChartUserCtrl.xaml.cs">
       <DependentUpon>CartesianChartUserCtrl.xaml</DependentUpon>
@@ -124,6 +127,10 @@
     <Compile Include="ValueConverters\ConvertPath.cs" />
     <Compile Include="ValueConverters\VertexColorConverter.cs" />
     <Compile Include="ValueConverters\EdgeColorConverter.cs" />
+    <Page Include="GroupListDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

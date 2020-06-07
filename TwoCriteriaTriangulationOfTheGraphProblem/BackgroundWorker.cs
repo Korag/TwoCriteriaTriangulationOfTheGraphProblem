@@ -71,14 +71,14 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
 
             _parameters.MainWindow.ProgressBar.Value = _parameters.IterationNumber;
 
-            var groupsVertices = GraphGenerationMethods.GetGroupsVertices(
+            _parameters.CurrentGroupsVertices = GraphGenerationMethods.GetGroupsVertices(
                 _parameters.GeneratedBasicGraph,
                 _parameters.Population,
                 minimumFitnessGraphIndex);
             string groupsVerticesString = "";
-            if (groupsVertices.ContainsValue(0)) groupsVerticesString += "Warning: group 0 detected. ";
-            groupsVertices.OrderBy(x => x.Key.Index).ToList().ForEach(x => groupsVerticesString += $"V: {x.Key.Index + 1}, G: {x.Value}; ");
-            _parameters.MainWindow.cudaCzepiela.Content = groupsVerticesString;
+            if (_parameters.CurrentGroupsVertices.ContainsValue(0)) groupsVerticesString += "Warning: group 0 detected. ";
+            _parameters.CurrentGroupsVertices.OrderBy(x => x.Key.Index).ToList().ForEach(x => groupsVerticesString += $"V: {x.Key.Index + 1}, G: {x.Value}; ");
+            _parameters.MainWindow.GroupList.Content = groupsVerticesString;
 
             matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
 

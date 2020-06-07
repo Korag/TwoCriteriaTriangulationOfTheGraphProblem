@@ -222,6 +222,8 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         public List<Vertex> verticesBasicGeneratedGraph;//lista przechowująca wierzchołki bazowo wygenerowanego grafu
         public List<Vertex> verticesTriangulationOfGraph;//lista przechowująca wierzchołki trójpodziału
 
+        public Dictionary<Vertex, int> CurrentGroupsVertices;
+
         private Graph _generatedBasicGraph;
         public Graph GeneratedBasicGraph
         {
