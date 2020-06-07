@@ -76,6 +76,11 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             Start.IsEnabled = false;
             ProgressBar.Maximum = _parameters.IterationsLimit;
 
+            //Reset charts, iteration count
+            OverallFluctuationChart.ResetAll();
+            SecondChart.ResetAll();
+            _parameters.IterationNumber = 0;
+
             _bw.worker.RunWorkerAsync();
         }
 
