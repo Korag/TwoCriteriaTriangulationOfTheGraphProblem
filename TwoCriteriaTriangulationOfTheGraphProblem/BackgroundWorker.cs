@@ -78,7 +78,7 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
             string groupsVerticesString = "";
             if (groupsVertices.ContainsValue(0)) groupsVerticesString += "Warning: group 0 detected. ";
             groupsVertices.OrderBy(x => x.Key.Index).ToList().ForEach(x => groupsVerticesString += $"V: {x.Key.Index + 1}, G: {x.Value}; ");
-            _parameters.MainWindow.cudaCzepiela.Content = groupsVerticesString;
+            _parameters.MainWindow.GroupList.Content = groupsVerticesString;
 
             matrixMethod.RefreshMatrixUi(_parameters.TriangulationOfGraph);
 

@@ -109,5 +109,13 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
         {
             e.Row.Header = (e.Row.GetIndex() + 1).ToString();
         }
+
+        private void GroupList_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var detailsWindow = new GroupListDetails();
+            detailsWindow.DetailsBlock.Text = (string)GroupList.Content.ToString().Clone();
+            detailsWindow.Show();
+
+        }
     }
 }
