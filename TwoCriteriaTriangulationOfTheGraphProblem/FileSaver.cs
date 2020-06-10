@@ -8,11 +8,20 @@ namespace TwoCriteriaTriangulationOfTheGraphProblem
     {
         public void SaveToFileAsync(Parameters parameters)
         {
+#if (DEBUG)
+            Directory.CreateDirectory("..\\..\\Results");
+#endif
+#if (!DEBUG)
+            Directory.CreateDirectory("Results");
+#endif
             Directory.CreateDirectory("..\\..\\Results");
             string fileName = DateTime.Now.ToString("yyyyMMddTHHmmss");
             string filePath = "..\\..\\Results\\" + fileName + ".txt";
+#if (!DEBUG)
+            filePath = "Results\\" + fileName + ".txt";
+#endif
 
-            if (File.Exists("..\\..\\Results\\" + fileName + ".txt"))
+            if (File.Exists(filePath))
             {
                 File.WriteAllText(filePath, " ");
             }
