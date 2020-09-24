@@ -14,7 +14,7 @@
         xmlns:denxorz="clr-namespace:Denxorz.ZoomControl;assembly=Denxorz.ZoomControl"
        
         Icon="Images\iconPNG.png"
-        Title="Two Criteria Triangulation Of The Graph Problem" Width="1280" Height="720" MaxWidth="3840" MaxHeight="2160" MinWidth="640" MinHeight="360">
+        Title="Two Criteria Tripartition Of The Graph Problem" Width="1280" Height="720" MaxWidth="3840" MaxHeight="2160" MinWidth="640" MinHeight="360">
 
     <Window.Resources>
         <converter:EdgeColorConverter x:Key="EdgeColorConverter"/>
@@ -205,7 +205,7 @@
                         <GradientStop Color="#FFDADADA" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Label Content="Triangulation of the graph" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="190" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
+                <Label Content="Tripartition of the graph" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="190" Style="{DynamicResource Label}" Margin="0,-23,0,0"/>
                 <denxorz:ZoomControl x:Name="TriangulationGraphZoomControl" Background="White" Mode="Original">
                     <vm:GraphLayout x:Name="TriangulationGraphChart"
 						Graph="{Binding Path=TriangulationOfGraph}"

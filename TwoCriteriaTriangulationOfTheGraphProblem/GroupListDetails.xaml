@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TwoCriteriaTriangulationOfTheGraphProblem"
         mc:Ignorable="d"
         Icon="Images\iconPNG.png"
-        Title="Group list details - Two Criteria Triangulation Of The Graph Problem" Height="250" Width="600">
+        Title="Group list details - Two Criteria Tripartition Of The Graph Problem" Height="250" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
