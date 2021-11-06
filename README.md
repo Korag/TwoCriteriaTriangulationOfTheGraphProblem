@@ -2,7 +2,7 @@
 
 On the basis of the created program, a scientific article was written and published:
 
-Czepielik Ł., Boroń K., Pezda D.(2020) The problem of graph tripartition in a two-criteria evolutionary approach. In: Rysiński J., Drobina R. (eds) Processing, transmission and security of information - 2020 vol. 2. Wydawnictwo Naukowe Akademii Techniczno-Humanistycznej (http://www.engineerxxi.ath.eu/book/przetwarzanie-transmisja-i-bezpieczenstwo-informacji2020/)
+Czepielik Ł., Boroń K., Pezda D. (2020) The problem of graph tripartition in a two-criteria evolutionary approach. In: Rysiński J., Drobina R. (eds) Processing, transmission and security of information - 2020 vol. 2. Wydawnictwo Naukowe Akademii Techniczno-Humanistycznej (http://www.engineerxxi.ath.eu/book/przetwarzanie-transmisja-i-bezpieczenstwo-informacji2020/)
 
 The created window application allows to solve the two-criteria problem of graph triangulation using a genetic algorithm. The criteria considered are: the number of edges between vertices in different groups and the sum of weights of such edges.
 
